@@ -1,11 +1,59 @@
 /* ==========================================================================
    timburley.com — Site Data Registry
-   Single source of truth for all 15 naming projects, interactive pitfalls,
-   and guided brief caveats. Edit copy or add testimonials here anytime.
+   Single source of truth for all 15 naming projects, faithful pitfalls,
+   client/agency testimonials, Tim's portrait, and guided brief caveats.
    ========================================================================== */
 
 window.TB_DATA = {
   contactEmail: 'names@timburley.com',
+
+  // Drop Tim's portrait image in /assets/images/tim/portrait.jpg and set src here
+  portrait: {
+    src: null, // e.g. '/assets/images/tim/portrait.jpg'
+    alt: 'Tim Burley — Name Development Practice',
+    caption: 'Tim Burley · Principal',
+    location: 'UK & International'
+  },
+
+  // Placeholder testimonials ready for approved client/agency quotes
+  testimonials: [
+    {
+      id: 'rd',
+      isPlaceholder: true,
+      quote: '“Placeholder testimonial for R&D — highlighting how plugging Tim directly into brand projects like Cora Health and Yomira gave both the agency team and the client total confidence in the naming process and final selection.”',
+      author: 'Partner Lead (Placeholder)',
+      role: 'R&D',
+      projectLabel: 'Cora Health · Yomira',
+      projectIds: ['cora-health', 'yomira']
+    },
+    {
+      id: 'organic',
+      isPlaceholder: true,
+      quote: '“Placeholder testimonial for Organic — reflecting how Tim steered the Corigan naming brief from crowded SEO clichés to a crisp, distinctive, trademark-ready brand name.”',
+      author: 'Agency Partner (Placeholder)',
+      role: 'Organic',
+      projectLabel: 'Corigan',
+      projectIds: ['corigan']
+    },
+    {
+      id: 'fontsmith',
+      isPlaceholder: true,
+      quote: '“Placeholder testimonial for Phil Garland — capturing the craft and editorial sensitivity behind naming FS Silas for FontSmith.”',
+      author: 'Phil Garland (Placeholder)',
+      role: 'FontSmith',
+      projectLabel: 'FS Silas',
+      projectIds: ['fs-silas']
+    },
+    {
+      id: 'somerset',
+      isPlaceholder: true,
+      quote: '“Placeholder testimonial for Sara — illustrating how a clear decision process helped multiple public-sector stakeholders align behind Shape Mendip without compromise.”',
+      author: 'Sara (Placeholder)',
+      role: 'Somerset County Council',
+      projectLabel: 'Shape Mendip',
+      projectIds: ['shape-mendip']
+    }
+  ],
 
   projects: [
     {
@@ -16,11 +64,17 @@ window.TB_DATA = {
       category: 'Brand & Healthcare',
       scope: 'Brand naming',
       partner: 'In partnership with R&D',
+      trading: true,
       featured: true,
       style: 'serif',
+      visualImage: null, // e.g. '/assets/images/work/cora-health.png'
+      visualCaption: 'Designed brand visual slot — ready for Cora Health wordmark & application',
+      testimonialId: 'rd',
       summary: 'A warm, authoritative brand name for a private healthcare provider—balancing clinical credibility with human reassurance.',
-      challenge: 'Healthcare naming is notoriously crowded with sterile clinical compounds and lookalike trademarks. The name needed to feel personal, calm and unmistakable while standing up to formal trademark scrutiny.',
-      approach: 'Grounded in human warmth and clarity, Cora Health creates immediate trust with patients and referrers alike without sounding cold or institutional.'
+      brief: 'Healthcare naming is crowded with sterile clinical compounds and lookalike trademarks. Working alongside R&D, the brief called for a name that felt personal, calm and unmistakable while standing up to formal trademark scrutiny.',
+      story: 'Story placeholder — Tim’s full behind-the-scenes account of how Cora Health was developed, tested with stakeholders, and brought into its designed state will live here.',
+      processNote: 'Developed through structured strategic territories and screened early so trademark registration progressed cleanly alongside R&D’s visual identity work.',
+      outcome: 'Grounded in human warmth and clarity, Cora Health builds immediate trust with patients and referrers alike without sounding cold or institutional.'
     },
     {
       id: 'loka-energy',
@@ -29,12 +83,18 @@ window.TB_DATA = {
       sector: 'District heating network for Greenwich Peninsula',
       category: 'Energy & Infrastructure',
       scope: 'Brand naming',
-      partner: 'Direct / infrastructure',
+      partner: 'Infrastructure & energy',
+      trading: true,
       featured: false,
       style: 'sans',
+      visualImage: null,
+      visualCaption: 'Designed brand visual slot — ready for Loka Energy wordmark & application',
+      testimonialId: null,
       summary: 'A grounded, place-rooted name for the district heating network serving Greenwich Peninsula.',
-      challenge: 'District heating is vital low-carbon infrastructure that residents and commercial partners rarely think about until something goes wrong. It needed a name that felt local, modern and dependable rather than bureaucratic.',
-      approach: 'Short, memorable and anchored in locality, Loka Energy brings human scale and clarity to a major urban energy network.'
+      brief: 'District heating is vital low-carbon infrastructure that residents and commercial partners rarely think about until something goes wrong. The network needed a name that felt local, modern and dependable rather than bureaucratic.',
+      story: 'Story placeholder — Tim’s full account of naming Greenwich Peninsula’s district heating network and aligning project stakeholders around Loka Energy will live here.',
+      processNote: 'Balanced infrastructure credibility with residential warmth, steering decision-makers away from generic utility acronyms.',
+      outcome: 'Short, memorable and anchored in locality, Loka Energy brings human scale and clarity to a major urban energy network.'
     },
     {
       id: 'corigan',
@@ -44,11 +104,17 @@ window.TB_DATA = {
       category: 'Tech & Digital',
       scope: 'Product & brand naming',
       partner: 'In partnership with Organic',
+      trading: true,
       featured: true,
       style: 'sans',
+      visualImage: null,
+      visualCaption: 'Designed brand visual slot — ready for Corigan wordmark & product visuals',
+      testimonialId: 'organic',
       summary: 'A distinctive, ownable name for an SEO platform built to cut through generic SaaS nomenclature.',
-      challenge: 'Digital marketing and SEO software is saturated with descriptive mash-ups ("Rank-", "Search-", "Opti-") that blur together and struggle to register as trademarks.',
-      approach: 'Corigan gives the platform a crisp, defensible identity with real character—easy to say in a pitch, easy to own legally, and built to grow beyond a single feature.'
+      brief: 'Digital marketing and SEO software is saturated with descriptive mash-ups ("Rank-", "Search-", "Opti-") that blur together and struggle to register as trademarks. Working with Organic, the platform needed a name with genuine ownability.',
+      story: 'Story placeholder — Tim’s full account of how Corigan emerged and stood apart in a crowded search-tech category will live here.',
+      processNote: 'Built to avoid the "Negative Filter" trap of defaulting to safe literal descriptions—backed by early clearance thinking so the brand could scale.',
+      outcome: 'Corigan gives the platform a crisp, defensible identity with real character—easy to say in a pitch, easy to own legally, and built to grow beyond a single feature.'
     },
     {
       id: 'yomira',
@@ -58,11 +124,17 @@ window.TB_DATA = {
       category: 'Luxury & Type',
       scope: 'Brand naming',
       partner: 'In partnership with R&D',
+      trading: true,
       featured: true,
       style: 'italic',
+      visualImage: null,
+      visualCaption: 'Designed brand visual slot — ready for Yomira wordmark & identity visuals',
+      testimonialId: 'rd',
       summary: 'An evocative, international name for a superyacht charter company operating at the highest tier of maritime luxury.',
-      challenge: 'Superyacht chartering demands poise without cliché—avoiding tired nautical tropes while working gracefully across international clients, crew and ports.',
-      approach: 'Fluid, poised and quietly distinctive, Yomira carries an effortless international cadence that looks as strong engraved on a hull as it does on a digital masthead.'
+      brief: 'Superyacht chartering demands poise without cliché—avoiding tired nautical tropes while working gracefully across international clients, crew and ports.',
+      story: 'Story placeholder — Tim’s full account of developing Yomira with R&D and shaping a name suited to the superyacht world will live here.',
+      processNote: 'Tested for international pronunciation, aesthetic poise in typography, and strong distinctiveness in luxury travel classes.',
+      outcome: 'Fluid, poised and quietly distinctive, Yomira carries an effortless international cadence that looks as strong engraved on a hull as it does on a digital masthead.'
     },
     {
       id: 'meddo',
@@ -72,11 +144,17 @@ window.TB_DATA = {
       category: 'Property & Place',
       scope: 'Brand naming',
       partner: 'Brand development',
+      trading: true,
       featured: false,
       style: 'sans',
+      visualImage: null,
+      visualCaption: 'Designed brand visual slot — ready for Meddo wordmark & application',
+      testimonialId: null,
       summary: 'A clean, approachable name for a modern property maintenance company.',
-      challenge: 'Property maintenance brands often default to dated trade clichés or forgettable initials. The business needed something friendly, contemporary and easy to recall.',
-      approach: 'Meddo is punchy, warm and uncomplicated—equally at home on a fleet of vans, workwear and digital booking platforms.'
+      brief: 'Property maintenance brands often default to dated trade clichés or forgettable initials. The business needed something friendly, contemporary and easy to recall.',
+      story: 'Story placeholder — Tim’s full account of the brief, creative exploration and selection behind Meddo will live here.',
+      processNote: 'Shortlisted and stress-tested for everyday spoken use, livery visibility and clean trademark registration.',
+      outcome: 'Meddo is punchy, warm and uncomplicated—equally at home on a fleet of vans, workwear and digital booking platforms.'
     },
     {
       id: 'committed-citizens',
@@ -86,11 +164,17 @@ window.TB_DATA = {
       category: 'Advisory & Public',
       scope: 'Consultancy naming',
       partner: 'Own venture',
+      trading: false,
       featured: false,
       style: 'serif',
       summary: 'A purposeful, plain-speaking name for a consulting practice built around civic and organisational responsibility.',
-      challenge: 'Consultancies frequently hide behind abstract Latinisms or three-letter acronyms. This practice needed a name that declared its values in two clear English words.',
-      approach: 'Committed Citizens states a point of view immediately—memorable, principled and unmistakably human.'
+      visualImage: null,
+      visualCaption: 'Designed brand visual slot — ready for Committed Citizens identity',
+      testimonialId: null,
+      brief: 'Consultancies frequently hide behind abstract Latinisms or three-letter acronyms. This practice needed a name that declared its values in two clear English words.',
+      story: 'Story placeholder — Tim’s personal story behind founding and naming Committed Citizens will live here.',
+      processNote: 'A deliberate choice for emotional conviction and plain-English clarity over consultancy jargon.',
+      outcome: 'Committed Citizens states a point of view immediately—memorable, principled and unmistakably human.'
     },
     {
       id: 'uprising',
@@ -100,11 +184,16 @@ window.TB_DATA = {
       category: 'Food & Consumer',
       scope: 'Consumer brand naming',
       partner: 'FMCG & food',
+      trading: false,
       featured: false,
       style: 'serif',
-      summary: 'A bold, witty consumer brand name for a gluten-free pastry challenger.',
-      challenge: 'Free-from food categories are often burdened with apologetic, medicinal naming. Pastry should feel joyful, defiant and delicious—not like a dietary compromise.',
-      approach: 'Uprising plays smartly on both baking lift and category rebellion—instantly memorable on shelf and packed with campaign potential.'
+      visualImage: null,
+      visualCaption: 'Designed brand visual slot — ready for Uprising packaging & wordmark',
+      testimonialId: null,
+      brief: 'Free-from food categories are often burdened with apologetic, medicinal naming. Pastry should feel joyful, defiant and delicious—not like a dietary compromise.',
+      story: 'Story placeholder — Tim’s full account of creating Uprising and shifting gluten-free pastry from apology to attitude will live here.',
+      processNote: 'Balanced playful double-meaning with strong on-pack impact and clear retail differentiation.',
+      outcome: 'Uprising plays smartly on both baking lift and category rebellion—instantly memorable on shelf and packed with campaign potential.'
     },
     {
       id: 'shape-mendip',
@@ -114,11 +203,17 @@ window.TB_DATA = {
       category: 'Advisory & Public',
       scope: 'Partnership naming',
       partner: 'Somerset County Council',
+      trading: true,
       featured: false,
       style: 'sans',
+      visualImage: null,
+      visualCaption: 'Designed brand visual slot — ready for Shape Mendip identity visuals',
+      testimonialId: 'somerset',
       summary: 'An active, collaborative identity for a multi-agency public sector partnership.',
-      challenge: 'Public sector partnerships involve multiple stakeholders, councils and services—making internal agreement notoriously difficult and encouraging bureaucratic committee names.',
-      approach: 'Shape Mendip replaced administrative jargon with a clear, forward-looking invitation tied directly to the place it serves.'
+      brief: 'Public sector partnerships involve multiple stakeholders, councils and services—making internal agreement notoriously difficult and encouraging bureaucratic committee names.',
+      story: 'Story placeholder — Tim’s full account of steering multiple public-sector partners past committee deadlock to agree on Shape Mendip will live here.',
+      processNote: 'A textbook example of the "second half" of naming: aligning diverse public-sector decision-makers without falling into a Straw Poll compromise.',
+      outcome: 'Shape Mendip replaced administrative jargon with a clear, forward-looking invitation tied directly to the place it serves.'
     },
     {
       id: 'with-energy',
@@ -128,11 +223,17 @@ window.TB_DATA = {
       category: 'Energy & Infrastructure',
       scope: 'Brand naming',
       partner: 'Energy & utilities',
+      trading: true,
       featured: false,
       style: 'sans',
+      visualImage: null,
+      visualCaption: 'Designed brand visual slot — ready for With Energy wordmark & visuals',
+      testimonialId: null,
       summary: 'A collaborative, human-first name for a local energy services provider.',
-      challenge: 'Energy providers face deep public scepticism. The name needed to signal partnership and proximity rather than distant corporate utility billing.',
-      approach: 'Built around a single disarming preposition, With Energy works both as a brand name and as a natural verbal signature across communications.'
+      brief: 'Energy providers face deep public scepticism. The name needed to signal partnership and proximity rather than distant corporate utility billing.',
+      story: 'Story placeholder — Tim’s full account of developing With Energy and its natural verbal system will live here.',
+      processNote: 'Explored how ordinary, confident English words can carry warmth and momentum when paired with a clear brand story.',
+      outcome: 'Built around a single disarming preposition, With Energy works both as a brand name and as a natural verbal signature across communications.'
     },
     {
       id: 'grain-connect',
@@ -142,11 +243,17 @@ window.TB_DATA = {
       category: 'Tech & Digital',
       scope: 'Brand naming',
       partner: 'Telecoms & infrastructure',
+      trading: true,
       featured: false,
       style: 'sans',
+      visualImage: null,
+      visualCaption: 'Designed brand visual slot — ready for Grain Connect wordmark & visuals',
+      testimonialId: null,
       summary: 'A tactile, trustworthy brand name for a full-fibre broadband provider.',
-      challenge: 'Telecoms naming is loud with hyperbole ("Hyper", "Ultra", "Gigabit"). Standing out required warmth, substance and residential credibility.',
-      approach: 'Grain Connect pairs an organic, grounded word with a clear functional anchor—bringing calm clarity to a noisy sector.'
+      brief: 'Telecoms naming is loud with hyperbole ("Hyper", "Ultra", "Gigabit"). Standing out required warmth, substance and residential credibility.',
+      story: 'Story placeholder — Tim’s full account of naming Grain Connect and breaking away from telecoms clichés will live here.',
+      processNote: 'Paired an evocative, grounded lead word with a clear functional anchor so customers immediately understood both character and offer.',
+      outcome: 'Grain Connect brings calm clarity and real distinctiveness to one of the noisiest consumer utility sectors.'
     },
     {
       id: 'hemiko',
@@ -156,11 +263,17 @@ window.TB_DATA = {
       category: 'Energy & Infrastructure',
       scope: 'Company naming',
       partner: 'Clean infrastructure',
+      trading: true,
       featured: true,
       style: 'sans',
+      visualImage: null,
+      visualCaption: 'Designed brand visual slot — ready for Hemiko wordmark & brand visuals',
+      testimonialId: null,
       summary: 'A crisp, scalable company name for a major district heating and low-carbon heat network business.',
-      challenge: 'Operating at infrastructure investment scale requires a name that carries authority with local authorities, developers and institutional partners while remaining clean to register.',
-      approach: 'Distinctive, rhythmic and legally clean, Hemiko stands apart from legacy utility naming and gives the business room to expand nationally.'
+      brief: 'Operating at infrastructure investment scale requires a name that carries authority with local authorities, developers and institutional partners while remaining clean to register.',
+      story: 'Story placeholder — Tim’s full account of creating Hemiko for a national low-carbon district heating business will live here.',
+      processNote: 'Designed for distinctiveness, rhythmic clarity and clean trademark protection as the company scaled nationally.',
+      outcome: 'Distinctive, rhythmic and legally clean, Hemiko stands apart from legacy utility naming and gives the business room to expand nationally.'
     },
     {
       id: 'bloom-candles',
@@ -170,11 +283,17 @@ window.TB_DATA = {
       category: 'Food & Consumer',
       scope: 'Product & brand naming',
       partner: 'Homewares & retail',
+      trading: false,
       featured: false,
       style: 'italic',
+      visualImage: null,
+      visualCaption: 'Designed brand visual slot — ready for Bloom Candles packaging & wordmark',
+      testimonialId: null,
       summary: 'A sensory, approachable name for a homewares and candle brand.',
-      challenge: 'Home fragrance spans everything from austere luxury to mass-market giftware. The name needed instant warmth, botanical resonance and broad retail appeal.',
-      approach: 'Simple, vivid and tactile—capturing the moment scent opens into a room without over-complicating the offer.'
+      brief: 'Home fragrance spans everything from austere luxury to mass-market giftware. The name needed instant warmth, botanical resonance and broad retail appeal.',
+      story: 'Story placeholder — Tim’s full account of naming Bloom Candles and defining its sensory territory will live here.',
+      processNote: 'Focused on immediate emotional resonance—avoiding the Rational Focus trap of over-explaining a sensory product.',
+      outcome: 'Simple, vivid and tactile—capturing the moment scent opens into a room without over-complicating the offer.'
     },
     {
       id: 'ockery',
@@ -184,11 +303,17 @@ window.TB_DATA = {
       category: 'Food & Consumer',
       scope: 'Brand naming',
       partner: 'Food & provenance',
+      trading: false,
       featured: false,
       style: 'serif',
+      visualImage: null,
+      visualCaption: 'Designed brand visual slot — ready for Ockery packaging & wordmark',
+      testimonialId: null,
       summary: 'A salty, characterful name for a seafood products range.',
-      challenge: 'Food provenance brands risk sounding either overly rustic or anonymously corporate. Ockery needed genuine coastal character and strong trademark distinctiveness.',
-      approach: 'Unusual, tactile and easy to pronounce, Ockery feels rooted in craft and place—impossible to confuse with a generic supermarket label.'
+      brief: 'Food provenance brands risk sounding either overly rustic or anonymously corporate. Ockery needed genuine coastal character and strong trademark distinctiveness.',
+      story: 'Story placeholder — Tim’s full account of creating Ockery and giving a seafood range real provenance and bite will live here.',
+      processNote: 'Developed to own genuine linguistic character and stand apart cleanly on crowded food shelves and trademark registers.',
+      outcome: 'Unusual, tactile and easy to pronounce, Ockery feels rooted in craft and place—impossible to confuse with a generic supermarket label.'
     },
     {
       id: 'fs-silas',
@@ -198,11 +323,17 @@ window.TB_DATA = {
       category: 'Luxury & Type',
       scope: 'Typeface naming',
       partner: 'FontSmith (acquired by Monotype)',
+      trading: true,
       featured: true,
       style: 'serif',
+      visualImage: null,
+      visualCaption: 'Designed specimen slot — ready for FS Silas typeface specimen',
+      testimonialId: 'fontsmith',
       summary: 'Naming a flagship typeface family for FontSmith, later acquired by Monotype—one of the world’s largest type foundries.',
-      challenge: 'Typeface names live permanently in font menus seen by thousands of designers worldwide. They must embody the character, weight and era of the letterforms while fitting cleanly into the foundry’s naming system.',
-      approach: 'FS Silas combines foundry architecture with unmistakable editorial character—a name with poise, historical resonance and visual rhythm in its own letterforms.'
+      brief: 'Typeface names live permanently in font menus seen by thousands of designers worldwide. They must embody the character, weight and era of the letterforms while fitting cleanly into the foundry’s naming system.',
+      story: 'Story placeholder — Tim’s full account of collaborating with FontSmith on FS Silas and finding a name whose very letterforms honoured the typeface will live here.',
+      processNote: 'Crafted within FontSmith’s "FS" foundry naming architecture while testing how the word itself looked set in the new typeface.',
+      outcome: 'FS Silas combines foundry architecture with unmistakable editorial character—a name with poise, historical resonance and visual rhythm in its own letterforms.'
     },
     {
       id: 'gwallon-keas',
@@ -212,68 +343,75 @@ window.TB_DATA = {
       category: 'Property & Place',
       scope: 'Place & property naming',
       partner: 'Property development',
+      trading: true,
       featured: true,
       style: 'serif',
+      visualImage: null,
+      visualCaption: 'Designed brand visual slot — ready for Gwallon Keas place identity',
+      testimonialId: null,
       summary: 'A deeply rooted place name for a residential housing development, honouring authentic regional heritage.',
-      challenge: 'New housing developments are too often saddled with generic, invented "meadows" and "views" that feel disconnected from local identity and invite community resistance.',
-      approach: 'Gwallon Keas anchors the development in genuine Cornish linguistic heritage—earning local respect and giving the neighbourhood a name built to endure for generations.'
+      brief: 'New housing developments are too often saddled with generic, invented "meadows" and "views" that feel disconnected from local identity and invite community resistance.',
+      story: 'Story placeholder — Tim’s full account of researching and naming Gwallon Keas so it belonged authentically to its Cornish setting will live here.',
+      processNote: 'Rooted in genuine local history and language rather than developer clichés—building pride with both planners and future residents.',
+      outcome: 'Gwallon Keas anchors the development in authentic heritage—earning local respect and giving the neighbourhood a name built to endure for generations.'
     }
   ],
 
+  // Faithful interactive pitfalls based on Tim's real article "Your Name Here"
   pitfalls: [
     {
-      id: 'taste-test',
+      id: 'thunderbolt-fallacy',
       num: '01',
-      title: 'The Taste Test',
-      subtitle: 'Turning a strategic decision into “who likes what best?”',
-      heardInMeeting: '“I just don’t personally love the sound of it—what does everyone else think?”',
-      whyItHappens: 'Everyone has used words their whole life, so everyone feels qualified to judge a name on gut instinct. Without agreed evaluation criteria, senior teams drift straight into personal taste—which almost always ends in stalemate.',
-      antidote: 'We agree what the name has to do before a single candidate is shown. Every shortlist is evaluated against strategy, audience, distinctiveness and legal viability—not personal hobbyhorses.'
+      title: 'The Thunderbolt Fallacy',
+      subtitle: '“I don’t know what I want, but I’ll know it when I hear it.”',
+      heardInMeeting: '“I can’t quite describe what we’re looking for, just show us some options—we’ll know the right one the instant we hear it.”',
+      whyItHappens: 'Chances are you won’t recognise the right name in a flash of lightning. Worse, when a name does suddenly grab you out of nowhere, it is usually because it subconsciously reminds you of something else that already feels familiar—not because it is uniquely right for your business.',
+      antidote: 'We replace vague gut-instinct waiting with a clear, agreed brief and distinct strategic territories—so you know exactly what a name is supposed to achieve before you judge it.'
     },
     {
-      id: 'least-worst',
+      id: 'negative-filter',
       num: '02',
-      title: 'The Least-Worst Compromise',
-      subtitle: 'Settling on the safe middle ground nobody objects to—and nobody remembers.',
-      heardInMeeting: '“Well, it’s not my favourite, and it’s not yours either, so maybe it’s the safest option.”',
-      whyItHappens: 'When a room can’t agree, human nature gravitates towards the option that causes the least friction. Unfortunately, the name that offends nobody rarely excites, differentiates or sticks in a buyer’s memory.',
-      antidote: 'A structured decision pipeline prevents consensus-by-attrition. Good naming builds confidence around a genuinely strong choice rather than sanding off every edge until nothing is left.'
+      title: 'The Negative Filter',
+      subtitle: 'Appraising every new name by hunting for reasons not to like it.',
+      heardInMeeting: '“I see what it’s trying to do, but couldn’t someone misread it or think it’s a bit too bold?”',
+      whyItHappens: 'It is always easier to defend a safe, literal name like British Airways than an evocative, distinctive one like Virgin Atlantic. Looking through a negative filter surfaces criticisms that may be technically true yet strategically irrelevant—pushing teams steadily towards predictable, uninspired choices.',
+      antidote: 'We evaluate names for what they can unlock, not merely what can be nit-picked. Every shortlist is weighed against long-term brand distinctiveness rather than fear of minor objections.'
     },
     {
-      id: 'pre-clearance-love',
+      id: 'working-title',
       num: '03',
-      title: 'Falling in Love Before Clearance',
-      subtitle: 'Getting emotionally wedded to an unregistrable name.',
-      heardInMeeting: '“We’ve already mocked up the logo and told the board—surely the lawyers can make it work?”',
-      whyItHappens: 'Teams fall hard for the first clever name that sparks in a brainstorm, only to discover weeks later that a prior trademark blocks the exact class and territory they need.',
-      antidote: 'Trademark reality is built into the creative work from day one. We screen early, keep strong candidates in play, and work hand-in-glove with your trademark attorney so legal spend goes further.'
+      title: 'The Working Title',
+      subtitle: 'Quietly falling in love with a temporary placeholder name.',
+      heardInMeeting: '“We’ve been calling it Project Orion for six months—none of the new names feel quite right compared to it.”',
+      whyItHappens: 'Because a temporary placeholder starts out with zero stakes, the team uses it every day, gets comfortable with it, and gradually pours real meaning into it. By the time genuine launch names arrive, they feel strangely foreign next to the old habit.',
+      antidote: 'We surface attachment to internal working titles right at the start and judge every candidate—including any existing placeholder—against the same objective commercial and trademark criteria.'
     },
     {
-      id: 'no-decider',
+      id: 'straw-poll',
       num: '04',
-      title: 'The Committee Without a Decider',
-      subtitle: 'Unclear sign-off that lets latecomers derail the whole project.',
-      heardInMeeting: '“We should probably run the final two past the wider team and the non-execs before we decide.”',
-      whyItHappens: 'Bringing fresh stakeholders in at the eleventh hour—without the context of the brief or what was already ruled out—almost guarantees a reset back to square one.',
-      antidote: 'Before we write a word, we map the approval pipeline: who informs the brief, who needs to agree, and who holds the final decision. No surprise vetoes in week six.'
+      title: 'The Straw Poll',
+      subtitle: 'Plotting names from “boring” to “bonkers” and putting it to a group vote.',
+      heardInMeeting: '“Let’s send the shortlist round the whole team and see which name gets the most votes.”',
+      whyItHappens: 'Dressing naming up as a democracy almost guarantees the safe, least-worst middle ground wins. Majority votes naturally cancel out bold ideas—sacrificing creative vision just to keep the largest number of people mildly comfortable.',
+      antidote: 'Gathering input is valuable; delegating the decision to a popularity contest is fatal. We lock down an approval pipeline upfront—clear on who inputs, who agrees, and who holds the final decision.'
     },
     {
-      id: 'ai-bucket',
+      id: 'front-runner',
       num: '05',
-      title: 'The AI Bucket Illusion',
-      subtitle: 'Mistaking 500 generated words for naming strategy.',
-      heardInMeeting: '“We ran a few prompts through ChatGPT and got a big list, we just can’t tell which one is right.”',
-      whyItHappens: 'AI pours hundreds of statistically average, derivative words into a bucket and fishes a few out. It cannot read a room, judge trademark risk in context, or tell the difference between a clever pun and a durable brand.',
-      antidote: 'You don’t need more words—you need judgment. Naming is about narrowing to a small number of rigorously tested territories with clear strategic rationale.'
+      title: 'The Front Runner',
+      subtitle: 'Falling completely in love with one early favourite to the exclusion of all others.',
+      heardInMeeting: '“We’ve found THE one—let’s forget the rest and just check if it’s available.”',
+      whyItHappens: 'When a team pins all its emotional energy on a single early favourite, a blocked trademark class or unavailable domain sends the entire project crashing back to square one—with morale bruised and deadlines blown.',
+      antidote: 'We keep three or four genuinely strong contenders alive through formal screening and legal partnership with your trademark attorney—so clearance stays calm, decisive and cost-effective.'
     },
     {
-      id: 'name-does-everything',
+      id: 'rational-focus',
       num: '06',
-      title: 'Expecting the Name to Do Everything Alone',
-      subtitle: 'Overloading two words with your entire brand strategy.',
-      heardInMeeting: '“It needs to say we’re sustainable, innovative, affordable, local and enterprise-ready.”',
-      whyItHappens: 'When stakes feel high, teams try to cram every selling point into the name itself. That produces clunky, forgettable descriptions—or makes teams dismiss a clear, honest name that just needs the right supporting story.',
-      antidote: 'Sometimes the right name is staring you in the face—like South West Food & Drink, brought to life through its “Sensational” launch campaign. A name opens the door; your narrative, identity and behaviour build its meaning.'
+      title: 'The Rational Focus',
+      subtitle: 'Judging a name purely on dry, logistical checklists.',
+      heardInMeeting: '“It’s easy to spell, passes every translation check and clears the register—so it must be the right choice.”',
+      whyItHappens: 'Pronunciation, spelling, global translation and trademark clearance are essential hygiene factors, but they are only half the equation. Judging exclusively on rational metrics strips away the emotional resonance that turns a functional label into a brand people actually believe in.',
+      antidote: 'We balance legal and practical rigour with human feeling and story—knowing when a name should be evocative, and when a clear name (like South West Food & Drink paired with “Sensational”) comes alive through the narrative around it.'
     }
   ],
 
@@ -294,19 +432,19 @@ window.TB_DATA = {
       step: 3,
       eyebrow: 'Step 03 · Plain English',
       title: 'Skip the jargon. Tell it straight.',
-      body: 'You do not need a polished brand deck yet. The most useful briefs explain what is actually happening in plain English—what isn’t working today, who you need to win over, and any sacred cows or non-starters.'
+      body: 'You do not need a polished brand deck yet. The most useful briefs explain what is actually happening in plain English—what isn’t working today, who you need to win over, and any sacred cows or working titles already in use.'
     },
     {
       step: 4,
       eyebrow: 'Step 04 · The critical ingredient',
       title: 'Who decides matters as much as the name.',
-      body: 'Coming up with a name is half the job; steering the room to choose it with confidence is the other half. Knowing who inputs, who agrees and who signs off stops projects stalling—or slipping into the least-worst compromise.'
+      body: 'Coming up with a name is half the job; steering the room to choose it with confidence is the other half. Knowing who inputs, who agrees and who signs off stops projects slipping into a Straw Poll compromise.'
     },
     {
       step: 5,
       eyebrow: 'Step 05 · Trademark reality',
       title: 'Built to work with your IP partner.',
-      body: 'I am not a trademark attorney, and I do not pretend to be—but 25 years of naming means I know how to prepare a shortlist so your legal partner can clear and register it effectively and cost-effectively.'
+      body: 'I am not a trademark attorney, and I do not pretend to be—but 25 years of naming means I know how to keep 3–4 strong contenders alive so your legal partner can clear and register effectively and cost-effectively.'
     },
     {
       step: 6,

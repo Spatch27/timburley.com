@@ -1,6 +1,7 @@
 /* ==========================================================================
    timburley.com — Interactive Layer
-   Navigation, specimen index, case drawer, interactive pitfalls & guided brief.
+   Navigation, specimen links, individual case study pages, testimonials,
+   portrait rendering, interactive pitfalls & guided brief.
    ========================================================================== */
 
 (function () {
@@ -33,7 +34,7 @@
   }
 
   /* ------------------------------------------------------------------------
-     2. Subtle Scroll Reveals
+     2. Subtle Scroll Reveals (immediate for elements already in viewport)
      ------------------------------------------------------------------------ */
   function initReveals() {
     const nodes = document.querySelectorAll('.reveal');
@@ -44,6 +45,7 @@
       return;
     }
 
+    const viewportH = window.innerHeight || 900;
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
@@ -53,17 +55,36 @@
           }
         });
       },
-      { threshold: 0.08, rootMargin: '0px 0px -30px 0px' }
+      { threshold: 0.01, rootMargin: '0px 0px -10px 0px' }
     );
 
-    nodes.forEach((n) => observer.observe(n));
+    nodes.forEach((n) => {
+      const rect = n.getBoundingClientRect();
+      if (rect.top < viewportH) {
+        n.classList.add('is-visible');
+      } else {
+        observer.observe(n);
+      }
+    });
   }
 
   /* ------------------------------------------------------------------------
-     3. Specimen Cards & Case Study Drawer
+     3. Portrait Hydration (swaps in Tim's photo automatically when added)
      ------------------------------------------------------------------------ */
-  let activeProjectIndex = -1;
+  function initPortraits() {
+    const slots = document.querySelectorAll('[data-portrait-media]');
+    if (!slots.length || !DATA.portrait) return;
 
+    if (DATA.portrait.src) {
+      slots.forEach((slot) => {
+        slot.innerHTML = `<img src="${DATA.portrait.src}" alt="${DATA.portrait.alt || 'Tim Burley'}">`;
+      });
+    }
+  }
+
+  /* ------------------------------------------------------------------------
+     4. Specimen Cards (Link Directly to Individual /work/<slug> Pages)
+     ------------------------------------------------------------------------ */
   function renderSpecimenCard(project) {
     const styleClass =
       project.style === 'sans'
@@ -72,14 +93,13 @@
         ? 'specimen-card__wordmark--italic'
         : '';
 
-    const btn = document.createElement('button');
-    btn.type = 'button';
-    btn.className = 'specimen-card';
-    btn.setAttribute('data-project-id', project.id);
-    btn.setAttribute('aria-label', `Read naming notes for ${project.name}`);
-    btn.innerHTML = `
+    const link = document.createElement('a');
+    link.href = `/work/${project.id}`;
+    link.className = 'specimen-card';
+    link.setAttribute('aria-label', `Read the naming story for ${project.name}`);
+    link.innerHTML = `
       <div class="specimen-card__top">
-        <span class="specimen-card__num">${project.num} / 15</span>
+        <span class="specimen-card__num">${project.num} / ${DATA.projects.length}</span>
         <span class="specimen-card__cat">${project.category}</span>
       </div>
       <div>
@@ -87,128 +107,11 @@
         <p class="specimen-card__sector">${project.sector}</p>
       </div>
       <div class="specimen-card__foot">
-        <span>${project.scope}</span>
-        <span>Inspect →</span>
+        <span>${project.scope}${project.trading ? ' · Live' : ''}</span>
+        <span>Read story →</span>
       </div>
     `;
-
-    btn.addEventListener('click', () => openDrawer(project.id));
-    return btn;
-  }
-
-  function ensureDrawer() {
-    let drawer = document.getElementById('case-drawer');
-    if (drawer) return drawer;
-
-    const backdrop = document.createElement('div');
-    backdrop.id = 'case-drawer-backdrop';
-    backdrop.className = 'drawer-backdrop';
-    backdrop.addEventListener('click', closeDrawer);
-
-    drawer = document.createElement('aside');
-    drawer.id = 'case-drawer';
-    drawer.className = 'drawer';
-    drawer.setAttribute('role', 'dialog');
-    drawer.setAttribute('aria-modal', 'true');
-    drawer.setAttribute('aria-labelledby', 'drawer-project-name');
-    drawer.innerHTML = `
-      <div>
-        <div class="drawer__top">
-          <span class="eyebrow" id="drawer-index">01 / 15</span>
-          <button type="button" class="drawer__close" id="drawer-close-btn">Close ×</button>
-        </div>
-        <div class="drawer__specimen">
-          <span class="eyebrow" id="drawer-category"></span>
-          <h2 class="drawer__title" id="drawer-project-name"></h2>
-          <p class="muted" id="drawer-sector" style="margin:0;"></p>
-        </div>
-        <dl class="drawer__meta">
-          <div>
-            <dt>Scope</dt>
-            <dd id="drawer-scope"></dd>
-          </div>
-          <div>
-            <dt>Context</dt>
-            <dd id="drawer-partner"></dd>
-          </div>
-        </dl>
-        <div class="drawer__body">
-          <h4>Summary</h4>
-          <p id="drawer-summary"></p>
-          <h4>The Naming Challenge</h4>
-          <p id="drawer-challenge"></p>
-          <h4>The Outcome</h4>
-          <p id="drawer-approach"></p>
-        </div>
-      </div>
-      <div style="border-top:1px solid var(--rule); padding-top:1.5rem; display:flex; flex-direction:column; gap:1rem;">
-        <div style="display:flex; justify-content:space-between; gap:0.75rem;">
-          <button type="button" class="btn btn--secondary btn--sm" id="drawer-prev">← Previous</button>
-          <button type="button" class="btn btn--secondary btn--sm" id="drawer-next">Next →</button>
-        </div>
-        <a href="/brief" class="btn btn--primary" id="drawer-brief-link" style="width:100%;">Naming something similar? Start a brief →</a>
-      </div>
-    `;
-
-    document.body.appendChild(backdrop);
-    document.body.appendChild(drawer);
-
-    drawer.querySelector('#drawer-close-btn').addEventListener('click', closeDrawer);
-    drawer.querySelector('#drawer-prev').addEventListener('click', () => stepDrawer(-1));
-    drawer.querySelector('#drawer-next').addEventListener('click', () => stepDrawer(1));
-
-    document.addEventListener('keydown', (e) => {
-      if (!drawer.classList.contains('is-open')) return;
-      if (e.key === 'Escape') closeDrawer();
-      if (e.key === 'ArrowLeft') stepDrawer(-1);
-      if (e.key === 'ArrowRight') stepDrawer(1);
-    });
-
-    return drawer;
-  }
-
-  function openDrawer(projectId) {
-    const projects = DATA.projects || [];
-    const idx = projects.findIndex((p) => p.id === projectId);
-    if (idx === -1) return;
-    activeProjectIndex = idx;
-
-    const project = projects[idx];
-    const drawer = ensureDrawer();
-    const backdrop = document.getElementById('case-drawer-backdrop');
-
-    drawer.querySelector('#drawer-index').textContent = `${project.num} / ${projects.length}`;
-    drawer.querySelector('#drawer-category').textContent = project.category;
-    const titleEl = drawer.querySelector('#drawer-project-name');
-    titleEl.textContent = project.name;
-    titleEl.style.fontStyle = project.style === 'italic' ? 'italic' : 'normal';
-    drawer.querySelector('#drawer-sector').textContent = project.sector;
-    drawer.querySelector('#drawer-scope').textContent = project.scope;
-    drawer.querySelector('#drawer-partner').textContent = project.partner;
-    drawer.querySelector('#drawer-summary').textContent = project.summary;
-    drawer.querySelector('#drawer-challenge').textContent = project.challenge;
-    drawer.querySelector('#drawer-approach').textContent = project.approach;
-    drawer.querySelector('#drawer-brief-link').href = `/brief?ref=${encodeURIComponent(project.name)}`;
-
-    backdrop.classList.add('is-open');
-    drawer.classList.add('is-open');
-    document.body.style.overflow = 'hidden';
-    drawer.querySelector('#drawer-close-btn').focus();
-  }
-
-  function stepDrawer(delta) {
-    const projects = DATA.projects || [];
-    if (!projects.length || activeProjectIndex === -1) return;
-    const nextIdx = (activeProjectIndex + delta + projects.length) % projects.length;
-    openDrawer(projects[nextIdx].id);
-  }
-
-  function closeDrawer() {
-    const drawer = document.getElementById('case-drawer');
-    const backdrop = document.getElementById('case-drawer-backdrop');
-    if (drawer) drawer.classList.remove('is-open');
-    if (backdrop) backdrop.classList.remove('is-open');
-    document.body.style.overflow = '';
+    return link;
   }
 
   function initSpecimens() {
@@ -261,7 +164,191 @@
   }
 
   /* ------------------------------------------------------------------------
-     4. Interactive Naming Pitfalls (/process)
+     5. Testimonials Renderer (Home + Relevant Case Studies)
+     ------------------------------------------------------------------------ */
+  function buildTestimonialCard(t) {
+    const card = document.createElement('article');
+    card.className = 'testimonial-card';
+    card.innerHTML = `
+      <div>
+        ${t.isPlaceholder ? '<span class="testimonial-card__badge">Placeholder quote · Ready for sign-off</span>' : ''}
+        <blockquote class="testimonial-card__quote" style="${t.isPlaceholder ? 'margin-top:1rem;' : ''}">${t.quote}</blockquote>
+      </div>
+      <div class="testimonial-card__meta">
+        <div>
+          <div class="testimonial-card__author">${t.author}</div>
+          <div class="testimonial-card__role">${t.role}</div>
+        </div>
+        <span class="testimonial-card__project">${t.projectLabel}</span>
+      </div>
+    `;
+    return card;
+  }
+
+  function initTestimonials() {
+    const grid = document.getElementById('testimonials-grid');
+    if (!grid || !DATA.testimonials) return;
+    grid.innerHTML = '';
+    DATA.testimonials.forEach((t) => grid.appendChild(buildTestimonialCard(t)));
+  }
+
+  /* ------------------------------------------------------------------------
+     6. Individual Case Study Page Renderer (/work/<slug>)
+     ------------------------------------------------------------------------ */
+  function initCaseStudyPage() {
+    const root = document.querySelector('[data-case-study]');
+    if (!root || !DATA.projects) return;
+
+    const slug = root.getAttribute('data-case-study');
+    const idx = DATA.projects.findIndex((p) => p.id === slug);
+    if (idx === -1) return;
+
+    const project = DATA.projects[idx];
+    const prev = DATA.projects[(idx - 1 + DATA.projects.length) % DATA.projects.length];
+    const next = DATA.projects[(idx + 1) % DATA.projects.length];
+
+    const styleClass =
+      project.style === 'sans'
+        ? 'case-visual-stage__specimen--sans'
+        : project.style === 'italic'
+        ? 'case-visual-stage__specimen--italic'
+        : '';
+
+    const visualContent = project.visualImage
+      ? `<img class="case-visual-stage__image" src="${project.visualImage}" alt="${project.name} designed brand visual">`
+      : `<div class="case-visual-stage__specimen ${styleClass}">${project.name}</div>`;
+
+    const testimonial = project.testimonialId
+      ? (DATA.testimonials || []).find((t) => t.id === project.testimonialId)
+      : null;
+
+    root.innerHTML = `
+      <section class="hero" style="padding-bottom:2.75rem;">
+        <div class="container">
+          <a href="/work" class="case-crumb">← All ${DATA.projects.length} named projects</a>
+          <div class="case-header-row">
+            <span class="eyebrow">${project.num} / ${DATA.projects.length} · ${project.category}</span>
+            ${project.trading ? '<span class="status-tag">Currently trading</span>' : '<span class="eyebrow">Archive / Past Venture</span>'}
+          </div>
+          <h1 class="h-display" style="margin-bottom:1.15rem;">${project.name}</h1>
+          <p class="lead" style="margin:0;">${project.summary}</p>
+        </div>
+      </section>
+
+      <section class="section section--flush-top" style="padding-top:0.5rem;">
+        <div class="container">
+          <figure class="case-visual-stage" style="margin:0 0 2.5rem;">
+            <div style="display:flex; justify-content:space-between; align-items:center; gap:1rem;">
+              <span class="eyebrow">Designed State &amp; Visual Specimen</span>
+              <span class="mono" style="color:var(--ink-muted);">${project.scope}</span>
+            </div>
+            ${visualContent}
+            <figcaption class="case-visual-stage__foot">
+              <span>${project.visualCaption}</span>
+              <span>${project.trading ? 'Brand live in market' : 'Naming archive'}</span>
+            </figcaption>
+          </figure>
+
+          <dl class="case-meta-ledger">
+            <div>
+              <dt>Sector</dt>
+              <dd>${project.sector}</dd>
+            </div>
+            <div>
+              <dt>Scope</dt>
+              <dd>${project.scope}</dd>
+            </div>
+            <div>
+              <dt>Context / Partner</dt>
+              <dd>${project.partner}</dd>
+            </div>
+            <div>
+              <dt>Category</dt>
+              <dd>${project.category}</dd>
+            </div>
+          </dl>
+        </div>
+      </section>
+
+      <section class="section section--flush-top" style="padding-top:2rem;">
+        <div class="container">
+          <div class="case-story-grid">
+            <div>
+              <span class="eyebrow">Behind the Name</span>
+              <h2 class="h-section" style="margin-top:0.75rem;">How <em>${project.name}</em> came to be.</h2>
+              <p class="muted" style="margin-top:1rem;">
+                Every naming project combines two halves: finding a mark with real character and longevity, and guiding stakeholders cleanly through selection and clearance.
+              </p>
+              <div style="margin-top:1.75rem;">
+                <a href="/brief?ref=${encodeURIComponent(project.name)}" class="btn btn--primary">Naming something similar? Start a brief →</a>
+              </div>
+            </div>
+
+            <div>
+              <div class="case-story-block">
+                <span class="eyebrow">01 · The Brief</span>
+                <h2>The challenge</h2>
+                <p>${project.brief}</p>
+              </div>
+
+              <div class="case-story-block">
+                <span class="eyebrow">02 · The Story</span>
+                <h2>Inside the naming process</h2>
+                <p>${project.story}</p>
+              </div>
+
+              <div class="case-story-block">
+                <span class="eyebrow">03 · Process &amp; Decision</span>
+                <h2>Steering alignment &amp; clearance</h2>
+                <p>${project.processNote}</p>
+              </div>
+
+              <div class="case-story-block">
+                <span class="eyebrow">04 · The Outcome</span>
+                <h2>Why the name works</h2>
+                <p>${project.outcome}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      ${
+        testimonial
+          ? `
+      <section class="section section--stone">
+        <div class="container container--narrow">
+          <span class="eyebrow" style="display:block; margin-bottom:1.25rem;">Client &amp; Partner Perspective</span>
+          <div id="case-testimonial-slot"></div>
+        </div>
+      </section>`
+          : ''
+      }
+
+      <section class="section section--flush-top" style="padding-block:0;">
+        <nav class="case-pager" aria-label="Previous and next naming projects">
+          <a href="/work/${prev.id}" class="case-pager__link">
+            <span class="eyebrow">← Previous · ${prev.num} / ${DATA.projects.length}</span>
+            <span class="case-pager__name">${prev.name}</span>
+            <span class="muted" style="font-size:0.9rem;">${prev.sector}</span>
+          </a>
+          <a href="/work/${next.id}" class="case-pager__link case-pager__link--next">
+            <span class="eyebrow">Next · ${next.num} / ${DATA.projects.length} →</span>
+            <span class="case-pager__name">${next.name}</span>
+            <span class="muted" style="font-size:0.9rem;">${next.sector}</span>
+          </a>
+        </nav>
+      </section>
+    `;
+
+    if (testimonial) {
+      const slot = root.querySelector('#case-testimonial-slot');
+      if (slot) slot.appendChild(buildTestimonialCard(testimonial));
+    }
+  }
+
+  /* ------------------------------------------------------------------------
+     7. Interactive Naming Pitfalls (/process)
      ------------------------------------------------------------------------ */
   function initPitfalls() {
     const container = document.getElementById('pitfalls-container');
@@ -359,7 +446,7 @@
   }
 
   /* ------------------------------------------------------------------------
-     5. Guided 6-Step Naming Brief (/brief)
+     8. Guided 6-Step Naming Brief (/brief)
      ------------------------------------------------------------------------ */
   function initBriefWizard() {
     const wizard = document.getElementById('brief-wizard');
@@ -386,7 +473,6 @@
       refProject: ''
     };
 
-    // Pre-populate from query params (?pitfalls=... or ?ref=...)
     const params = new URLSearchParams(window.location.search);
     if (params.get('pitfalls')) {
       state.pitfalls = params.get('pitfalls');
@@ -405,7 +491,6 @@
       }
     }
 
-    // Bind choice cards
     wizard.querySelectorAll('[data-choice-group]').forEach((group) => {
       const key = group.getAttribute('data-choice-group');
       group.querySelectorAll('.choice-card').forEach((card) => {
@@ -421,7 +506,6 @@
       });
     });
 
-    // Bind text inputs
     wizard.querySelectorAll('[data-field]').forEach((input) => {
       const key = input.getAttribute('data-field');
       input.addEventListener('input', () => {
@@ -495,7 +579,7 @@
 
       box.innerHTML = rows
         .map(
-          ([label, val]) => `
+          ([label]) => `
         <div class="brief-summary__row">
           <div class="brief-summary__label">${label}</div>
           <div class="brief-summary__val"></div>
@@ -545,7 +629,6 @@
       nextBtn.addEventListener('click', () => showStep(currentStep + 1));
     }
 
-    // Final step actions
     const copyBtn = document.getElementById('brief-copy');
     const printBtn = document.getElementById('brief-print');
     const emailBtn = document.getElementById('brief-send-email');
@@ -592,9 +675,12 @@
      ------------------------------------------------------------------------ */
   document.addEventListener('DOMContentLoaded', () => {
     initMobileMenu();
-    initReveals();
+    initPortraits();
     initSpecimens();
+    initTestimonials();
+    initCaseStudyPage();
     initPitfalls();
     initBriefWizard();
+    initReveals();
   });
 })();
