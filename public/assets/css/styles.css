@@ -383,7 +383,7 @@ button, input, textarea, select {
 .site-nav a.nav-cta::before {
   content: '';
   position: absolute;
-  inset: 0;
+  inset: -2px;
   z-index: -1;
   background: var(--accent);
   transform: scaleX(0);
@@ -494,7 +494,7 @@ button, input, textarea, select {
 .btn::before {
   content: '';
   position: absolute;
-  inset: 0;
+  inset: -2px;
   z-index: -1;
   background: var(--accent);
   transform: scaleX(0);
@@ -1404,7 +1404,7 @@ button, input, textarea, select {
 .pitfall-flag-btn::before {
   content: '';
   position: absolute;
-  inset: 0;
+  inset: -2px;
   z-index: -1;
   background: var(--accent);
   transform: scaleX(0);
