@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Start a Naming Brief — Tim Burley · Creating great names</title>
+  <meta name="description" content="A short, guided naming brief to help clarify your context, approval pipeline and trademark needs—giving Tim everything required for a clear proposal.">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Inter:wght@400;500;600&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/assets/css/styles.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="/" class="brand-mark" aria-label="Tim Burley home">
+        <span class="brand-mark__name">Tim Burley</span>
+        <span class="brand-mark__tag">Creating great names</span>
+      </a>
+      <nav class="site-nav" aria-label="Primary navigation">
+        <a href="/work">Work</a>
+        <a href="/process">Process &amp; Pitfalls</a>
+        <a href="/about">About</a>
+        <a href="/brief" class="nav-cta" aria-current="page">Start a Brief →</a>
+      </nav>
+      <button type="button" class="menu-toggle" data-menu-toggle aria-expanded="false" aria-controls="mobile-menu">Menu</button>
+    </div>
+    <div class="mobile-menu" id="mobile-menu" data-mobile-menu>
+      <nav aria-label="Mobile navigation">
+        <a href="/">Home</a>
+        <a href="/work">Work (15 Names)</a>
+        <a href="/process">Process &amp; Pitfalls</a>
+        <a href="/about">About</a>
+        <a href="/brief">Start a Brief →</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="hero" style="padding-bottom:2.5rem;">
+      <div class="container">
+        <div class="hero__eyebrow">
+          <span class="eyebrow">Guided Naming Brief · ~5 Minutes</span>
+        </div>
+        <h1 class="h-page" style="max-width:19ch; margin-bottom:1rem;">
+          Let’s get the essentials <em>on the table.</em>
+        </h1>
+        <p class="lead" style="margin:0;">
+          Six short prompts designed to sharpen your thinking around what matters—context, decision-making and trademark reality—so I can send back a clear, simple proposal.
+        </p>
+        <p id="brief-prefill-note" class="mono" style="display:none; margin-top:1.25rem; padding:0.65rem 1rem; border:1px solid var(--ink-primary); background:var(--bg-surface);"></p>
+      </div>
+    </section>
+
+    <section class="section section--flush-top" style="padding-top:1rem;">
+      <div class="container">
+        <div class="brief-layout" id="brief-wizard">
+          <div>
+            <div class="brief-progress">
+              <span class="mono" id="brief-progress-label">Step 01 of 06</span>
+              <div class="brief-progress__track" aria-hidden="true">
+                <div class="brief-progress__fill" id="brief-progress-fill" style="width:16.66%;"></div>
+              </div>
+            </div>
+
+            <div class="brief-card">
+              <!-- STEP 1 -->
+              <div class="brief-step is-active" data-step="1">
+                <span class="eyebrow">01 · Commissioning Route</span>
+                <h2 class="brief-step__title">How are we working together?</h2>
+                <p class="brief-step__hint">Choose the route that best fits, and leave your details so I know who I’m replying to.</p>
+
+                <div class="choice-grid choice-grid--2" data-choice-group="audience" role="group" aria-label="Commissioning route">
+                  <button type="button" class="choice-card" data-value="Agency partner" aria-pressed="false">
+                    <span class="choice-card__title">Agency partner</span>
+                    <span class="choice-card__desc">Plugging naming into a client brand project</span>
+                  </button>
+                  <button type="button" class="choice-card" data-value="Direct client" aria-pressed="false">
+                    <span class="choice-card__title">Direct client</span>
+                    <span class="choice-card__desc">Commissioning naming for our own business or product</span>
+                  </button>
+                </div>
+
+                <div class="field-row">
+                  <div class="field">
+                    <label for="f-name">Your name</label>
+                    <input type="text" id="f-name" data-field="name" placeholder="e.g. Alex Morgan" autocomplete="name">
+                  </div>
+                  <div class="field">
+                    <label for="f-org">Organisation or agency</label>
+                    <input type="text" id="f-org" data-field="organisation" placeholder="e.g. Northbridge Studio" autocomplete="organization">
+                  </div>
+                </div>
+                <div class="field" style="margin-bottom:0;">
+                  <label for="f-email">Email address</label>
+                  <input type="email" id="f-email" data-field="email" placeholder="alex@company.com" autocomplete="email">
+                </div>
+              </div>
+
+              <!-- STEP 2 -->
+              <div class="brief-step" data-step="2">
+                <span class="eyebrow">02 · Scope</span>
+                <h2 class="brief-step__title">What are we naming?</h2>
+                <p class="brief-step__hint">Pick the closest fit—if it spans more than one, note it in the sector field below.</p>
+
+                <div class="choice-grid choice-grid--2" data-choice-group="projectType" role="group" aria-label="What are we naming">
+                  <button type="button" class="choice-card" data-value="New brand or company" aria-pressed="false">
+                    <span class="choice-card__title">New brand or company</span>
+                    <span class="choice-card__desc">Starting fresh or spinning out</span>
+                  </button>
+                  <button type="button" class="choice-card" data-value="Rebrand / rename" aria-pressed="false">
+                    <span class="choice-card__title">Rebrand / rename</span>
+                    <span class="choice-card__desc">Replacing an existing name that no longer fits</span>
+                  </button>
+                  <button type="button" class="choice-card" data-value="Sub-brand or naming system" aria-pressed="false">
+                    <span class="choice-card__title">Sub-brand or naming system</span>
+                    <span class="choice-card__desc">Portfolio architecture across offers</span>
+                  </button>
+                  <button type="button" class="choice-card" data-value="Property or place development" aria-pressed="false">
+                    <span class="choice-card__title">Property / place development</span>
+                    <span class="choice-card__desc">Housing, civic or regional identity</span>
+                  </button>
+                  <button type="button" class="choice-card" data-value="Product, platform or typeface" aria-pressed="false">
+                    <span class="choice-card__title">Product, platform or typeface</span>
+                    <span class="choice-card__desc">Digital product, FMCG range or font family</span>
+                  </button>
+                  <button type="button" class="choice-card" data-value="Advisory / decision workshop" aria-pressed="false">
+                    <span class="choice-card__title">Shortlist review / rescue</span>
+                    <span class="choice-card__desc">Unsticking a naming process already underway</span>
+                  </button>
+                </div>
+
+                <div class="field" style="margin-bottom:0;">
+                  <label for="f-sector">Sector &amp; audience</label>
+                  <input type="text" id="f-sector" data-field="sector" placeholder="e.g. Clean energy infrastructure for UK local authorities">
+                </div>
+              </div>
+
+              <!-- STEP 3 -->
+              <div class="brief-step" data-step="3">
+                <span class="eyebrow">03 · Context &amp; Ambition</span>
+                <h2 class="brief-step__title">Tell the story in plain English.</h2>
+                <p class="brief-step__hint">No polished copy needed—just what the offer does, why now, and what a great name needs to unlock.</p>
+
+                <div class="field">
+                  <label for="f-context">The situation &amp; ambition</label>
+                  <textarea id="f-context" data-field="context" placeholder="What does the business/product do? What’s driving the need for a name now? What should people feel or understand when they hear it?"></textarea>
+                </div>
+
+                <div class="field" style="margin-bottom:0;">
+                  <label for="f-avoid">Caveats, clichés or non-starters (optional)</label>
+                  <textarea id="f-avoid" data-field="avoid" style="min-height:90px;" placeholder="Words you hate, competitor names to steer clear of, or ideas already tried and rejected..."></textarea>
+                </div>
+              </div>
+
+              <!-- STEP 4 -->
+              <div class="brief-step" data-step="4">
+                <span class="eyebrow">04 · The Approval Pipeline</span>
+                <h2 class="brief-step__title">Who approves, agrees and decides?</h2>
+                <p class="brief-step__hint">A clear decision structure is half the battle. Let me know who is in the room so we design the process to build real confidence.</p>
+
+                <div class="field">
+                  <label for="f-approvers">Who will input and review?</label>
+                  <input type="text" id="f-approvers" data-field="approvers" placeholder="e.g. 2 founders, Marketing Director, and our brand design agency">
+                </div>
+
+                <div class="field" style="margin-bottom:0;">
+                  <label for="f-decider">Who holds final sign-off?</label>
+                  <input type="text" id="f-decider" data-field="decider" placeholder="e.g. CEO and Managing Director (final call if split)">
+                </div>
+              </div>
+
+              <!-- STEP 5 -->
+              <div class="brief-step" data-step="5">
+                <span class="eyebrow">05 · Trademark &amp; Timing</span>
+                <h2 class="brief-step__title">Legal partner, markets &amp; timeline.</h2>
+                <p class="brief-step__hint">Understanding trademark geography and target dates helps shape the scope cleanly from day one.</p>
+
+                <div class="choice-grid" data-choice-group="legalStatus" role="group" aria-label="Trademark counsel status">
+                  <button type="button" class="choice-card" data-value="We already have a trademark attorney / IP firm" aria-pressed="false">
+                    <span class="choice-card__title">We already have a trademark attorney / IP firm</span>
+                    <span class="choice-card__desc">Ready to collaborate alongside them during clearance</span>
+                  </button>
+                  <button type="button" class="choice-card" data-value="Not yet — we’ll need to bring a legal partner in" aria-pressed="false">
+                    <span class="choice-card__title">Not yet — we’ll need a trademark partner</span>
+                    <span class="choice-card__desc">Happy to align legal support ahead of shortlist screening</span>
+                  </button>
+                  <button type="button" class="choice-card" data-value="Unsure about trademark requirements yet" aria-pressed="false">
+                    <span class="choice-card__title">Unsure yet</span>
+                    <span class="choice-card__desc">Let’s talk through what level of protection makes sense</span>
+                  </button>
+                </div>
+
+                <div class="field-row">
+                  <div class="field" style="margin-bottom:0;">
+                    <label for="f-territories">Territories / markets</label>
+                    <input type="text" id="f-territories" data-field="territories" placeholder="e.g. UK &amp; EU, or Global">
+                  </div>
+                  <div class="field" style="margin-bottom:0;">
+                    <label for="f-timeline">Target timeline</label>
+                    <input type="text" id="f-timeline" data-field="timeline" placeholder="e.g. Decision needed in 6–8 weeks">
+                  </div>
+                </div>
+              </div>
+
+              <!-- STEP 6 -->
+              <div class="brief-step" data-step="6">
+                <span class="eyebrow">06 · Proposal-Ready Summary</span>
+                <h2 class="brief-step__title">Your naming brief is ready.</h2>
+                <p class="brief-step__hint">Review everything below. Send it straight to Tim by email, copy it to share internally, or print/save as a PDF.</p>
+
+                <div class="brief-summary" id="brief-summary-box">
+                  <!-- Populated dynamically -->
+                </div>
+
+                <div class="btn-group">
+                  <button type="button" class="btn btn--primary" id="brief-send-email">Send brief to Tim →</button>
+                  <button type="button" class="btn btn--secondary" id="brief-copy">Copy text</button>
+                  <button type="button" class="btn btn--secondary" id="brief-print">Print / Save PDF</button>
+                </div>
+
+                <div class="status-banner" id="brief-status" role="status" aria-live="polite"></div>
+              </div>
+
+              <div class="brief-actions">
+                <button type="button" class="btn btn--secondary btn--sm" id="brief-prev">← Back</button>
+                <button type="button" class="btn btn--primary" id="brief-next">Continue →</button>
+              </div>
+            </div>
+          </div>
+
+          <aside class="brief-aside" aria-label="Naming guidance note">
+            <span class="eyebrow" id="aside-eyebrow">Step 01 · Working directly</span>
+            <h3 id="aside-title">One practitioner, two ways in.</h3>
+            <p id="aside-body">
+              Whether you are an agency needing specialist naming firepower inside a wider brand project, or a business coming direct, you work directly with Tim from day one—no hand-offs, no agency layers.
+            </p>
+            <div style="margin-top:1.5rem; padding-top:1.25rem; border-top:1px solid var(--rule);">
+              <span class="mono" style="color:var(--ink-muted); display:block; margin-bottom:0.35rem;">Prefer to email directly?</span>
+              <a href="mailto:names@timburley.com" class="text-link">names@timburley.com</a>
+            </div>
+          </aside>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <p class="footer-brand">Tim Burley</p>
+          <p class="eyebrow" style="margin-bottom:0.85rem;">Creating great names</p>
+          <p class="footer-desc">
+            Independent name development practice led by Tim Burley. Twenty-five years of brand, design and client-services experience—partnering with agencies and direct clients.
+          </p>
+        </div>
+        <div>
+          <h2 class="footer-heading">Navigation</h2>
+          <ul class="footer-links">
+            <li><a href="/">Home</a></li>
+            <li><a href="/work">Work (15 Projects)</a></li>
+            <li><a href="/process">Process &amp; Pitfalls</a></li>
+            <li><a href="/about">About</a></li>
+            <li><a href="/brief">Start a Brief</a></li>
+          </ul>
+        </div>
+        <div>
+          <h2 class="footer-heading">Direct Contact</h2>
+          <ul class="footer-links">
+            <li><a href="mailto:names@timburley.com">names@timburley.com</a></li>
+            <li><a href="/brief">Guided Naming Brief →</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© Tim Burley · Creating great names</span>
+        <span>Built for clarity, decision confidence &amp; trademark longevity.</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="/assets/js/data.js"></script>
+  <script src="/assets/js/site.js"></script>
+</body>
+</html>

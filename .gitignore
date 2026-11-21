@@ -1,0 +1,14 @@
+# Local OS & editor files
+.DS_Store
+Thumbs.db
+
+# Private notes & transcripts (never publish)
+0004*.md
+*.m4a
+*.mp3
+*.wav
+
+# Vercel local state
+.vercel
+.env
+.env.local
