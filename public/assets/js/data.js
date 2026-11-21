@@ -9,10 +9,10 @@ window.TB_DATA = {
 
   // Drop Tim's portrait image in /assets/images/tim/portrait.jpg and set src here
   portrait: {
-    src: '/assets/images/tim/tim-closeup.jpg',
-    alt: 'Tim Burley — Name Development Practice',
+    src: '/assets/images/tim/tim-coast.jpg',
+    alt: 'Tim Burley on the South West coast',
     caption: 'Tim Burley · Principal',
-    location: 'UK & International'
+    location: 'South West England · UK & International'
   },
 
   // Placeholder testimonials ready for approved client/agency quotes

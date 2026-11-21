@@ -1801,6 +1801,14 @@ button, input, textarea, select {
   filter: grayscale(100%) contrast(1.07);
 }
 
+.portrait-frame__media--coast {
+  aspect-ratio: 10 / 9;
+}
+
+.portrait-frame__media--coast img {
+  object-position: center 35%;
+}
+
 /* Environmental Editorial Photo Band (/about) */
 .env-band {
   display: grid;
