@@ -358,18 +358,39 @@ button, input, textarea, select {
 }
 
 .site-nav a.nav-cta {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
   background: var(--bg-ink);
   color: var(--ink-on-dark);
-  padding: 0.55rem 1.05rem;
+  border: 1.5px solid var(--bg-ink);
+  padding: 0.58rem 1.15rem;
   border-radius: var(--radius-sm);
   font-size: 0.875rem;
   font-weight: 500;
-  transition: background-color 0.2s var(--ease), transform 0.2s var(--ease);
+  transition: color 0.3s var(--ease), border-color 0.3s var(--ease), transform 0.15s var(--ease);
 }
 
-.site-nav a.nav-cta:hover {
+.site-nav a.nav-cta::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
   background: var(--accent);
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform 0.34s var(--ease);
+}
+
+.site-nav a.nav-cta:hover,
+.site-nav a.nav-cta:focus-visible {
   color: var(--ink-on-dark);
+  border-color: var(--accent);
+}
+
+.site-nav a.nav-cta:hover::before,
+.site-nav a.nav-cta:focus-visible::before {
+  transform: scaleX(1);
 }
 
 .site-nav a.nav-cta[aria-current="page"] {
@@ -379,7 +400,7 @@ button, input, textarea, select {
 }
 
 .site-nav a.nav-cta[aria-current="page"]:hover {
-  background: var(--accent);
+  border-color: var(--accent);
 }
 
 .site-nav a.nav-cta[aria-current="page"]::after {
@@ -435,7 +456,7 @@ button, input, textarea, select {
   border-bottom: none;
 }
 
-/* Buttons & Links */
+/* Buttons & Links — Robust Unified Vermilion Fill-Sweep System */
 .btn-group {
   display: flex;
   flex-wrap: wrap;
@@ -444,27 +465,53 @@ button, input, textarea, select {
 }
 
 .btn {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 0.55rem;
-  padding: 0.85rem 1.5rem;
+  gap: 0.6rem;
+  padding: 0.92rem 1.65rem;
   border-radius: var(--radius-sm);
   font-size: 0.94rem;
   font-weight: 500;
-  border: 1px solid var(--bg-ink);
+  letter-spacing: 0.005em;
+  border: 1.5px solid var(--bg-ink);
   cursor: pointer;
-  transition: background-color 0.2s var(--ease), color 0.2s var(--ease), border-color 0.2s var(--ease), transform 0.2s var(--ease);
+  transition: color 0.3s var(--ease), border-color 0.3s var(--ease), transform 0.15s var(--ease);
+}
+
+.btn::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: var(--accent);
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform 0.36s var(--ease);
+}
+
+.btn:hover::before,
+.btn:focus-visible::before {
+  transform: scaleX(1);
+}
+
+.btn:hover,
+.btn:focus-visible {
+  border-color: var(--accent);
+  color: var(--ink-on-dark);
+}
+
+.btn:active {
+  transform: translateY(1px);
 }
 
 .btn--primary {
   background: var(--bg-ink);
   color: var(--ink-on-dark);
-}
-
-.btn--primary:hover {
-  background: var(--accent);
-  border-color: var(--accent);
+  border-color: var(--bg-ink);
 }
 
 .btn--secondary {
@@ -473,58 +520,84 @@ button, input, textarea, select {
   border-color: var(--rule-strong);
 }
 
-.btn--secondary:hover {
-  background: var(--bg-ink);
-  color: var(--ink-on-dark);
-}
-
 .section-dark .btn--primary {
   background: var(--ink-on-dark);
   color: var(--bg-ink);
   border-color: var(--ink-on-dark);
 }
 
-.section-dark .btn--primary:hover {
-  background: var(--accent);
+.section-dark .btn--primary:hover,
+.section-dark .btn--primary:focus-visible {
   border-color: var(--accent);
   color: var(--ink-on-dark);
 }
 
 .section-dark .btn--secondary {
+  background: transparent;
   color: var(--ink-on-dark);
-  border-color: rgba(246, 245, 240, 0.35);
+  border-color: rgba(246, 245, 240, 0.55);
 }
 
-.section-dark .btn--secondary:hover {
-  border-color: var(--ink-on-dark);
-  background: rgba(246, 245, 240, 0.08);
+.section-dark .btn--secondary:hover,
+.section-dark .btn--secondary:focus-visible {
+  border-color: var(--accent);
+  color: var(--ink-on-dark);
 }
 
 .btn--sm {
-  padding: 0.55rem 1rem;
-  font-size: 0.84rem;
+  padding: 0.62rem 1.15rem;
+  font-size: 0.85rem;
 }
 
 .text-link {
+  position: relative;
   display: inline-flex;
   align-items: center;
   gap: 0.45rem;
   font-size: 0.94rem;
   font-weight: 500;
-  border-bottom: 1px solid currentColor;
-  padding-bottom: 0.15rem;
-  transition: color 0.2s var(--ease), border-color 0.2s var(--ease), gap 0.2s var(--ease);
+  padding-bottom: 0.22rem;
+  border-bottom: 1.5px solid var(--rule-strong);
+  transition: color 0.25s var(--ease), border-color 0.25s var(--ease), gap 0.25s var(--ease);
 }
 
-.text-link:hover {
+.text-link::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -1.5px;
+  height: 1.5px;
+  background: var(--accent);
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform 0.32s var(--ease);
+}
+
+.text-link:hover,
+.text-link:focus-visible {
   color: var(--accent);
-  border-color: var(--accent);
+  border-color: transparent;
   gap: 0.65rem;
 }
 
-.section-dark .text-link:hover {
+.text-link:hover::after,
+.text-link:focus-visible::after {
+  transform: scaleX(1);
+}
+
+.section-dark .text-link {
+  border-color: rgba(246, 245, 240, 0.45);
+}
+
+.section-dark .text-link::after {
+  background: var(--accent-on-dark);
+}
+
+.section-dark .text-link:hover,
+.section-dark .text-link:focus-visible {
   color: var(--accent-on-dark);
-  border-color: var(--accent-on-dark);
+  border-color: transparent;
 }
 
 /* Hero Section */
@@ -1303,19 +1376,44 @@ button, input, textarea, select {
 }
 
 .pitfall-flag-btn {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
   display: inline-flex;
   align-items: center;
   gap: 0.6rem;
   background: transparent;
-  border: 1px solid var(--rule-strong);
-  padding: 0.5rem 0.95rem;
+  border: 1.5px solid var(--rule-strong);
+  padding: 0.58rem 1.05rem;
   border-radius: var(--radius-sm);
   font-family: var(--font-mono);
   font-size: 0.74rem;
   text-transform: uppercase;
   letter-spacing: 0.06em;
   cursor: pointer;
-  transition: all 0.2s var(--ease);
+  transition: color 0.28s var(--ease), border-color 0.28s var(--ease);
+}
+
+.pitfall-flag-btn::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: var(--accent);
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform 0.32s var(--ease);
+}
+
+.pitfall-flag-btn:hover,
+.pitfall-flag-btn:focus-visible {
+  color: var(--ink-on-dark);
+  border-color: var(--accent);
+}
+
+.pitfall-flag-btn:hover::before,
+.pitfall-flag-btn:focus-visible::before {
+  transform: scaleX(1);
 }
 
 .pitfall-flag-btn.is-active {
@@ -1326,6 +1424,10 @@ button, input, textarea, select {
 
 .pitfall-flag-btn.is-active .pitfall-flag-icon {
   color: var(--accent-on-dark);
+}
+
+.pitfall-flag-btn.is-active:hover .pitfall-flag-icon {
+  color: var(--ink-on-dark);
 }
 
 .pitfall-diagnostic {
@@ -2197,6 +2299,15 @@ button, input, textarea, select {
   .reveal.is-visible {
     opacity: 1;
     transform: translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .btn::before,
+  .site-nav a.nav-cta::before,
+  .pitfall-flag-btn::before,
+  .text-link::after {
+    transition: none;
   }
 }
 
