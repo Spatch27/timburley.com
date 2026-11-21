@@ -1372,14 +1372,15 @@ button, input, textarea, select {
   font-size: 0.96rem;
 }
 
-.pitfall-quote {
+.pitfall-panel .pitfall-quote {
   font-family: var(--font-serif);
   font-style: italic;
-  font-size: 1.12rem;
+  font-size: 1.18rem;
+  line-height: 1.48;
   color: var(--ink-primary);
   border-left: 2px solid var(--accent);
-  padding-left: 1rem;
-  margin: 0 0 1.25rem;
+  padding: 0.2rem 0 0.2rem 1.15rem;
+  margin: 0 0 1.75rem;
 }
 
 .pitfall-flag-btn {
