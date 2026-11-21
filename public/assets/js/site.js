@@ -107,7 +107,7 @@
         <p class="specimen-card__sector">${project.sector}</p>
       </div>
       <div class="specimen-card__foot">
-        <span>${project.scope}${project.trading ? ' · Live' : ''}</span>
+        <span>${project.primary ? 'Primary case study · ' : ''}${project.scope}</span>
         <span>Read story →</span>
       </div>
     `;
@@ -126,7 +126,7 @@
     const workEl = document.getElementById('work-specimens');
     const filterBar = document.getElementById('work-filters');
     if (workEl && DATA.projects) {
-      const categories = ['All', ...Array.from(new Set(DATA.projects.map((p) => p.category)))];
+      const categories = ['All', 'Primary Case Studies', ...Array.from(new Set(DATA.projects.map((p) => p.category)))];
       let activeCategory = 'All';
 
       function renderGrid() {
@@ -134,6 +134,8 @@
         const list =
           activeCategory === 'All'
             ? DATA.projects
+            : activeCategory === 'Primary Case Studies'
+            ? DATA.projects.filter((p) => p.primary)
             : DATA.projects.filter((p) => p.category === activeCategory);
         list.forEach((p) => workEl.appendChild(renderSpecimenCard(p)));
       }
@@ -144,6 +146,8 @@
           const count =
             cat === 'All'
               ? DATA.projects.length
+              : cat === 'Primary Case Studies'
+              ? DATA.projects.filter((p) => p.primary).length
               : DATA.projects.filter((p) => p.category === cat).length;
           const pill = document.createElement('button');
           pill.type = 'button';
@@ -245,7 +249,13 @@
             ${visualContent}
             <figcaption class="case-visual-stage__foot">
               <span>${project.visualCaption}</span>
-              <span>${project.trading ? 'Brand live in market' : 'Naming archive'}</span>
+              <span>${
+                project.liveUrl
+                  ? `<a href="${project.liveUrl}" target="_blank" rel="noopener noreferrer" class="text-link" style="font-family:var(--font-mono); font-size:0.72rem;">${project.liveUrlLabel || 'Visit live brand ↗'}</a>`
+                  : project.trading
+                  ? 'Brand live in market'
+                  : 'Naming archive'
+              }</span>
             </figcaption>
           </figure>
 
