@@ -347,7 +347,7 @@ button, input, textarea, select {
   color: var(--ink-primary);
 }
 
-.site-nav a[aria-current="page"]::after {
+.site-nav a:not(.nav-cta)::after {
   content: '';
   position: absolute;
   left: 0;
@@ -355,6 +355,15 @@ button, input, textarea, select {
   bottom: -2px;
   height: 2px;
   background: var(--accent);
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform 0.32s var(--ease);
+}
+
+.site-nav a:not(.nav-cta):hover::after,
+.site-nav a:not(.nav-cta):focus-visible::after,
+.site-nav a:not(.nav-cta)[aria-current="page"]::after {
+  transform: scaleX(1);
 }
 
 .site-nav a.nav-cta {
@@ -557,8 +566,8 @@ button, input, textarea, select {
   font-size: 0.94rem;
   font-weight: 500;
   padding-bottom: 0.22rem;
-  border-bottom: 1.5px solid var(--rule-strong);
-  transition: color 0.25s var(--ease), border-color 0.25s var(--ease), gap 0.25s var(--ease);
+  border-bottom: 1px solid var(--rule);
+  transition: color 0.25s var(--ease), gap 0.25s var(--ease);
 }
 
 .text-link::after {
@@ -566,8 +575,8 @@ button, input, textarea, select {
   position: absolute;
   left: 0;
   right: 0;
-  bottom: -1.5px;
-  height: 1.5px;
+  bottom: -1px;
+  height: 2px;
   background: var(--accent);
   transform: scaleX(0);
   transform-origin: left center;
@@ -576,8 +585,7 @@ button, input, textarea, select {
 
 .text-link:hover,
 .text-link:focus-visible {
-  color: var(--accent);
-  border-color: transparent;
+  color: var(--ink-primary);
   gap: 0.65rem;
 }
 
@@ -587,7 +595,7 @@ button, input, textarea, select {
 }
 
 .section-dark .text-link {
-  border-color: rgba(246, 245, 240, 0.45);
+  border-color: rgba(246, 245, 240, 0.3);
 }
 
 .section-dark .text-link::after {
@@ -596,8 +604,7 @@ button, input, textarea, select {
 
 .section-dark .text-link:hover,
 .section-dark .text-link:focus-visible {
-  color: var(--accent-on-dark);
-  border-color: transparent;
+  color: var(--ink-on-dark);
 }
 
 /* Hero Section */
@@ -1851,16 +1858,36 @@ button, input, textarea, select {
 }
 
 .footer-links a {
+  position: relative;
+  display: inline-block;
+  padding-bottom: 0.2rem;
   font-size: 0.94rem;
   color: var(--ink-on-dark);
   opacity: 0.85;
   transition: opacity 0.2s var(--ease);
 }
 
-.footer-links a:hover {
+.footer-links a::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 2px;
+  background: var(--accent-on-dark);
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform 0.32s var(--ease);
+}
+
+.footer-links a:hover,
+.footer-links a:focus-visible {
   opacity: 1;
-  text-decoration: underline;
-  text-underline-offset: 4px;
+}
+
+.footer-links a:hover::after,
+.footer-links a:focus-visible::after {
+  transform: scaleX(1);
 }
 
 .footer-bottom {
@@ -2076,6 +2103,7 @@ button, input, textarea, select {
 
 /* Individual Case Study Page (/work/<slug>) */
 .case-crumb {
+  position: relative;
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
@@ -2084,12 +2112,32 @@ button, input, textarea, select {
   text-transform: uppercase;
   letter-spacing: 0.08em;
   color: var(--ink-muted);
+  padding-bottom: 0.25rem;
   margin-bottom: 1.75rem;
   transition: color 0.2s var(--ease);
 }
 
-.case-crumb:hover {
+.case-crumb::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 2px;
+  background: var(--accent);
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform 0.32s var(--ease);
+}
+
+.case-crumb:hover,
+.case-crumb:focus-visible {
   color: var(--ink-primary);
+}
+
+.case-crumb:hover::after,
+.case-crumb:focus-visible::after {
+  transform: scaleX(1);
 }
 
 .case-header-row {
@@ -2306,7 +2354,10 @@ button, input, textarea, select {
   .btn::before,
   .site-nav a.nav-cta::before,
   .pitfall-flag-btn::before,
-  .text-link::after {
+  .site-nav a:not(.nav-cta)::after,
+  .text-link::after,
+  .footer-links a::after,
+  .case-crumb::after {
     transition: none;
   }
 }
