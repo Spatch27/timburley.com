@@ -72,7 +72,7 @@ window.TB_DATA = {
       testimonialId: 'rd',
       summary: 'A warm, authoritative brand name for a private healthcare provider—balancing clinical credibility with human reassurance.',
       brief: 'Healthcare naming is crowded with sterile clinical compounds and lookalike trademarks. Working alongside R&D, the brief called for a name that felt personal, calm and unmistakable while standing up to formal trademark scrutiny.',
-      story: 'Story placeholder — Tim’s full behind-the-scenes account of how Cora Health was developed, tested with stakeholders, and brought into its designed state will live here.',
+      story: 'Story placeholder — my full behind-the-scenes account of how Cora Health was developed, tested with stakeholders, and brought into its designed state will live here.',
       processNote: 'Developed through structured strategic territories and screened early so trademark registration progressed cleanly alongside R&D’s visual identity work.',
       outcome: 'Grounded in human warmth and clarity, Cora Health builds immediate trust with patients and referrers alike without sounding cold or institutional.'
     },
@@ -92,7 +92,7 @@ window.TB_DATA = {
       testimonialId: null,
       summary: 'A grounded, place-rooted name for the district heating network serving Greenwich Peninsula.',
       brief: 'District heating is vital low-carbon infrastructure that residents and commercial partners rarely think about until something goes wrong. The network needed a name that felt local, modern and dependable rather than bureaucratic.',
-      story: 'Story placeholder — Tim’s full account of naming Greenwich Peninsula’s district heating network and aligning project stakeholders around Loka Energy will live here.',
+      story: 'Story placeholder — my full account of naming Greenwich Peninsula’s district heating network and aligning project stakeholders around Loka Energy will live here.',
       processNote: 'Balanced infrastructure credibility with residential warmth, steering decision-makers away from generic utility acronyms.',
       outcome: 'Short, memorable and anchored in locality, Loka Energy brings human scale and clarity to a major urban energy network.'
     },
@@ -112,7 +112,7 @@ window.TB_DATA = {
       testimonialId: 'organic',
       summary: 'A distinctive, ownable name for an SEO platform built to cut through generic SaaS nomenclature.',
       brief: 'Digital marketing and SEO software is saturated with descriptive mash-ups ("Rank-", "Search-", "Opti-") that blur together and struggle to register as trademarks. Working with Organic, the platform needed a name with genuine ownability.',
-      story: 'Story placeholder — Tim’s full account of how Corigan emerged and stood apart in a crowded search-tech category will live here.',
+      story: 'Story placeholder — my full account of how Corigan emerged and stood apart in a crowded search-tech category will live here.',
       processNote: 'Built to avoid the "Negative Filter" trap of defaulting to safe literal descriptions—backed by early clearance thinking so the brand could scale.',
       outcome: 'Corigan gives the platform a crisp, defensible identity with real character—easy to say in a pitch, easy to own legally, and built to grow beyond a single feature.'
     },
@@ -132,7 +132,7 @@ window.TB_DATA = {
       testimonialId: 'rd',
       summary: 'An evocative, international name for a superyacht charter company operating at the highest tier of maritime luxury.',
       brief: 'Superyacht chartering demands poise without cliché—avoiding tired nautical tropes while working gracefully across international clients, crew and ports.',
-      story: 'Story placeholder — Tim’s full account of developing Yomira with R&D and shaping a name suited to the superyacht world will live here.',
+      story: 'Story placeholder — my full account of developing Yomira with R&D and shaping a name suited to the superyacht world will live here.',
       processNote: 'Tested for international pronunciation, aesthetic poise in typography, and strong distinctiveness in luxury travel classes.',
       outcome: 'Fluid, poised and quietly distinctive, Yomira carries an effortless international cadence that looks as strong engraved on a hull as it does on a digital masthead.'
     },
@@ -152,7 +152,7 @@ window.TB_DATA = {
       testimonialId: null,
       summary: 'A clean, approachable name for a modern property maintenance company.',
       brief: 'Property maintenance brands often default to dated trade clichés or forgettable initials. The business needed something friendly, contemporary and easy to recall.',
-      story: 'Story placeholder — Tim’s full account of the brief, creative exploration and selection behind Meddo will live here.',
+      story: 'Story placeholder — my full account of the brief, creative exploration and selection behind Meddo will live here.',
       processNote: 'Shortlisted and stress-tested for everyday spoken use, livery visibility and clean trademark registration.',
       outcome: 'Meddo is punchy, warm and uncomplicated—equally at home on a fleet of vans, workwear and digital booking platforms.'
     },
@@ -172,7 +172,7 @@ window.TB_DATA = {
       visualCaption: 'Designed brand visual slot — ready for Committed Citizens identity',
       testimonialId: null,
       brief: 'Consultancies frequently hide behind abstract Latinisms or three-letter acronyms. This practice needed a name that declared its values in two clear English words.',
-      story: 'Story placeholder — Tim’s personal story behind founding and naming Committed Citizens will live here.',
+      story: 'Story placeholder — my personal story behind founding and naming Committed Citizens will live here.',
       processNote: 'A deliberate choice for emotional conviction and plain-English clarity over consultancy jargon.',
       outcome: 'Committed Citizens states a point of view immediately—memorable, principled and unmistakably human.'
     },
@@ -191,7 +191,7 @@ window.TB_DATA = {
       visualCaption: 'Designed brand visual slot — ready for Uprising packaging & wordmark',
       testimonialId: null,
       brief: 'Free-from food categories are often burdened with apologetic, medicinal naming. Pastry should feel joyful, defiant and delicious—not like a dietary compromise.',
-      story: 'Story placeholder — Tim’s full account of creating Uprising and shifting gluten-free pastry from apology to attitude will live here.',
+      story: 'Story placeholder — my full account of creating Uprising and shifting gluten-free pastry from apology to attitude will live here.',
       processNote: 'Balanced playful double-meaning with strong on-pack impact and clear retail differentiation.',
       outcome: 'Uprising plays smartly on both baking lift and category rebellion—instantly memorable on shelf and packed with campaign potential.'
     },
@@ -211,7 +211,7 @@ window.TB_DATA = {
       testimonialId: 'somerset',
       summary: 'An active, collaborative identity for a multi-agency public sector partnership.',
       brief: 'Public sector partnerships involve multiple stakeholders, councils and services—making internal agreement notoriously difficult and encouraging bureaucratic committee names.',
-      story: 'Story placeholder — Tim’s full account of steering multiple public-sector partners past committee deadlock to agree on Shape Mendip will live here.',
+      story: 'Story placeholder — my full account of steering multiple public-sector partners past committee deadlock to agree on Shape Mendip will live here.',
       processNote: 'A textbook example of the "second half" of naming: aligning diverse public-sector decision-makers without falling into a Straw Poll compromise.',
       outcome: 'Shape Mendip replaced administrative jargon with a clear, forward-looking invitation tied directly to the place it serves.'
     },
@@ -231,7 +231,7 @@ window.TB_DATA = {
       testimonialId: null,
       summary: 'A collaborative, human-first name for a local energy services provider.',
       brief: 'Energy providers face deep public scepticism. The name needed to signal partnership and proximity rather than distant corporate utility billing.',
-      story: 'Story placeholder — Tim’s full account of developing With Energy and its natural verbal system will live here.',
+      story: 'Story placeholder — my full account of developing With Energy and its natural verbal system will live here.',
       processNote: 'Explored how ordinary, confident English words can carry warmth and momentum when paired with a clear brand story.',
       outcome: 'Built around a single disarming preposition, With Energy works both as a brand name and as a natural verbal signature across communications.'
     },
@@ -251,7 +251,7 @@ window.TB_DATA = {
       testimonialId: null,
       summary: 'A tactile, trustworthy brand name for a full-fibre broadband provider.',
       brief: 'Telecoms naming is loud with hyperbole ("Hyper", "Ultra", "Gigabit"). Standing out required warmth, substance and residential credibility.',
-      story: 'Story placeholder — Tim’s full account of naming Grain Connect and breaking away from telecoms clichés will live here.',
+      story: 'Story placeholder — my full account of naming Grain Connect and breaking away from telecoms clichés will live here.',
       processNote: 'Paired an evocative, grounded lead word with a clear functional anchor so customers immediately understood both character and offer.',
       outcome: 'Grain Connect brings calm clarity and real distinctiveness to one of the noisiest consumer utility sectors.'
     },
@@ -271,7 +271,7 @@ window.TB_DATA = {
       testimonialId: null,
       summary: 'A crisp, scalable company name for a major district heating and low-carbon heat network business.',
       brief: 'Operating at infrastructure investment scale requires a name that carries authority with local authorities, developers and institutional partners while remaining clean to register.',
-      story: 'Story placeholder — Tim’s full account of creating Hemiko for a national low-carbon district heating business will live here.',
+      story: 'Story placeholder — my full account of creating Hemiko for a national low-carbon district heating business will live here.',
       processNote: 'Designed for distinctiveness, rhythmic clarity and clean trademark protection as the company scaled nationally.',
       outcome: 'Distinctive, rhythmic and legally clean, Hemiko stands apart from legacy utility naming and gives the business room to expand nationally.'
     },
@@ -291,7 +291,7 @@ window.TB_DATA = {
       testimonialId: null,
       summary: 'A sensory, approachable name for a homewares and candle brand.',
       brief: 'Home fragrance spans everything from austere luxury to mass-market giftware. The name needed instant warmth, botanical resonance and broad retail appeal.',
-      story: 'Story placeholder — Tim’s full account of naming Bloom Candles and defining its sensory territory will live here.',
+      story: 'Story placeholder — my full account of naming Bloom Candles and defining its sensory territory will live here.',
       processNote: 'Focused on immediate emotional resonance—avoiding the Rational Focus trap of over-explaining a sensory product.',
       outcome: 'Simple, vivid and tactile—capturing the moment scent opens into a room without over-complicating the offer.'
     },
@@ -311,7 +311,7 @@ window.TB_DATA = {
       testimonialId: null,
       summary: 'A salty, characterful name for a seafood products range.',
       brief: 'Food provenance brands risk sounding either overly rustic or anonymously corporate. Ockery needed genuine coastal character and strong trademark distinctiveness.',
-      story: 'Story placeholder — Tim’s full account of creating Ockery and giving a seafood range real provenance and bite will live here.',
+      story: 'Story placeholder — my full account of creating Ockery and giving a seafood range real provenance and bite will live here.',
       processNote: 'Developed to own genuine linguistic character and stand apart cleanly on crowded food shelves and trademark registers.',
       outcome: 'Unusual, tactile and easy to pronounce, Ockery feels rooted in craft and place—impossible to confuse with a generic supermarket label.'
     },
@@ -331,7 +331,7 @@ window.TB_DATA = {
       testimonialId: 'fontsmith',
       summary: 'Naming a flagship typeface family for FontSmith, later acquired by Monotype—one of the world’s largest type foundries.',
       brief: 'Typeface names live permanently in font menus seen by thousands of designers worldwide. They must embody the character, weight and era of the letterforms while fitting cleanly into the foundry’s naming system.',
-      story: 'Story placeholder — Tim’s full account of collaborating with FontSmith on FS Silas and finding a name whose very letterforms honoured the typeface will live here.',
+      story: 'Story placeholder — my full account of collaborating with FontSmith on FS Silas and finding a name whose very letterforms honoured the typeface will live here.',
       processNote: 'Crafted within FontSmith’s "FS" foundry naming architecture while testing how the word itself looked set in the new typeface.',
       outcome: 'FS Silas combines foundry architecture with unmistakable editorial character—a name with poise, historical resonance and visual rhythm in its own letterforms.'
     },
@@ -351,7 +351,7 @@ window.TB_DATA = {
       testimonialId: null,
       summary: 'A deeply rooted place name for a residential housing development, honouring authentic regional heritage.',
       brief: 'New housing developments are too often saddled with generic, invented "meadows" and "views" that feel disconnected from local identity and invite community resistance.',
-      story: 'Story placeholder — Tim’s full account of researching and naming Gwallon Keas so it belonged authentically to its Cornish setting will live here.',
+      story: 'Story placeholder — my full account of researching and naming Gwallon Keas so it belonged authentically to its Cornish setting will live here.',
       processNote: 'Rooted in genuine local history and language rather than developer clichés—building pride with both planners and future residents.',
       outcome: 'Gwallon Keas anchors the development in authentic heritage—earning local respect and giving the neighbourhood a name built to endure for generations.'
     }
@@ -420,7 +420,7 @@ window.TB_DATA = {
       step: 1,
       eyebrow: 'Step 01 · Working directly',
       title: 'One practitioner, two ways in.',
-      body: 'Whether you are an agency needing specialist naming firepower inside a wider brand project, or a business coming direct, you work directly with Tim from day one—no hand-offs, no agency layers.'
+      body: 'Whether you are an agency needing specialist naming firepower inside a wider brand project, or a business coming direct, you work directly with me from day one—no hand-offs, no agency layers.'
     },
     {
       step: 2,
@@ -450,7 +450,7 @@ window.TB_DATA = {
       step: 6,
       eyebrow: 'Step 06 · Proposal-ready',
       title: 'Everything needed for a simple proposal.',
-      body: 'Review your brief below. You can copy it, print it to PDF, or send it straight over—giving Tim everything required to come back with a clear scope, timeline and fee.'
+      body: 'Review your brief below. You can copy it, print it to PDF, or send it straight over—giving me everything I need to come back with a clear scope, timeline and fee.'
     }
   ]
 };
