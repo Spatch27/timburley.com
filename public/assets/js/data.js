@@ -9,7 +9,7 @@ window.TB_DATA = {
 
   // Drop Tim's portrait image in /assets/images/tim/portrait.jpg and set src here
   portrait: {
-    src: null, // e.g. '/assets/images/tim/portrait.jpg'
+    src: '/assets/images/tim/tim-closeup.jpg',
     alt: 'Tim Burley — Name Development Practice',
     caption: 'Tim Burley · Principal',
     location: 'UK & International'
