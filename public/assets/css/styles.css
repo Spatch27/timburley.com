@@ -2080,12 +2080,18 @@ button, input, textarea, select {
 
 .case-meta-ledger {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-  gap: 1.25rem 2rem;
-  padding-block: 1.75rem;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.5rem 2.25rem;
+  padding-block: 1.85rem;
   border-top: 1px solid var(--rule-strong);
   border-bottom: 1px solid var(--rule);
   margin: 0;
+}
+
+@media (min-width: 860px) {
+  .case-meta-ledger {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
 }
 
 .case-meta-ledger dt {

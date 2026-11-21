@@ -107,7 +107,7 @@
         <p class="specimen-card__sector">${project.sector}</p>
       </div>
       <div class="specimen-card__foot">
-        <span>${project.primary ? 'Primary case study · ' : ''}${project.scope}</span>
+        <span>${project.scope}</span>
         <span>Read story →</span>
       </div>
     `;
@@ -126,7 +126,7 @@
     const workEl = document.getElementById('work-specimens');
     const filterBar = document.getElementById('work-filters');
     if (workEl && DATA.projects) {
-      const categories = ['All', 'Primary Case Studies', ...Array.from(new Set(DATA.projects.map((p) => p.category)))];
+      const categories = ['All', ...Array.from(new Set(DATA.projects.map((p) => p.category)))];
       let activeCategory = 'All';
 
       function renderGrid() {
@@ -134,8 +134,6 @@
         const list =
           activeCategory === 'All'
             ? DATA.projects
-            : activeCategory === 'Primary Case Studies'
-            ? DATA.projects.filter((p) => p.primary)
             : DATA.projects.filter((p) => p.category === activeCategory);
         list.forEach((p) => workEl.appendChild(renderSpecimenCard(p)));
       }
@@ -146,8 +144,6 @@
           const count =
             cat === 'All'
               ? DATA.projects.length
-              : cat === 'Primary Case Studies'
-              ? DATA.projects.filter((p) => p.primary).length
               : DATA.projects.filter((p) => p.category === cat).length;
           const pill = document.createElement('button');
           pill.type = 'button';
@@ -261,20 +257,28 @@
 
           <dl class="case-meta-ledger">
             <div>
-              <dt>Sector</dt>
-              <dd>${project.sector}</dd>
+              <dt>Brand name</dt>
+              <dd>${project.name}</dd>
             </div>
             <div>
-              <dt>Scope</dt>
-              <dd>${project.scope}</dd>
+              <dt>Domain</dt>
+              <dd>${project.domain || '—'}</dd>
             </div>
             <div>
-              <dt>Context / Partner</dt>
-              <dd>${project.partner}</dd>
+              <dt>Origin</dt>
+              <dd>${project.origin || '—'}</dd>
             </div>
             <div>
-              <dt>Category</dt>
-              <dd>${project.category}</dd>
+              <dt>Agency partner</dt>
+              <dd>${project.agencyPartner || 'Direct'}</dd>
+            </div>
+            <div>
+              <dt>Client</dt>
+              <dd>${project.client || '—'}</dd>
+            </div>
+            <div>
+              <dt>Launch date</dt>
+              <dd>${project.launchDate || 'TBC'}</dd>
             </div>
           </dl>
         </div>
