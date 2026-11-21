@@ -523,7 +523,6 @@ button, input, textarea, select {
   height: 100%;
   object-fit: cover;
   object-position: center 18%;
-  filter: grayscale(100%) contrast(1.06);
 }
 
 .hero-portrait__caption {
@@ -1798,7 +1797,6 @@ button, input, textarea, select {
   height: 100%;
   object-fit: cover;
   object-position: center 18%;
-  filter: grayscale(100%) contrast(1.07);
 }
 
 .portrait-frame__media--coast {
@@ -1835,7 +1833,6 @@ button, input, textarea, select {
   aspect-ratio: 11 / 9;
   object-fit: cover;
   object-position: center 35%;
-  filter: grayscale(100%) contrast(1.08);
 }
 
 .env-photo__caption {
@@ -1866,7 +1863,6 @@ button, input, textarea, select {
   border-radius: var(--radius-sm);
   object-fit: cover;
   object-position: center 20%;
-  filter: grayscale(100%) contrast(1.08);
   flex-shrink: 0;
   border: 1px solid var(--rule);
 }
