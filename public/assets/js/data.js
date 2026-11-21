@@ -444,7 +444,7 @@ window.TB_DATA = {
       step: 5,
       eyebrow: 'Step 05 · Trademark reality',
       title: 'Built to work with your IP partner.',
-      body: 'I am not a trademark attorney, and I do not pretend to be—but 25 years of naming means I know how to keep 3–4 strong contenders alive so your legal partner can clear and register effectively and cost-effectively.'
+      body: 'I am not a trademark attorney, and I do not pretend to be—but twenty years of leading name development projects means I know how to keep 3–4 strong contenders alive so your legal partner can clear and register effectively and cost-effectively.'
     },
     {
       step: 6,
