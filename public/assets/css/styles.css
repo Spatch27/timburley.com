@@ -25,7 +25,8 @@
   --accent-hover: #AE2F21;
   --accent-on-dark: #EB5E4D;
 
-  --font-serif: 'Newsreader', Georgia, 'Times New Roman', serif;
+  --font-display: 'Instrument Sans', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', sans-serif;
+  --font-serif: var(--font-display);
   --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', sans-serif;
   --font-mono: 'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
 
@@ -178,48 +179,59 @@ button, input, textarea, select {
 }
 
 .h-display {
-  font-family: var(--font-serif);
-  font-weight: 400;
-  font-size: clamp(2.65rem, 6vw, 4.9rem);
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: clamp(2.55rem, 5.6vw, 4.55rem);
   line-height: 1.04;
-  letter-spacing: -0.028em;
+  letter-spacing: -0.032em;
   margin: 0;
   text-wrap: balance;
 }
 
 .h-display em,
+.h-page em,
 .h-section em,
-.h-sub em {
-  font-style: italic;
-  font-weight: 400;
+.h-sub em,
+.vignette__title em {
+  font-style: normal;
+  font-weight: inherit;
+  color: var(--accent);
+}
+
+.section-dark .h-display em,
+.section-dark .h-page em,
+.section-dark .h-section em,
+.section-dark .h-sub em,
+.section-dark .vignette__title em {
+  color: var(--accent-on-dark);
 }
 
 .h-page {
-  font-family: var(--font-serif);
-  font-weight: 400;
-  font-size: clamp(2.35rem, 5vw, 3.85rem);
-  line-height: 1.08;
-  letter-spacing: -0.025em;
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: clamp(2.25rem, 4.6vw, 3.65rem);
+  line-height: 1.07;
+  letter-spacing: -0.03em;
   margin: 0;
   text-wrap: balance;
 }
 
 .h-section {
-  font-family: var(--font-serif);
-  font-weight: 400;
-  font-size: clamp(1.9rem, 3.4vw, 2.85rem);
-  line-height: 1.14;
-  letter-spacing: -0.02em;
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: clamp(1.8rem, 3.2vw, 2.7rem);
+  line-height: 1.12;
+  letter-spacing: -0.028em;
   margin: 0;
   text-wrap: balance;
 }
 
 .h-sub {
-  font-family: var(--font-serif);
-  font-weight: 400;
-  font-size: clamp(1.35rem, 2vw, 1.7rem);
-  line-height: 1.24;
-  letter-spacing: -0.015em;
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: clamp(1.3rem, 1.9vw, 1.62rem);
+  line-height: 1.22;
+  letter-spacing: -0.024em;
   margin: 0;
 }
 
@@ -2336,6 +2348,41 @@ button, input, textarea, select {
 .case-pager__name {
   font-family: var(--font-serif);
   font-size: clamp(1.45rem, 2.4vw, 1.9rem);
+}
+
+/* Display Sans Weight & Tracking Polish across Editorial Components */
+.vignette__title,
+.thesis-block h3,
+.ingredient h3,
+.process-row__title,
+.pitfall-trigger__title,
+.brief-step__title,
+.brief-aside h3,
+.case-story-block h2,
+.case-pager__name,
+.specimen-card__wordmark,
+.case-visual-stage__specimen,
+.prose p.prose-lead,
+.testimonial-card__quote {
+  font-family: var(--font-display);
+  font-weight: 500;
+  letter-spacing: -0.028em;
+}
+
+.ingredient__num,
+.specimen-card__wordmark--italic,
+.case-visual-stage__specimen--italic,
+.pitfall-panel .pitfall-quote {
+  font-style: normal;
+}
+
+.ingredient__num {
+  font-weight: 500;
+}
+
+.pitfall-panel .pitfall-quote {
+  font-weight: 500;
+  letter-spacing: -0.015em;
 }
 
 /* Subtle Entrance Motion (respects reduced motion) */
