@@ -219,7 +219,7 @@
       : '';
 
     const domainHtml =
-      project.liveUrl && project.domain && project.domain !== 'N/A'
+      project.liveUrl && !project.liveUrlLabel && project.domain && project.domain !== 'N/A'
         ? `<a href="${project.liveUrl}" target="_blank" rel="noopener noreferrer" class="text-link">${project.domain} ↗</a>`
         : project.domain || '—';
 

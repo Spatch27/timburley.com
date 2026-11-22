@@ -423,7 +423,7 @@ window.TB_DATA = {
       trading: false,
       featured: false,
       primary: false,
-      liveUrl: 'http://www.southwestfoodanddrink.org/',
+      liveUrl: null,
       style: 'serif',
       visualImage: null,
       visualCaption: null,
