@@ -214,19 +214,17 @@
         ? 'case-visual-stage__specimen--italic'
         : '';
 
+    const liveLinkHtml = project.liveUrl
+      ? `<span><a href="${project.liveUrl}" target="_blank" rel="noopener noreferrer" class="text-link" style="font-family:var(--font-mono); font-size:0.72rem;">${project.liveUrlLabel || 'Visit live brand ↗'}</a></span>`
+      : '';
+
     const visualStageHtml = project.visualImage
       ? `
           <figure class="case-visual-stage case-visual-stage--media" style="margin:0 0 2.5rem;">
             <img class="case-visual-stage__image" src="${project.visualImage}" alt="${project.name} — ${project.visualCaption}">
             <figcaption class="case-visual-stage__foot">
               <span>${project.visualCaption}</span>
-              <span>${
-                project.liveUrl
-                  ? `<a href="${project.liveUrl}" target="_blank" rel="noopener noreferrer" class="text-link" style="font-family:var(--font-mono); font-size:0.72rem;">${project.liveUrlLabel || 'Visit live brand ↗'}</a>`
-                  : project.trading
-                  ? 'Brand live in market'
-                  : 'Naming archive'
-              }</span>
+              ${liveLinkHtml}
             </figcaption>
           </figure>`
       : `
@@ -238,13 +236,7 @@
             <div class="case-visual-stage__specimen ${styleClass}">${project.name}</div>
             <figcaption class="case-visual-stage__foot">
               <span>${project.visualCaption}</span>
-              <span>${
-                project.liveUrl
-                  ? `<a href="${project.liveUrl}" target="_blank" rel="noopener noreferrer" class="text-link" style="font-family:var(--font-mono); font-size:0.72rem;">${project.liveUrlLabel || 'Visit live brand ↗'}</a>`
-                  : project.trading
-                  ? 'Brand live in market'
-                  : 'Naming archive'
-              }</span>
+              ${liveLinkHtml}
             </figcaption>
           </figure>`;
 
@@ -258,7 +250,6 @@
           <a href="/work" class="case-crumb">← All ${DATA.projects.length} named projects</a>
           <div class="case-header-row">
             <span class="eyebrow">${project.num} / ${DATA.projects.length} · ${project.launchDate} · ${project.category}</span>
-            ${project.trading ? '<span class="status-tag">Currently trading</span>' : '<span class="eyebrow">Archive / Past Venture</span>'}
           </div>
           <h1 class="h-display" style="margin-bottom:1.15rem;">${project.name}</h1>
           <p class="lead" style="margin:0;">${project.summary}</p>
