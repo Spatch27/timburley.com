@@ -463,198 +463,137 @@
   }
 
   /* ------------------------------------------------------------------------
-     8. Guided 6-Step Naming Brief (/brief)
+     8. Single-Page Naming Brief (/brief) + /api/brief Resend Delivery
      ------------------------------------------------------------------------ */
-  function initBriefWizard() {
-    const wizard = document.getElementById('brief-wizard');
-    if (!wizard) return;
-
-    const totalSteps = 6;
-    let currentStep = 1;
+  function initBriefForm() {
+    const form = document.getElementById('brief-form');
+    if (!form) return;
 
     const state = {
-      audience: '',
+      route: '',
       name: '',
       organisation: '',
       email: '',
-      projectType: '',
-      sector: '',
-      context: '',
-      avoid: '',
-      approvers: '',
-      decider: '',
-      legalStatus: '',
-      territories: '',
+      namingType: '',
+      summary: '',
+      dependencies: '',
       timeline: '',
+      budget: '',
+      deciders: '',
+      trademark: '',
       pitfalls: '',
       refProject: ''
     };
 
     const params = new URLSearchParams(window.location.search);
+    const notes = [];
     if (params.get('pitfalls')) {
       state.pitfalls = params.get('pitfalls');
-      const banner = document.getElementById('brief-prefill-note');
-      if (banner) {
-        banner.textContent = `Carried over from Process & Pitfalls: ${state.pitfalls}`;
-        banner.style.display = 'block';
-      }
+      notes.push(`Flagged pitfalls: ${state.pitfalls}`);
     }
     if (params.get('ref')) {
       state.refProject = params.get('ref');
+      notes.push(`Referenced project: ${state.refProject}`);
+    }
+    if (notes.length) {
       const banner = document.getElementById('brief-prefill-note');
       if (banner) {
-        banner.textContent = `Referenced work example: ${state.refProject}`;
+        banner.textContent = notes.join(' · ');
         banner.style.display = 'block';
       }
     }
 
-    wizard.querySelectorAll('[data-choice-group]').forEach((group) => {
+    form.querySelectorAll('[data-choice-group]').forEach((group) => {
       const key = group.getAttribute('data-choice-group');
-      group.querySelectorAll('.choice-card').forEach((card) => {
-        card.addEventListener('click', () => {
-          group.querySelectorAll('.choice-card').forEach((c) => {
-            c.classList.remove('is-selected');
-            c.setAttribute('aria-pressed', 'false');
+      const pills = group.querySelectorAll('.brief-pill');
+      pills.forEach((pill) => {
+        pill.addEventListener('click', () => {
+          const alreadySelected = pill.classList.contains('is-selected');
+          pills.forEach((p) => {
+            p.classList.remove('is-selected');
+            p.setAttribute('aria-pressed', 'false');
           });
-          card.classList.add('is-selected');
-          card.setAttribute('aria-pressed', 'true');
-          state[key] = card.getAttribute('data-value') || '';
+          if (alreadySelected) {
+            state[key] = '';
+          } else {
+            pill.classList.add('is-selected');
+            pill.setAttribute('aria-pressed', 'true');
+            state[key] = pill.getAttribute('data-value') || '';
+          }
         });
       });
     });
 
-    wizard.querySelectorAll('[data-field]').forEach((input) => {
+    form.querySelectorAll('[data-field]').forEach((input) => {
       const key = input.getAttribute('data-field');
       input.addEventListener('input', () => {
         state[key] = input.value.trim();
       });
     });
 
-    const stepNodes = wizard.querySelectorAll('.brief-step');
-    const progressFill = document.getElementById('brief-progress-fill');
-    const progressLabel = document.getElementById('brief-progress-label');
-    const prevBtn = document.getElementById('brief-prev');
-    const nextBtn = document.getElementById('brief-next');
-    const asideEyebrow = document.getElementById('aside-eyebrow');
-    const asideTitle = document.getElementById('aside-title');
-    const asideBody = document.getElementById('aside-body');
+    const copyBtn = document.getElementById('brief-copy');
+    const printBtn = document.getElementById('brief-print');
+    const submitBtn = document.getElementById('brief-submit-btn');
+    const statusBanner = document.getElementById('brief-status');
+    const sendCopyInput = document.getElementById('f-send-copy');
+    const honeypotInput = document.getElementById('f-website');
 
-    function syncAside(step) {
-      const caveat = (DATA.briefCaveats || []).find((c) => c.step === step);
-      if (!caveat) return;
-      if (asideEyebrow) asideEyebrow.textContent = caveat.eyebrow;
-      if (asideTitle) asideTitle.textContent = caveat.title;
-      if (asideBody) asideBody.textContent = caveat.body;
+    function syncFields() {
+      form.querySelectorAll('[data-field]').forEach((input) => {
+        const key = input.getAttribute('data-field');
+        state[key] = input.value.trim();
+      });
     }
 
     function buildFormattedBrief() {
+      syncFields();
       const lines = [
         'NAMING BRIEF — Tim Burley (Creating great names)',
         '========================================',
-        `Commissioning route: ${state.audience || 'Not specified'}`,
-        `Contact: ${state.name || 'Not specified'}${state.organisation ? ' (' + state.organisation + ')' : ''}`,
+        `Commissioning route: ${state.route || 'Not specified'}`,
+        `Name: ${state.name || 'Not specified'}`,
+        `Organisation / agency: ${state.organisation || 'Not specified'}`,
         `Email: ${state.email || 'Not specified'}`,
         '',
-        'PROJECT SCOPE',
-        `What we are naming: ${state.projectType || 'Not specified'}`,
-        `Sector / market: ${state.sector || 'Not specified'}`,
-        state.refProject ? `Referenced work example: ${state.refProject}` : null,
+        'THE BRIEF',
+        `Type of name: ${state.namingType || 'Not specified'}`,
+        `Summary: ${state.summary || 'Not specified'}`,
+        `What already exists / dependencies: ${state.dependencies || 'Not specified'}`,
+        state.refProject ? `Referenced project: ${state.refProject}` : null,
         '',
-        'CONTEXT & AMBITION',
-        state.context || 'Not specified',
-        state.avoid ? `\nNon-starters / things to avoid:\n${state.avoid}` : null,
-        '',
-        'APPROVAL PIPELINE',
-        `Stakeholders / inputs: ${state.approvers || 'Not specified'}`,
-        `Final decision-maker: ${state.decider || 'Not specified'}`,
-        state.pitfalls ? `Flagged pitfalls to guard against: ${state.pitfalls}` : null,
-        '',
-        'TRADEMARK & TIMING',
-        `Trademark counsel: ${state.legalStatus || 'Not specified'}`,
-        `Territories / markets: ${state.territories || 'Not specified'}`,
-        `Target timeline: ${state.timeline || 'Not specified'}`
+        'TIMING, BUDGET & SIGN-OFF',
+        `Timeline & hard milestones: ${state.timeline || 'Not specified'}`,
+        `Indicative budget: ${state.budget || 'Not specified'}`,
+        `Deciding group & sign-off: ${state.deciders || 'Not specified'}`,
+        `Trademark territories & legal partner: ${state.trademark || 'Not specified'}`,
+        state.pitfalls ? `Flagged pitfalls: ${state.pitfalls}` : null
       ];
       return lines.filter((l) => l !== null).join('\n');
     }
 
-    function renderSummary() {
-      const box = document.getElementById('brief-summary-box');
-      if (!box) return;
-
-      const rows = [
-        ['Route & Contact', `${state.audience || '—'} · ${state.name || '—'}${state.organisation ? ' (' + state.organisation + ')' : ''}${state.email ? ' · ' + state.email : ''}`],
-        ['What We Are Naming', `${state.projectType || '—'}${state.sector ? ' — ' + state.sector : ''}`],
-        ['Context & Ambition', state.context || '—'],
-        ['Things to Avoid', state.avoid || 'None noted'],
-        ['Approval Pipeline', `Inputs: ${state.approvers || '—'}\nFinal sign-off: ${state.decider || '—'}`],
-        ['Trademark & Timing', `Legal partner: ${state.legalStatus || '—'}\nTerritories: ${state.territories || '—'}\nTimeline: ${state.timeline || '—'}`]
-      ];
-
-      if (state.pitfalls) {
-        rows.push(['Flagged Pitfalls', state.pitfalls]);
-      }
-
-      box.innerHTML = rows
-        .map(
-          ([label]) => `
-        <div class="brief-summary__row">
-          <div class="brief-summary__label">${label}</div>
-          <div class="brief-summary__val"></div>
-        </div>
-      `
-        )
-        .join('');
-
-      const valEls = box.querySelectorAll('.brief-summary__val');
-      rows.forEach(([, val], i) => {
-        valEls[i].textContent = val;
-      });
+    function buildMailtoHref() {
+      const email = DATA.contactEmail || 'names@timburley.com';
+      const subject = `Naming brief — ${state.organisation || state.name || state.namingType || 'New enquiry'}`;
+      const body = buildFormattedBrief();
+      return `mailto:${encodeURIComponent(email)}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
     }
 
-    function showStep(step) {
-      currentStep = Math.max(1, Math.min(totalSteps, step));
-      stepNodes.forEach((node) => {
-        const s = Number(node.getAttribute('data-step'));
-        node.classList.toggle('is-active', s === currentStep);
-      });
-
-      if (progressFill) {
-        progressFill.style.width = `${(currentStep / totalSteps) * 100}%`;
-      }
-      if (progressLabel) {
-        progressLabel.textContent = `Step 0${currentStep} of 0${totalSteps}`;
-      }
-      if (prevBtn) {
-        prevBtn.style.visibility = currentStep === 1 ? 'hidden' : 'visible';
-      }
-      if (nextBtn) {
-        nextBtn.style.display = currentStep === totalSteps ? 'none' : 'inline-flex';
-        nextBtn.textContent = currentStep === totalSteps - 1 ? 'Review brief →' : 'Continue →';
-      }
-
-      syncAside(currentStep);
-      if (currentStep === totalSteps) {
-        renderSummary();
-      }
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    }
-
-    if (prevBtn) {
-      prevBtn.addEventListener('click', () => showStep(currentStep - 1));
-    }
-    if (nextBtn) {
-      nextBtn.addEventListener('click', () => showStep(currentStep + 1));
-    }
-
-    const copyBtn = document.getElementById('brief-copy');
-    const printBtn = document.getElementById('brief-print');
-    const emailBtn = document.getElementById('brief-send-email');
-    const statusBanner = document.getElementById('brief-status');
-
-    function showStatus(msg) {
+    function showStatus(msg, type = 'info', includeMailto = false) {
       if (!statusBanner) return;
+      statusBanner.className = 'status-banner is-visible';
+      if (type === 'error') statusBanner.classList.add('status-banner--error');
+      if (type === 'success') statusBanner.classList.add('status-banner--success');
       statusBanner.textContent = msg;
-      statusBanner.classList.add('is-visible');
+
+      if (includeMailto) {
+        const sep = document.createTextNode(' ');
+        const link = document.createElement('a');
+        link.href = buildMailtoHref();
+        link.className = 'text-link';
+        link.textContent = 'Open in your email app →';
+        statusBanner.appendChild(sep);
+        statusBanner.appendChild(link);
+      }
     }
 
     if (copyBtn) {
@@ -662,9 +601,9 @@
         const text = buildFormattedBrief();
         try {
           await navigator.clipboard.writeText(text);
-          showStatus('Brief copied to your clipboard. Paste it into an email or share it with your team.');
+          showStatus('Brief copied to your clipboard—paste it into an email or share it with your team.', 'success');
         } catch {
-          showStatus('Select and copy the brief summary above—clipboard access was restricted by the browser.');
+          showStatus('Clipboard access was restricted by the browser—use Print / Save PDF or email names@timburley.com directly.', 'error');
         }
       });
     }
@@ -673,18 +612,90 @@
       printBtn.addEventListener('click', () => window.print());
     }
 
-    if (emailBtn) {
-      emailBtn.addEventListener('click', () => {
-        const email = DATA.contactEmail || 'names@timburley.com';
-        const subject = `Naming Brief: ${state.organisation || state.projectType || 'New Enquiry'}`;
-        const body = buildFormattedBrief();
-        const mailto = `mailto:${encodeURIComponent(email)}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-        window.location.href = mailto;
-        showStatus(`Opening your email client addressed to ${email} with your structured brief pre-filled.`);
-      });
-    }
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      syncFields();
 
-    showStep(1);
+      if (!state.summary) {
+        showStatus('Please add a short summary of the brief so I know what you’re naming.', 'error');
+        document.getElementById('f-summary')?.focus();
+        return;
+      }
+      if (!state.name) {
+        showStatus('Please add your name so I know who I’m replying to.', 'error');
+        document.getElementById('f-name')?.focus();
+        return;
+      }
+      if (!state.email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(state.email)) {
+        showStatus('Please enter a valid email address so I can reply to you.', 'error');
+        document.getElementById('f-email')?.focus();
+        return;
+      }
+
+      const payload = {
+        ...state,
+        sendCopy: Boolean(sendCopyInput?.checked),
+        website: honeypotInput?.value || ''
+      };
+
+      const originalLabel = submitBtn ? submitBtn.textContent : 'Send me your brief →';
+      if (submitBtn) {
+        submitBtn.disabled = true;
+        submitBtn.textContent = 'Sending brief…';
+      }
+
+      try {
+        const res = await fetch('/api/brief', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload)
+        });
+
+        let result = {};
+        try {
+          result = await res.json();
+        } catch {
+          result = {};
+        }
+
+        if (res.ok && result.ok) {
+          showStatus(
+            `Brief received—thank you, ${state.name}. I’ll read this personally and come back to you within one working day.`,
+            'success'
+          );
+          if (submitBtn) {
+            submitBtn.textContent = 'Brief sent ✓';
+            submitBtn.disabled = false;
+          }
+          return;
+        }
+
+        if (res.status === 404 || res.status === 501 || result.code === 'NOT_CONFIGURED') {
+          showStatus(
+            'Direct sending isn’t active in this environment yet—you can copy the brief or send it via your email app.',
+            'error',
+            true
+          );
+        } else {
+          showStatus(
+            result.error || 'Could not send just now—please try again or email names@timburley.com directly.',
+            'error',
+            true
+          );
+        }
+      } catch {
+        showStatus(
+          'Network error while sending—please try again or send via your email app.',
+          'error',
+          true
+        );
+      }
+
+      if (submitBtn) {
+        submitBtn.disabled = false;
+        submitBtn.textContent = originalLabel;
+      }
+    });
   }
 
   /* ------------------------------------------------------------------------
@@ -697,7 +708,7 @@
     initTestimonials();
     initCaseStudyPage();
     initPitfalls();
-    initBriefWizard();
+    initBriefForm();
     initReveals();
   });
 })();
