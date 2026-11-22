@@ -2205,8 +2205,8 @@ button, input, textarea, select {
 
 .case-visual-stage--media .case-visual-stage__image {
   width: 100%;
-  aspect-ratio: 3 / 2;
-  max-height: 640px;
+  height: auto;
+  max-height: 680px;
   object-fit: cover;
   display: block;
 }
