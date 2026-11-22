@@ -99,7 +99,7 @@
     link.setAttribute('aria-label', `Read the naming story for ${project.name}`);
     link.innerHTML = `
       <div class="specimen-card__top">
-        <span class="specimen-card__num">${project.num} / ${DATA.projects.length}</span>
+        <span class="specimen-card__num">${project.num} / ${DATA.projects.length} · ${project.launchDate}</span>
         <span class="specimen-card__cat">${project.category}</span>
       </div>
       <div>
@@ -227,7 +227,7 @@
         <div class="container">
           <a href="/work" class="case-crumb">← All ${DATA.projects.length} named projects</a>
           <div class="case-header-row">
-            <span class="eyebrow">${project.num} / ${DATA.projects.length} · ${project.category}</span>
+            <span class="eyebrow">${project.num} / ${DATA.projects.length} · ${project.launchDate} · ${project.category}</span>
             ${project.trading ? '<span class="status-tag">Currently trading</span>' : '<span class="eyebrow">Archive / Past Venture</span>'}
           </div>
           <h1 class="h-display" style="margin-bottom:1.15rem;">${project.name}</h1>
