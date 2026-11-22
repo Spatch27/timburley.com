@@ -440,6 +440,33 @@ window.TB_DATA = {
       story: 'Sometimes the clearest, most sensory word does the best work. “Bloom Candles” connects directly to the floral essential oils at the heart of every candle, capturing the moment natural fragrance opens gently into a room.',
       processNote: 'Avoided over-complicating an honest craft product—focusing on immediate warmth, natural provenance and effortless memorability.',
       outcome: 'A clear, inviting name that let the craft and natural ingredients speak for themselves.'
+    },
+    {
+      id: 'south-west-food-and-drink',
+      domain: '—',
+      origin: 'Clarity in plain sight + “Sensational” launch campaign',
+      agencyPartner: 'Red Rocket',
+      client: 'Taste of the West',
+      launchDate: 'TBC',
+      num: '15',
+      name: 'South West Food & Drink',
+      sector: 'Regional food & drink promotion (RDA-funded)',
+      category: 'Food & Consumer',
+      scope: 'Regional brand naming & launch campaign',
+      partner: 'Red Rocket · Client: Taste of the West',
+      trading: false,
+      featured: false,
+      primary: false,
+      liveUrl: null,
+      style: 'serif',
+      visualImage: null,
+      visualCaption: 'Designed brand visual slot — ready for South West Food & Drink identity & “Sensational” campaign visuals',
+      testimonialId: null,
+      summary: 'A unifying regional brand name championing food and drink across the South West of England—proving that sometimes the obvious solution is the right one.',
+      brief: 'Food promotion group Taste of the West commissioned the agency Red Rocket to create a new unifying brand to champion food and drink from across the South West of England—backed by funding from the Regional Development Agency (RDA).',
+      story: 'Sometimes the obvious solution is the right one. Rather than forcing cleverness onto a regional body that needed immediate clarity and authority, “South West Food & Drink” united producers and buyers under a name that was clear, honest and right. To accompany the main brand, we created a launch campaign built around the word “Sensational”—grounded in research showing that people strongly associated the region with tourism and memorable experiences, connecting South West food and drink to the sensations people enjoyed and held on to when visiting.',
+      processNote: 'Effective naming requires the judgment to know when plain-English clarity beats invention—and how to strengthen a straightforward name with supporting narrative and campaign thinking that gives it genuine emotional pull.',
+      outcome: 'South West Food & Drink established an unmistakable unifying flagship for the region’s producers, brought vividly to life through a “Sensational” launch rooted in memory, taste and sense of place.'
     }
   ],
 
