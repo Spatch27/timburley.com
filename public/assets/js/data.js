@@ -302,7 +302,7 @@ window.TB_DATA = {
     {
       id: 'ockery',
       domain: 'ockery.com',
-      trademarkUrl: null,
+      trademarkUrl: 'https://trademarks.ipo.gov.uk/ipo-tmcase/page/Results/1/UK00003138532',
       agencyPartner: 'Direct / consultancy',
       client: 'Ocean Crown',
       launchDate: '2015',
@@ -383,7 +383,7 @@ window.TB_DATA = {
     {
       id: 'meddo',
       domain: 'meddo.co.uk',
-      trademarkUrl: null,
+      trademarkUrl: 'https://trademarks.ipo.gov.uk/ipo-tmcase/page/Results/1/UK00002614794',
       agencyPartner: 'Design Stable',
       client: 'Meddo',
       launchDate: '2012',
