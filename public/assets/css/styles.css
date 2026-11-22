@@ -737,6 +737,12 @@ button, input, textarea, select {
     align-items: end;
     gap: 3rem;
   }
+
+  .section-head--cta {
+    grid-template-columns: minmax(0, 1fr) auto;
+    align-items: end;
+    gap: 2.5rem;
+  }
 }
 
 .hero__eyebrow .eyebrow::before,
