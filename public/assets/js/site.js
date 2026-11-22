@@ -612,8 +612,58 @@
       printBtn.addEventListener('click', () => window.print());
     }
 
+    const originalSubmitLabel = submitBtn ? submitBtn.textContent : 'Send me your brief →';
+    let isSubmitted = false;
+
+    function resetBriefForm() {
+      isSubmitted = false;
+      form.reset();
+      Object.keys(state).forEach((k) => {
+        if (k !== 'pitfalls' && k !== 'refProject') state[k] = '';
+      });
+      form.querySelectorAll('.brief-pill.is-selected').forEach((p) => {
+        p.classList.remove('is-selected');
+        p.setAttribute('aria-pressed', 'false');
+      });
+      if (submitBtn) {
+        submitBtn.style.display = '';
+        submitBtn.disabled = false;
+        submitBtn.textContent = originalSubmitLabel;
+      }
+      if (statusBanner) {
+        statusBanner.className = 'status-banner';
+        statusBanner.textContent = '';
+      }
+      document.getElementById('f-summary')?.focus();
+    }
+
+    function showSentConfirmation(senderName) {
+      if (!statusBanner) return;
+      statusBanner.className = 'status-banner is-visible status-banner--success';
+      statusBanner.textContent = '';
+
+      const eyebrow = document.createElement('span');
+      eyebrow.className = 'status-banner__eyebrow';
+      eyebrow.textContent = 'Brief sent ✓';
+
+      const msg = document.createElement('p');
+      msg.style.margin = '0';
+      msg.textContent = `Thank you, ${senderName} — I’ve received your brief and will come back to you personally within one working day.`;
+
+      const resetBtn = document.createElement('button');
+      resetBtn.type = 'button';
+      resetBtn.className = 'status-banner__reset';
+      resetBtn.textContent = 'Send another brief';
+      resetBtn.addEventListener('click', resetBriefForm);
+
+      statusBanner.appendChild(eyebrow);
+      statusBanner.appendChild(msg);
+      statusBanner.appendChild(resetBtn);
+    }
+
     form.addEventListener('submit', async (e) => {
       e.preventDefault();
+      if (isSubmitted) return;
       syncFields();
 
       if (!state.summary) {
@@ -638,7 +688,6 @@
         website: honeypotInput?.value || ''
       };
 
-      const originalLabel = submitBtn ? submitBtn.textContent : 'Send me your brief →';
       if (submitBtn) {
         submitBtn.disabled = true;
         submitBtn.textContent = 'Sending brief…';
@@ -659,14 +708,11 @@
         }
 
         if (res.ok && result.ok) {
-          showStatus(
-            `Brief received—thank you, ${state.name}. I’ll read this personally and come back to you within one working day.`,
-            'success'
-          );
+          isSubmitted = true;
           if (submitBtn) {
-            submitBtn.textContent = 'Brief sent ✓';
-            submitBtn.disabled = false;
+            submitBtn.style.display = 'none';
           }
+          showSentConfirmation(state.name);
           return;
         }
 
@@ -693,7 +739,7 @@
 
       if (submitBtn) {
         submitBtn.disabled = false;
-        submitBtn.textContent = originalLabel;
+        submitBtn.textContent = originalSubmitLabel;
       }
     });
   }
