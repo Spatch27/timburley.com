@@ -58,7 +58,7 @@ window.TB_DATA = {
     {
       id: 'cora-health',
       domain: 'corahealth.co.uk',
-      origin: 'Personal warmth + Latin “cor” (heart)',
+      trademarkUrl: 'https://trademarks.ipo.gov.uk/ipo-tmcase/page/Results/1/UK00004121477',
       agencyPartner: 'R&D (Robin Jaffray & Tim Doust)',
       client: 'Healthshare & Connect Health',
       launchDate: '2025',
@@ -85,7 +85,7 @@ window.TB_DATA = {
     {
       id: 'corigan',
       domain: 'corigan.io',
-      origin: 'Anagram of “Organic”',
+      trademarkUrl: 'https://trademarks.ipo.gov.uk/ipo-tmcase/page/Results/1/UK00003717279',
       agencyPartner: 'Organic',
       client: 'Organic (SEO platform)',
       launchDate: '2023',
@@ -112,7 +112,7 @@ window.TB_DATA = {
     {
       id: 'yomira',
       domain: 'yomira.com',
-      origin: '“Yo” (your) + “Mira” (ocean)',
+      trademarkUrl: 'https://trademarks.ipo.gov.uk/ipo-tmcase/page/Results/1/UK00003538653',
       agencyPartner: 'R&D (Robin Jaffray & Tim Doust)',
       client: 'Yomira',
       launchDate: '2023',
@@ -139,7 +139,7 @@ window.TB_DATA = {
     {
       id: 'hemiko',
       domain: 'hemiko.com',
-      origin: 'HEM — Heat Energy Markets',
+      trademarkUrl: 'https://trademarks.ipo.gov.uk/ipo-tmcase/page/Results/1/UK00003923225',
       agencyPartner: 'Organic',
       client: 'Hemiko (formerly Pinnacle Power)',
       launchDate: '2022',
@@ -166,12 +166,12 @@ window.TB_DATA = {
     {
       id: 'grain-connect',
       domain: 'grainconnect.com',
-      origin: 'William Blake: “World in a Grain of Sand”',
+      trademarkUrl: 'https://trademarks.ipo.gov.uk/ipo-tmcase/page/Results/1/UK00003214453',
       agencyPartner: 'Believe in',
       client: 'Pinnacle Group joint venture',
       launchDate: '2017',
       num: '05',
-      name: 'Grain Connect',
+      name: 'Grain',
       sector: 'Full-fibre broadband for new housing developments',
       category: 'Tech & Digital',
       scope: 'Brand naming',
@@ -182,18 +182,18 @@ window.TB_DATA = {
       liveUrl: 'https://grainconnect.com',
       style: 'sans',
       visualImage: '/assets/images/work/grain-connect.jpg',
-      visualCaption: 'Grain Connect outdoor launch campaign — “How fast?”',
+      visualCaption: 'Grain outdoor launch campaign — “How fast?”',
       testimonialId: null,
       summary: 'A William Blake–inspired broadband brand bringing hyper-fast full-fibre connectivity to new-build housing communities.',
-      brief: 'Created while I was at Believe in for a joint venture between Pinnacle Group and a telecoms partner, Grain Connect was built to challenge legacy telecoms giants—partnering with housebuilders to install end-to-end fibre-optic networks directly into new residential developments.',
+      brief: 'Created while I was at Believe in for a joint venture between Pinnacle Group and a telecoms partner, Grain was built to challenge legacy telecoms giants—partnering with housebuilders to install end-to-end fibre-optic networks directly into new residential developments.',
       story: 'Because the network was pure glass fibre end-to-end, I looked to William Blake’s famous line: “To see a World in a Grain of Sand.” Silicon sand becomes optical glass fibre—hair-thin strands capable of carrying vast bandwidth into modern homes. “Grain” gave the business a poetic, genuine origin story right as full-fibre was taking off, without tying the brand to jargon that would quickly date.',
-      processNote: 'Pairing an evocative, human lead word (“Grain”) with a clear functional anchor (“Connect”) gave housebuilders and residents immediate clarity while standing miles apart from hyperbolic telecoms clichés.',
-      outcome: 'Grain Connect continues to connect thousands of new-build homes across the UK to high-speed full-fibre broadband.'
+      processNote: 'Choosing an evocative, human word (“Grain”)—backed by the domain grainconnect.com—gave housebuilders and residents immediate clarity while standing miles apart from hyperbolic telecoms clichés.',
+      outcome: 'Grain continues to connect thousands of new-build homes across the UK to high-speed full-fibre broadband.'
     },
     {
       id: 'with-energy',
       domain: 'with.energy / withenergy.co.uk',
-      origin: 'Working collaboratively “with” communities',
+      trademarkUrl: null,
       agencyPartner: 'Believe in',
       client: 'Community energy provider',
       launchDate: '2017',
@@ -220,7 +220,7 @@ window.TB_DATA = {
     {
       id: 'gwallon-keas',
       domain: 'N/A',
-      origin: 'Cornish: standing stone + agricultural plot',
+      trademarkUrl: null,
       agencyPartner: 'Believe in',
       client: 'Devonshire Homes',
       launchDate: '2017',
@@ -247,7 +247,7 @@ window.TB_DATA = {
     {
       id: 'loka-energy',
       domain: 'loka.energy / lokaenergy.com',
-      origin: '“Local” + “low carbon”',
+      trademarkUrl: 'https://trademarks.ipo.gov.uk/ipo-tmcase/page/Results/1/UK00003069008',
       agencyPartner: 'Believe in',
       client: 'Knight Dragon',
       launchDate: '2016',
@@ -275,7 +275,7 @@ window.TB_DATA = {
     {
       id: 'fs-silas',
       domain: 'N/A',
-      origin: 'Espionage & secret-dossier intrigue',
+      trademarkUrl: null,
       agencyPartner: 'Believe in',
       client: 'FontSmith (acquired by Monotype)',
       launchDate: '2016',
@@ -302,7 +302,7 @@ window.TB_DATA = {
     {
       id: 'ockery',
       domain: 'ockery.com',
-      origin: 'Phonetic root in a traditional stone dwelling',
+      trademarkUrl: null,
       agencyPartner: 'Direct / consultancy',
       client: 'Ocean Crown',
       launchDate: '2015',
@@ -329,7 +329,7 @@ window.TB_DATA = {
     {
       id: 'uprising',
       domain: 'N/A',
-      origin: 'Baking lift + category movement',
+      trademarkUrl: null,
       agencyPartner: 'Believe in',
       client: 'Independent founder',
       launchDate: '2014',
@@ -356,7 +356,7 @@ window.TB_DATA = {
     {
       id: 'shape-mendip',
       domain: 'N/A',
-      origin: 'Adaptable hub form + shaping community',
+      trademarkUrl: null,
       agencyPartner: 'Believe in',
       client: 'Mendip District Council',
       launchDate: '2013',
@@ -383,7 +383,7 @@ window.TB_DATA = {
     {
       id: 'meddo',
       domain: 'meddo.co.uk',
-      origin: 'Evolved from “meadow” (safe, calm hands)',
+      trademarkUrl: null,
       agencyPartner: 'Design Stable',
       client: 'Meddo',
       launchDate: '2012',
@@ -410,7 +410,7 @@ window.TB_DATA = {
     {
       id: 'south-west-food-and-drink',
       domain: 'southwestfoodanddrink.org',
-      origin: 'Clarity in plain sight + “Sensational” launch campaign',
+      trademarkUrl: null,
       agencyPartner: 'Red Rocket',
       client: 'Taste of the West',
       launchDate: '2004',

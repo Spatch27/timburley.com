@@ -223,6 +223,10 @@
         ? `<a href="${project.liveUrl}" target="_blank" rel="noopener noreferrer" class="text-link">${project.domain} ↗</a>`
         : project.domain || '—';
 
+    const trademarkHtml = project.trademarkUrl
+      ? `<a href="${project.trademarkUrl}" target="_blank" rel="noopener noreferrer" class="text-link">Registered ↗</a>`
+      : 'Unregistered';
+
     const visualStageHtml = project.visualImage
       ? `
           <figure class="case-visual-stage case-visual-stage--media" style="margin:0 0 2.5rem;">
@@ -264,8 +268,8 @@
               <dd>${domainHtml}</dd>
             </div>
             <div>
-              <dt>Origin</dt>
-              <dd>${project.origin || '—'}</dd>
+              <dt>Trademark</dt>
+              <dd>${trademarkHtml}</dd>
             </div>
             <div>
               <dt>Agency partner</dt>
