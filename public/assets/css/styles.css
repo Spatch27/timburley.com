@@ -1278,6 +1278,161 @@ button, input, textarea, select {
   margin-bottom: 0;
 }
 
+.process-risk {
+  margin-top: 1rem !important;
+  padding-top: 0.75rem;
+  border-top: 1px solid var(--rule);
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  line-height: 1.55;
+  letter-spacing: 0.01em;
+  color: var(--ink-primary) !important;
+}
+
+.process-risk__label {
+  color: var(--accent);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-right: 0.4rem;
+}
+
+/* Approach: In-page jump nav, 4 Name Types & 4 Watchwords */
+.page-anchors {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.65rem 1.75rem;
+  margin-top: 2rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid var(--rule);
+}
+
+.page-anchors a {
+  font-family: var(--font-mono);
+  font-size: 0.76rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.name-types-grid {
+  display: grid;
+  gap: 1.25rem;
+  grid-template-columns: 1fr;
+}
+
+@media (min-width: 720px) {
+  .name-types-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+.name-type-card {
+  border: 1px solid var(--rule);
+  background: var(--bg-paper);
+  padding: clamp(1.5rem, 2.5vw, 2rem);
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.name-type-card__head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.name-type-card__num {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+.name-type-card__example {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.03em;
+  color: var(--ink-muted);
+}
+
+.name-type-card h3 {
+  font-family: var(--font-display);
+  font-size: clamp(1.25rem, 1.8vw, 1.5rem);
+  font-weight: 500;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  margin: 0;
+  color: var(--ink-primary);
+}
+
+.name-type-card p {
+  margin: 0;
+  color: var(--ink-secondary);
+  font-size: 0.96rem;
+  line-height: 1.6;
+}
+
+.watchwords-grid {
+  display: grid;
+  gap: 1.75rem 2.25rem;
+  grid-template-columns: 1fr;
+  padding-block: clamp(1.5rem, 2.5vw, 2.25rem);
+  border-top: 1px solid var(--rule-dark);
+  border-bottom: 1px solid var(--rule-dark);
+}
+
+@media (min-width: 680px) {
+  .watchwords-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 1020px) {
+  .watchwords-grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
+
+.watchword-item__num {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.1em;
+  color: var(--accent-on-dark);
+  margin-bottom: 0.5rem;
+}
+
+.watchword-item h3 {
+  font-family: var(--font-display);
+  font-size: 1.35rem;
+  font-weight: 500;
+  letter-spacing: -0.02em;
+  margin: 0 0 0.5rem;
+  color: var(--ink-on-dark);
+}
+
+.watchword-item p {
+  margin: 0;
+  font-size: 0.94rem;
+  line-height: 1.58;
+  color: var(--ink-on-dark-muted);
+}
+
+.watchwords-note {
+  margin-top: clamp(1.75rem, 3vw, 2.5rem);
+  max-width: 66ch;
+  color: var(--ink-on-dark-muted);
+  font-size: 1rem;
+  line-height: 1.65;
+}
+
+.watchwords-note strong {
+  color: var(--ink-on-dark);
+  font-weight: 500;
+}
+
 /* Interactive Naming Pitfalls */
 .pitfalls-list {
   border-top: 1px solid var(--rule-strong);
