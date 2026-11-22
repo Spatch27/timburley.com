@@ -213,6 +213,7 @@ button, input, textarea, select {
   line-height: 1.07;
   letter-spacing: -0.03em;
   margin: 0;
+  max-width: 20ch;
   text-wrap: balance;
 }
 
@@ -223,6 +224,7 @@ button, input, textarea, select {
   line-height: 1.12;
   letter-spacing: -0.028em;
   margin: 0;
+  max-width: 20ch;
   text-wrap: balance;
 }
 
