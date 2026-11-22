@@ -1,4 +1,4 @@
-// Vercel Serverless Function — POST /api/brief
+// Vercel Serverless Function: POST /api/brief
 // Zero-dependency Resend integration using Node.js native fetch + Web Standard API.
 
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -39,7 +39,7 @@ function buildRows(d) {
 
 function renderPlainText(d, rows) {
   const lines = [
-    'NEW NAMING BRIEF — timburley.com',
+    'NEW NAMING BRIEF · timburley.com',
     '========================================',
     ''
   ];
@@ -74,7 +74,7 @@ function renderHtml(d, rows, introText) {
       Tim Burley · Creating great names
     </p>
     <h1 style="margin:0 0 12px; font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif; font-size:24px; font-weight:600; letter-spacing:-0.02em; color:#111110;">
-      Naming Brief — ${escapeHtml(d.organisation || d.name)}
+      Naming Brief: ${escapeHtml(d.organisation || d.name)}
     </h1>
     <p style="margin:0 0 24px; font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif; font-size:14px; line-height:1.55; color:#5A5954;">
       ${escapeHtml(introText)}
@@ -165,7 +165,7 @@ export async function POST(request) {
     const toEmail = process.env.BRIEF_TO_EMAIL || 'names@timburley.com';
     const rows = buildRows(data);
     const subjectSuffix = data.namingType ? ` (${data.namingType})` : '';
-    const subject = `Naming brief — ${data.organisation || data.name}${subjectSuffix}`;
+    const subject = `Naming brief: ${data.organisation || data.name}${subjectSuffix}`;
 
     const sent = await sendViaResend(apiKey, {
       from: fromEmail,
@@ -183,12 +183,12 @@ export async function POST(request) {
           from: fromEmail,
           to: [data.email],
           reply_to: toEmail,
-          subject: `Copy of your naming brief — Tim Burley`,
-          text: `Thanks ${data.name} — I have received your naming brief and will come back to you shortly.\n\n${renderPlainText(data, rows)}`,
+          subject: `Copy of your naming brief · Tim Burley`,
+          text: `Thanks ${data.name}. I have received your naming brief and will come back to you shortly.\n\n${renderPlainText(data, rows)}`,
           html: renderHtml(
             data,
             rows,
-            `Thanks ${data.name} — I’ve received your naming brief and will come back to you personally, usually within one working day.`
+            `Thanks ${data.name}. I’ve received your naming brief and will come back to you personally, usually within one working day.`
           )
         });
       } catch (copyErr) {

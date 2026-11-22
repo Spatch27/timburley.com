@@ -1,5 +1,5 @@
 /* ==========================================================================
-   timburley.com — Interactive Layer
+   timburley.com · Interactive Layer
    Navigation, specimen links, individual case study pages, testimonials,
    portrait rendering, interactive pitfalls & guided brief.
    ========================================================================== */
@@ -221,7 +221,7 @@
     const domainHtml =
       project.liveUrl && !project.liveUrlLabel && project.domain && project.domain !== 'N/A'
         ? `<a href="${project.liveUrl}" target="_blank" rel="noopener noreferrer" class="text-link">${project.domain} ↗</a>`
-        : project.domain || '—';
+        : project.domain || 'N/A';
 
     const trademarkHtml = project.trademarkUrl
       ? `<a href="${project.trademarkUrl}" target="_blank" rel="noopener noreferrer" class="text-link">Registered ↗</a>`
@@ -230,7 +230,7 @@
     const visualStageHtml = project.visualImage
       ? `
           <figure class="case-visual-stage case-visual-stage--media" style="margin:0 0 2.5rem;">
-            <img class="case-visual-stage__image" src="${project.visualImage}" alt="${project.name} — ${project.visualCaption}">
+            <img class="case-visual-stage__image" src="${project.visualImage}" alt="${project.name}: ${project.visualCaption}">
             <figcaption class="case-visual-stage__foot">
               <span>${project.visualCaption}</span>
               ${liveLinkHtml}
@@ -277,7 +277,7 @@
             </div>
             <div>
               <dt>Client</dt>
-              <dd>${project.client || '—'}</dd>
+              <dd>${project.client || 'N/A'}</dd>
             </div>
             <div>
               <dt>Launch date</dt>
@@ -442,7 +442,7 @@
       if (count === 0) {
         diagTitle.textContent = 'Recognise any of these from past projects?';
         diagBody.textContent =
-          'Tick any pitfalls you want to guard against—we can carry them straight into your naming brief so we design the decision process around them from day one.';
+          'Tick any pitfalls you want to guard against. We can carry them straight into your naming brief so we design the decision process around them from day one.';
         diagLink.href = '/brief';
         diagLink.textContent = 'Start a guided brief →';
       } else {
@@ -548,7 +548,7 @@
     function buildFormattedBrief() {
       syncFields();
       const lines = [
-        'NAMING BRIEF — Tim Burley (Creating great names)',
+        'NAMING BRIEF · Tim Burley (Creating great names)',
         '========================================',
         `Commissioning route: ${state.route || 'Not specified'}`,
         `Name: ${state.name || 'Not specified'}`,
@@ -573,7 +573,7 @@
 
     function buildMailtoHref() {
       const email = DATA.contactEmail || 'names@timburley.com';
-      const subject = `Naming brief — ${state.organisation || state.name || state.namingType || 'New enquiry'}`;
+      const subject = `Naming brief: ${state.organisation || state.name || state.namingType || 'New enquiry'}`;
       const body = buildFormattedBrief();
       return `mailto:${encodeURIComponent(email)}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
     }
@@ -601,9 +601,9 @@
         const text = buildFormattedBrief();
         try {
           await navigator.clipboard.writeText(text);
-          showStatus('Brief copied to your clipboard—paste it into an email or share it with your team.', 'success');
+          showStatus('Brief copied to your clipboard. Paste it into an email or share it with your team.', 'success');
         } catch {
-          showStatus('Clipboard access was restricted by the browser—use Print / Save PDF or email names@timburley.com directly.', 'error');
+          showStatus('Clipboard access was restricted by the browser. Use Print / Save PDF or email names@timburley.com directly.', 'error');
         }
       });
     }
@@ -648,7 +648,7 @@
 
       const msg = document.createElement('p');
       msg.style.margin = '0';
-      msg.textContent = `Thank you, ${senderName} — I’ve received your brief and will come back to you personally within one working day.`;
+      msg.textContent = `Thank you, ${senderName}. I’ve received your brief and will come back to you personally within one working day.`;
 
       const resetBtn = document.createElement('button');
       resetBtn.type = 'button';
@@ -718,20 +718,20 @@
 
         if (res.status === 404 || res.status === 501 || result.code === 'NOT_CONFIGURED') {
           showStatus(
-            'Direct sending isn’t active in this environment yet—you can copy the brief or send it via your email app.',
+            'Direct sending isn’t active in this environment yet. You can copy the brief or send it via your email app.',
             'error',
             true
           );
         } else {
           showStatus(
-            result.error || 'Could not send just now—please try again or email names@timburley.com directly.',
+            result.error || 'Could not send just now. Please try again or email names@timburley.com directly.',
             'error',
             true
           );
         }
       } catch {
         showStatus(
-          'Network error while sending—please try again or send via your email app.',
+          'Network error while sending. Please try again or send via your email app.',
           'error',
           true
         );
