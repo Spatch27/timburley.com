@@ -107,7 +107,6 @@
         <p class="specimen-card__sector">${project.sector}</p>
       </div>
       <div class="specimen-card__foot">
-        <span>${project.scope}</span>
         <span>Read story →</span>
       </div>
     `;
