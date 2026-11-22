@@ -224,7 +224,7 @@ button, input, textarea, select {
   line-height: 1.12;
   letter-spacing: -0.028em;
   margin: 0;
-  max-width: 20ch;
+  max-width: 26ch;
   text-wrap: balance;
 }
 
