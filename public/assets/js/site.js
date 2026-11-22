@@ -218,6 +218,11 @@
       ? `<span><a href="${project.liveUrl}" target="_blank" rel="noopener noreferrer" class="text-link" style="font-family:var(--font-mono); font-size:0.72rem;">${project.liveUrlLabel || 'Visit live brand ↗'}</a></span>`
       : '';
 
+    const domainHtml =
+      project.liveUrl && project.domain && project.domain !== 'N/A'
+        ? `<a href="${project.liveUrl}" target="_blank" rel="noopener noreferrer" class="text-link">${project.domain} ↗</a>`
+        : project.domain || '—';
+
     const visualStageHtml = project.visualImage
       ? `
           <figure class="case-visual-stage case-visual-stage--media" style="margin:0 0 2.5rem;">
@@ -227,18 +232,7 @@
               ${liveLinkHtml}
             </figcaption>
           </figure>`
-      : `
-          <figure class="case-visual-stage" style="margin:0 0 2.5rem;">
-            <div style="display:flex; justify-content:space-between; align-items:center; gap:1rem;">
-              <span class="eyebrow">Designed State &amp; Visual Specimen</span>
-              <span class="mono" style="color:var(--ink-muted);">${project.scope}</span>
-            </div>
-            <div class="case-visual-stage__specimen ${styleClass}">${project.name}</div>
-            <figcaption class="case-visual-stage__foot">
-              <span>${project.visualCaption}</span>
-              ${liveLinkHtml}
-            </figcaption>
-          </figure>`;
+      : '';
 
     const testimonial = project.testimonialId
       ? (DATA.testimonials || []).find((t) => t.id === project.testimonialId)
@@ -267,7 +261,7 @@
             </div>
             <div>
               <dt>Domain</dt>
-              <dd>${project.domain || '—'}</dd>
+              <dd>${domainHtml}</dd>
             </div>
             <div>
               <dt>Origin</dt>
