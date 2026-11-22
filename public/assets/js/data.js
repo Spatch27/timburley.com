@@ -187,7 +187,7 @@ window.TB_DATA = {
       summary: 'A William Blake–inspired broadband brand bringing hyper-fast full-fibre connectivity to new-build housing communities.',
       brief: 'Created while I was at Believe in for a joint venture between Pinnacle Group and a telecoms partner, Grain was built to challenge legacy telecoms giants—partnering with housebuilders to install end-to-end fibre-optic networks directly into new residential developments.',
       story: 'Because the network was pure glass fibre end-to-end, I looked to William Blake’s famous line: “To see a World in a Grain of Sand.” Silicon sand becomes optical glass fibre—hair-thin strands capable of carrying vast bandwidth into modern homes. “Grain” gave the business a poetic, genuine origin story right as full-fibre was taking off, without tying the brand to jargon that would quickly date.',
-      processNote: 'Choosing an evocative, human word (“Grain”)—backed by the domain grainconnect.com—gave housebuilders and residents immediate clarity while standing miles apart from hyperbolic telecoms clichés.',
+      processNote: 'Pairing an evocative, human lead word (“Grain”) with a clear functional anchor (“Connect”) gave housebuilders and residents immediate clarity while standing miles apart from hyperbolic telecoms clichés.',
       outcome: 'Grain continues to connect thousands of new-build homes across the UK to high-speed full-fibre broadband.'
     },
     {
