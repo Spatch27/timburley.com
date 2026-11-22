@@ -2,9 +2,10 @@
 .DS_Store
 Thumbs.db
 
-# Private notes & transcripts (never publish)
+# Private notes, transcripts & raw source imagery (never publish)
 0002*
 0004*.md
+TB images*
 *.m4a
 *.mp3
 *.wav

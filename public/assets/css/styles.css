@@ -2195,6 +2195,28 @@ button, input, textarea, select {
   gap: 2rem;
 }
 
+.case-visual-stage--media {
+  padding: 0;
+  min-height: 0;
+  gap: 0;
+  overflow: hidden;
+  background: var(--bg-surface);
+}
+
+.case-visual-stage--media .case-visual-stage__image {
+  width: 100%;
+  aspect-ratio: 3 / 2;
+  max-height: 640px;
+  object-fit: cover;
+  display: block;
+}
+
+.case-visual-stage--media .case-visual-stage__foot {
+  padding: 1rem 1.5rem;
+  border-top: 1px solid var(--rule);
+  background: var(--bg-surface);
+}
+
 .case-visual-stage--dark {
   background: var(--bg-ink);
   color: var(--ink-on-dark);
