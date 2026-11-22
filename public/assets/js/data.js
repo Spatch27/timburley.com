@@ -84,7 +84,7 @@ window.TB_DATA = {
     },
     {
       id: 'corigan',
-      domain: 'TBC',
+      domain: 'corigan.io',
       origin: 'Anagram of “Organic”',
       agencyPartner: 'Organic',
       client: 'Organic (SEO platform)',
@@ -98,7 +98,7 @@ window.TB_DATA = {
       trading: true,
       featured: true,
       primary: true,
-      liveUrl: null,
+      liveUrl: 'https://corigan.io/',
       style: 'sans',
       visualImage: null,
       visualCaption: 'Designed brand visual slot — ready for Corigan wordmark & product visuals',
@@ -192,7 +192,7 @@ window.TB_DATA = {
     },
     {
       id: 'with-energy',
-      domain: 'with.energy',
+      domain: 'with.energy / withenergy.co.uk',
       origin: 'Working collaboratively “with” communities',
       agencyPartner: 'Believe in',
       client: 'Community energy provider',
@@ -219,7 +219,7 @@ window.TB_DATA = {
     },
     {
       id: 'gwallon-keas',
-      domain: 'devonshirehomes.co.uk',
+      domain: 'N/A',
       origin: 'Cornish: standing stone + agricultural plot',
       agencyPartner: 'Believe in',
       client: 'Devonshire Homes',
@@ -246,7 +246,7 @@ window.TB_DATA = {
     },
     {
       id: 'loka-energy',
-      domain: 'lokaenergy.co.uk',
+      domain: 'loka.energy / lokaenergy.com',
       origin: '“Local” + “low carbon”',
       agencyPartner: 'Believe in',
       client: 'Knight Dragon',
@@ -274,7 +274,7 @@ window.TB_DATA = {
     },
     {
       id: 'fs-silas',
-      domain: 'monotype.com',
+      domain: 'N/A',
       origin: 'Espionage & secret-dossier intrigue',
       agencyPartner: 'Believe in',
       client: 'FontSmith (acquired by Monotype)',
@@ -328,7 +328,7 @@ window.TB_DATA = {
     },
     {
       id: 'uprising',
-      domain: '—',
+      domain: 'N/A',
       origin: 'Baking lift + category movement',
       agencyPartner: 'Believe in',
       client: 'Independent founder',
@@ -355,7 +355,7 @@ window.TB_DATA = {
     },
     {
       id: 'shape-mendip',
-      domain: 'shapemendip.org.uk',
+      domain: 'N/A',
       origin: 'Adaptable hub form + shaping community',
       agencyPartner: 'Believe in',
       client: 'Mendip District Council',
@@ -382,7 +382,7 @@ window.TB_DATA = {
     },
     {
       id: 'meddo',
-      domain: 'TBC',
+      domain: 'meddo.co.uk',
       origin: 'Evolved from “meadow” (safe, calm hands)',
       agencyPartner: 'Design Stable',
       client: 'Meddo',
@@ -409,11 +409,11 @@ window.TB_DATA = {
     },
     {
       id: 'bloom-candles',
-      domain: '—',
+      domain: 'bloomcandles.co.uk',
       origin: 'Floral essential oils opening into scent',
       agencyPartner: 'Direct',
       client: 'Independent craftsperson',
-      launchDate: '2007',
+      launchDate: '2009',
       num: '14',
       name: 'Bloom Candles',
       sector: 'Natural essential-oil scented candles',
@@ -436,7 +436,7 @@ window.TB_DATA = {
     },
     {
       id: 'south-west-food-and-drink',
-      domain: '—',
+      domain: 'N/A',
       origin: 'Clarity in plain sight + “Sensational” launch campaign',
       agencyPartner: 'Red Rocket',
       client: 'Taste of the West',
