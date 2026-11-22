@@ -161,7 +161,7 @@ export async function POST(request) {
       );
     }
 
-    const fromEmail = process.env.BRIEF_FROM_EMAIL || 'Tim Burley <names@timburley.com>';
+    const fromEmail = process.env.BRIEF_FROM_EMAIL || 'Tim Burley Website <briefs@timburley.com>';
     const toEmail = process.env.BRIEF_TO_EMAIL || 'names@timburley.com';
     const rows = buildRows(data);
     const subjectSuffix = data.namingType ? ` (${data.namingType})` : '';
