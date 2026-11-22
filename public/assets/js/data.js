@@ -329,7 +329,7 @@ window.TB_DATA = {
     {
       id: 'uprising',
       domain: 'N/A',
-      trademarkUrl: null,
+      trademarkUrl: 'https://trademarks.ipo.gov.uk/ipo-tmcase/page/Results/1/UK00003061985',
       agencyPartner: 'Believe in',
       client: 'Independent founder',
       launchDate: '2014',
