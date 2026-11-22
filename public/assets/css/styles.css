@@ -303,11 +303,10 @@ button, input, textarea, select {
 
 .brand-mark__tag {
   font-family: var(--font-sans);
-  font-size: 0.84rem;
+  font-size: 0.92rem;
   letter-spacing: 0;
   color: var(--ink-muted);
   padding-left: 0.85rem;
-  border-left: 1px solid var(--rule);
   display: none;
 }
 
