@@ -212,7 +212,7 @@ window.TB_DATA = {
       visualCaption: 'With Energy fleet livery — “With Energy Networks Evolve / Communities Grow”',
       testimonialId: null,
       summary: 'A single, human-first community energy brand designed to deploy seamlessly across multiple neighbourhoods.',
-      brief: 'Building directly on the relationship from Loka Energy, the client wanted a standardised energy brand that could drop into many different communities across the country—eliminating the need to invent and register a separate brand for every local scheme.',
+      brief: 'Building directly on the relationship from Loka, the client wanted a standardised energy brand that could drop into many different communities across the country—eliminating the need to invent and register a separate brand for every local scheme.',
       story: '“With Energy” turned a simple, disarming preposition into a flexible brand platform. It worked both as a clear company name and as a collaborative statement about working <em>with</em> local communities—bringing warmth, momentum and enjoyment to how people engage with their local energy provider.',
       processNote: 'Engineered as a repeatable naming solution able to flex cleanly across diverse developments and resident audiences without losing personal warmth.',
       outcome: 'With Energy created an approachable, scalable brand architecture built to travel cleanly from community to community.'
@@ -252,7 +252,7 @@ window.TB_DATA = {
       client: 'Knight Dragon',
       launchDate: '2016',
       num: '08',
-      name: 'Loka Energy',
+      name: 'Loka',
       sector: 'District heating network for Greenwich Peninsula',
       category: 'Energy & Infrastructure',
       scope: 'Utility & network brand naming',
@@ -264,13 +264,13 @@ window.TB_DATA = {
       liveUrlLabel: 'View identity case study at Believe in ↗',
       style: 'sans',
       visualImage: '/assets/images/work/loka-energy.jpg',
-      visualCaption: 'Loka Energy identity and stationery for Greenwich Peninsula',
+      visualCaption: 'Loka identity and stationery for Greenwich Peninsula',
       testimonialId: null,
       summary: 'A community-focused low-carbon energy brand created for Knight Dragon’s Greenwich Peninsula district heating network around the O2 in London.',
-      brief: 'Created for urban regenerator Knight Dragon while I was at the brand consultancy Believe in, Loka Energy serves the major residential and commercial redevelopment surrounding the O2 on Greenwich Peninsula—operating from a central energy centre delivering heat across the entire community.',
+      brief: 'Created for urban regenerator Knight Dragon while I was at the brand consultancy Believe in, Loka serves the major residential and commercial redevelopment surrounding the O2 on Greenwich Peninsula—operating from a central energy centre delivering heat across the entire community.',
       story: 'District heating is often presented in dry, technical utility language. “Loka” brought together the two defining truths of the network in one short, approachable word: “local” and “low carbon”—communicating both dedicated neighbourhood service and meaningful carbon reduction.',
       processNote: 'We shaped a name that could live effortlessly alongside ambitious urban architecture while feeling transparent, modern and trustworthy to residents receiving their energy bills every month.',
-      outcome: 'Loka Energy continues to serve customers across Greenwich Peninsula today—proving that low-carbon infrastructure can carry warmth, clarity and genuine local identity.'
+      outcome: 'Loka continues to serve customers across Greenwich Peninsula today—proving that low-carbon infrastructure can carry warmth, clarity and genuine local identity.'
     },
     {
       id: 'fs-silas',
