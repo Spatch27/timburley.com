@@ -99,7 +99,7 @@
     link.setAttribute('aria-label', `Read the naming story for ${project.name}`);
     link.innerHTML = `
       <div class="specimen-card__top">
-        <span class="specimen-card__num">${project.num} / ${DATA.projects.length} · ${project.launchDate}</span>
+        <span class="specimen-card__num">${project.num} / ${DATA.projects.length}</span>
         <span class="specimen-card__cat">${project.category}</span>
       </div>
       <div>
@@ -107,6 +107,7 @@
         <p class="specimen-card__sector">${project.sector}</p>
       </div>
       <div class="specimen-card__foot">
+        <span>${project.launchDate}</span>
         <span>Read story →</span>
       </div>
     `;
