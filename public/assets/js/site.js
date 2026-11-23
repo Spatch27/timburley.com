@@ -272,7 +272,7 @@
               <dd>${trademarkHtml}</dd>
             </div>
             <div>
-              <dt>Agency partner</dt>
+              <dt>Agency</dt>
               <dd>${project.agencyPartner || 'Direct'}</dd>
             </div>
             <div>

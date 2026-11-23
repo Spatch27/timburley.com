@@ -187,7 +187,7 @@ window.TB_DATA = {
       summary: 'A deeply rooted Cornish place name for a Devonshire Homes residential development, bridging regional identity with genuine local heritage.',
       brief: 'When Devon-based housebuilder Devonshire Homes embarked on a major residential development in Cornwall, there was an obvious local sensitivity: the fierce friendly rivalry between Devon and Cornwall. Generic invented developer names would have felt imported and tone-deaf.',
       story: 'We dug into the local history and Cornish legend around the site. We uncovered “Gwallon” (referencing a local standing stone) and “Keas”, meaning an agricultural plot or field. Bringing them together created “Gwallon Keas”: an authentically Cornish place name rooted in the land that the new homes emerge from.',
-      processNote: 'By leaning wholeheartedly into genuine Cornish roots rather than glossing over geography, the development earned local credibility and stood proudly on its own two feet. It was one of several development names I created for Devonshire Homes.',
+      processNote: 'By leaning wholeheartedly into genuine Cornish roots rather than glossing over geography, the development earned local credibility and stood proudly on its own two feet. It was one of numerous development names we created for Devonshire Homes.',
       outcome: 'Gwallon Keas gave the new neighbourhood a rooted, respectful identity built to endure alongside the community for generations.'
     },
     {
