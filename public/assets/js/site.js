@@ -214,18 +214,12 @@
         ? 'case-visual-stage__specimen--italic'
         : '';
 
-    const footLinkUrl = project.caseStudyUrl || project.liveUrl;
-    const footLinkLabel = project.caseStudyUrl
-      ? project.caseStudyLabel || 'View case study at Believe in ↗'
-      : project.liveUrlLabel || 'Visit live brand ↗';
-
-    const liveLinkHtml = footLinkUrl
-      ? `<span><a href="${footLinkUrl}" target="_blank" rel="noopener noreferrer" class="text-link" style="font-family:var(--font-mono); font-size:0.72rem;">${footLinkLabel}</a></span>`
-      : '';
-
-    const captionText = project.imageCredit
-      ? `${project.visualCaption} · ${project.imageCredit}`
-      : project.visualCaption;
+    const footRightHtml =
+      project.imageCredit && project.caseStudyUrl
+        ? `<span>Image © <a href="${project.caseStudyUrl}" target="_blank" rel="noopener noreferrer" class="text-link" style="font-family:var(--font-mono); font-size:0.72rem;">Believe in</a>, ${project.launchDate}</span>`
+        : project.liveUrl
+        ? `<span><a href="${project.liveUrl}" target="_blank" rel="noopener noreferrer" class="text-link" style="font-family:var(--font-mono); font-size:0.72rem;">${project.liveUrlLabel || 'Visit live brand ↗'}</a></span>`
+        : '';
 
     const domainHtml =
       project.liveUrl && !project.liveUrlLabel && project.domain && project.domain !== 'N/A'
@@ -241,8 +235,8 @@
           <figure class="case-visual-stage case-visual-stage--media" style="margin:0 0 2.5rem;">
             <img class="case-visual-stage__image" src="${project.visualImage}" alt="${project.name}: ${project.visualCaption}">
             <figcaption class="case-visual-stage__foot">
-              <span>${captionText}</span>
-              ${liveLinkHtml}
+              <span>${project.visualCaption}</span>
+              ${footRightHtml}
             </figcaption>
           </figure>`
       : '';
