@@ -3,6 +3,12 @@
   "outputDirectory": "public",
   "cleanUrls": true,
   "trailingSlash": false,
+  "redirects": [
+    { "source": "/work/cora-health", "destination": "/work/cora", "permanent": true },
+    { "source": "/work/grain-connect", "destination": "/work/grain", "permanent": true },
+    { "source": "/work/loka-energy", "destination": "/work/loka", "permanent": true },
+    { "source": "/work/south-west-food-and-drink", "destination": "/work/swfd", "permanent": true }
+  ],
   "headers": [
     {
       "source": "/(.*)",

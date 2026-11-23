@@ -22,8 +22,8 @@ window.TB_DATA = {
       quote: '“Placeholder testimonial for R&D (Robin Jaffray & Tim Doust), highlighting how bringing Tim into brand projects like Cora Health and Yomira gave both the consulting team and leadership total confidence in the naming process and final selection.”',
       author: 'Robin Jaffray & Tim Doust (Placeholder)',
       role: 'R&D',
-      projectLabel: 'Cora Health · Yomira',
-      projectIds: ['cora-health', 'yomira']
+      projectLabel: 'Cora · Yomira',
+      projectIds: ['cora', 'yomira']
     },
     {
       id: 'organic',
@@ -56,18 +56,18 @@ window.TB_DATA = {
 
   projects: [
     {
-      id: 'cora-health',
+      id: 'cora',
       domain: 'corahealth.co.uk',
       trademarkUrl: 'https://trademarks.ipo.gov.uk/ipo-tmcase/page/Results/1/UK00004121477',
-      agencyPartner: 'R&D (Robin Jaffray & Tim Doust)',
+      agencyPartner: 'R&D Partners',
       client: 'Healthshare & Connect Health',
       launchDate: '2025',
       num: '01',
-      name: 'Cora Health',
-      sector: 'Healthcare provider (merger of Healthshare & Connect Health)',
+      name: 'Cora',
+      sector: 'Merger of Healthshare & Connect Health',
       category: 'Healthcare',
       scope: 'Post-merger brand naming',
-      partner: 'In partnership with R&D (Robin Jaffray & Tim Doust)',
+      partner: 'In partnership with R&D Partners',
       trading: true,
       featured: true,
       primary: true,
@@ -77,10 +77,10 @@ window.TB_DATA = {
       visualCaption: 'Cora Health digital flagship: “We’re reimagining healthcare for people to thrive.”',
       testimonialId: 'rd',
       summary: 'Naming the combined healthcare organisation formed by the merger of two established UK providers: Healthshare and Connect Health.',
-      brief: 'Robin Jaffray and Tim Doust, the senior agency leaders behind the brand consultancy R&D, brought me in to lead name development for the merger of Healthshare and Connect Health. Working alongside R&D, partner specialists and the leadership teams from both legacy organisations, we needed a single unifying name that honoured what patients already valued while giving the newly combined business a warm, credible platform for growth.',
+      brief: 'Robin Jaffray and Tim Doust, the senior agency leaders behind the brand consultancy R&D Partners, brought me in to lead name development for the merger of Healthshare and Connect Health. Working alongside R&D, creative specialists and the leadership teams from both legacy organisations, we needed a single unifying name that honoured what patients already valued while giving the newly combined business a warm, credible platform for growth.',
       story: 'Reviewing patient feedback across both businesses revealed one consistent theme: people deeply valued the personal level of treatment they received and the genuine commitment to patient wellbeing. A short, memorable female name gave us an immediate human presence, while “Cora” also carries a natural etymological root back to the human heart. Together, those qualities created a warm, personal, unmistakably caring name for the merged organisation.',
       processNote: 'I developed and presented the shortlist across both leadership teams, guided stakeholder alignment past legacy-brand attachment, and worked directly alongside the company’s legal partner to secure formal trademark registration prior to launch.',
-      outcome: 'Cora Health launched cleanly with trademark protection in place, giving the combined organisation a compelling, human brand name that stands apart from cold, clinical healthcare nomenclature.'
+      outcome: 'Cora launched cleanly with trademark protection in place, giving the combined organisation a compelling, human brand name that stands apart from clinical healthcare conventions.'
     },
     {
       id: 'corigan',
@@ -104,8 +104,8 @@ window.TB_DATA = {
       visualCaption: 'Corigan platform identity: “A unified workflow management system for SEOs.”',
       testimonialId: 'organic',
       summary: 'A confident, standalone name for an enterprise SEO platform, cleverly rooted in an anagram of its parent agency, Organic.',
-      brief: 'Corigan was built as a powerful search engine optimisation platform supporting SEO teams working on larger enterprise clients. Most search-tech tools default to predictable descriptive variations on “Search”, “Rank” or “Opti”, blending into an undifferentiated sea of lookalike software names.',
-      story: 'Developed while I was working at the digital agency Organic, the platform needed the confidence to stand on its own feet and build independent brand equity, while preserving a meaningful thread back to its creators. The solution was hiding in plain sight: “Corigan” is an exact anagram of “Organic”.',
+      brief: 'Corigan was built as a powerful search engine optimisation platform supporting SEO teams working on larger enterprise clients. Most search-tech tools default to predictable descriptive variations on “Search” and “Rank”, blending into an undifferentiated sea of lookalike software names.',
+      story: 'Developed while I was working at the digital agency Organic, the platform needed the confidence to stand on its own feet and build independent brand equity, while preserving a meaningful thread back to its creators. The solution was hiding in plain sight: “Corigan” is an anagram of “Organic”.',
       processNote: 'By avoiding literal category descriptors, Corigan sidestepped crowded trademark classes and gave the platform immediate personality and authority in client pitches without being tied down to parent-agency dependency.',
       outcome: 'A crisp, confident platform brand with an insider origin story: distinctive in a noisy MarTech category, legally ownable, and built to grow on its own terms.'
     },
@@ -113,7 +113,7 @@ window.TB_DATA = {
       id: 'yomira',
       domain: 'yomira.com',
       trademarkUrl: 'https://trademarks.ipo.gov.uk/ipo-tmcase/page/Results/1/UK00003538653',
-      agencyPartner: 'R&D (Robin Jaffray & Tim Doust)',
+      agencyPartner: 'R&D Partners',
       client: 'Yomira',
       launchDate: '2023',
       num: '03',
@@ -121,7 +121,7 @@ window.TB_DATA = {
       sector: 'Luxury superyacht charter start-up',
       category: 'Luxury',
       scope: 'Start-up brand naming',
-      partner: 'In partnership with R&D (Robin Jaffray & Tim Doust)',
+      partner: 'In partnership with R&D Partners',
       trading: true,
       featured: true,
       primary: true,
@@ -131,8 +131,8 @@ window.TB_DATA = {
       visualCaption: 'Yomira digital flagship: “Designing Superyacht Experiences”',
       testimonialId: 'rd',
       summary: 'A bespoke, ownable start-up name for a luxury superyacht charter company serving high-net-worth and ultra-high-net-worth clients worldwide.',
-      brief: 'Working again with Robin Jaffray and Tim Doust at R&D, I partnered closely with Yomira’s two founders, Neil and Amanda, to create a brand name capable of entering an exceptionally demanding international luxury market, crafting tailored superyacht charter experiences for discerning travellers exploring the world’s oceans.',
-      story: 'Yomira was coined by bringing together “Yo” as a subtle contraction of “your” and “Mira” derived from the sea and ocean, literally evoking “your ocean”. It captures the promise of a voyage designed entirely around the individual client, without ever lapsing into tired nautical clichés.',
+      brief: 'Working again with Robin Jaffray and Tim Doust at R&D, we partnered with Yomira’s two founders, Neil and Amanda, to create a brand name capable of entering an exceptionally demanding international luxury market, curating tailored superyacht charter experiences for discerning travellers exploring the world’s oceans.',
+      story: 'Yomira was coined by bringing together “Yo” as a contraction of “your” and “Mira” derived from the Sanskrit for ocean, literally evoking “your ocean”. It captures the promise of a voyage designed entirely around the individual client, without ever lapsing into nautical clichés.',
       processNote: 'In a crowded global luxury market, securing both legal distinctiveness and clean digital ownership was vital. Creating an ownable coined mark enabled us to secure yomira.com and build a brand foundation with real international poise.',
       outcome: 'Yomira gave the new venture a distinctive, creative and effortlessly international name, equally at home on a superyacht masthead, digital flagship and global luxury press.'
     },
@@ -158,13 +158,13 @@ window.TB_DATA = {
       visualCaption: 'Hemiko fleet livery and site safety equipment: “Together to Zero”',
       testimonialId: null,
       summary: 'Naming a national low-carbon district heating force following private-equity investment and spin-out from Pinnacle Group.',
-      brief: 'When a private equity firm acquired Pinnacle Power, the business needed to step out from the wider Pinnacle Group and chart an ambitious independent course. Working directly with the client leadership while I was at Organic, we set out to create an innovative, distinctive name capable of establishing a major British force in district heating.',
+      brief: 'When a private equity firm acquired Pinnacle Power, the business needed to step out from the wider Pinnacle Group and chart an ambitious independent course. Working directly with the client leadership, we set out to create an innovative, distinctive name capable of establishing a major British force in district heating.',
       story: '“Hemiko” grew from the concept of Heat Energy Markets (HEM), capturing a forward-looking vision of how communities can both generate and consume low-carbon heat locally. While district heating has long been established across continental Europe, Hemiko needed a fresh, modern name built to champion its growth across the UK.',
       processNote: 'Following PE investment, the new company required rapid alignment across investors and management alongside clean trademark clearance, giving the spun-out business a scalable name free of legacy utility baggage.',
       outcome: 'Hemiko has gone on to establish itself as a leading investor, developer, maintainer and operator of UK town- and city-scale heat networks.'
     },
     {
-      id: 'grain-connect',
+      id: 'grain',
       domain: 'grainconnect.com',
       trademarkUrl: 'https://trademarks.ipo.gov.uk/ipo-tmcase/page/Results/1/UK00003214453',
       agencyPartner: 'Believe in',
@@ -185,10 +185,10 @@ window.TB_DATA = {
       visualCaption: 'Grain outdoor launch campaign: “How fast?”',
       testimonialId: null,
       summary: 'A William Blake–inspired broadband brand bringing hyper-fast full-fibre connectivity to new-build housing communities.',
-      brief: 'Created while I was at Believe in for a joint venture between Pinnacle Group and a telecoms partner, Grain was built to challenge legacy telecoms giants, partnering with housebuilders to install end-to-end fibre-optic networks directly into new residential developments.',
-      story: 'Because the network was pure glass fibre end-to-end, I looked to William Blake’s famous line: “To see a World in a Grain of Sand.” Silicon sand becomes optical glass fibre, hair-thin strands capable of carrying vast bandwidth into modern homes. “Grain” gave the business a poetic, genuine origin story right as full-fibre was taking off, without tying the brand to jargon that would quickly date.',
+      brief: 'Created at Believe in for a joint venture between a property group and a telecoms provider, Grain was built to challenge legacy telecoms giants, partnering with housebuilders to install end-to-end fibre-optic networks directly into new residential developments.',
+      story: 'Because the network installed fibre from end-to-end, we drew inspiration from “To see a World in a Grain of Sand”, the opening line of William Blake’s poem, “Auguries of Innocence.” Silicon becomes optical fibre, hair-thin strands of glass capable of carrying vast bandwidth into modern homes. “Grain” gave the business a poetic, genuine origin story right as full-fibre was taking off, without tying the brand to jargon that would quickly date.',
       processNote: 'Pairing an evocative, human lead word (“Grain”) with a clear functional anchor (“Connect”) gave housebuilders and residents immediate clarity while standing miles apart from hyperbolic telecoms clichés.',
-      outcome: 'Grain continues to connect thousands of new-build homes across the UK to high-speed full-fibre broadband.'
+      outcome: 'Grain continues to connect thousands of new-build homes across the UK to ultrafast broadband.'
     },
     {
       id: 'with-energy',
@@ -240,12 +240,12 @@ window.TB_DATA = {
       testimonialId: null,
       summary: 'A deeply rooted Cornish place name for a Devonshire Homes residential development, bridging regional identity with genuine local heritage.',
       brief: 'When Devon-based housebuilder Devonshire Homes embarked on a major residential development in Cornwall, there was an obvious local sensitivity: the fierce friendly rivalry between Devon and Cornwall. Generic invented developer names would have felt imported and tone-deaf.',
-      story: 'While at Believe in, we dug into the hyper-local history and Cornish language around the site. We uncovered “Gwallon” (referencing a local standing stone) and “Keas”, meaning an agricultural plot or field. Bringing them together created “Gwallon Keas”: an authentically Cornish place name grounded literally in the land where the new homes stand.',
+      story: 'We dug into the local history and Cornish legend around the site. We uncovered “Gwallon” (referencing a local standing stone) and “Keas”, meaning an agricultural plot or field. Bringing them together created “Gwallon Keas”: an authentically Cornish place name rooted in the land that the new homes emerge from.',
       processNote: 'By leaning wholeheartedly into genuine Cornish roots rather than glossing over geography, the development earned local credibility and stood proudly on its own two feet. It was one of several development names I created for Devonshire Homes.',
       outcome: 'Gwallon Keas gave the new neighbourhood a rooted, respectful identity built to endure alongside the community for generations.'
     },
     {
-      id: 'loka-energy',
+      id: 'loka',
       domain: 'loka.energy / lokaenergy.com',
       trademarkUrl: 'https://trademarks.ipo.gov.uk/ipo-tmcase/page/Results/1/UK00003069008',
       agencyPartner: 'Believe in',
@@ -267,10 +267,10 @@ window.TB_DATA = {
       visualCaption: 'Loka identity and stationery for Greenwich Peninsula',
       testimonialId: null,
       summary: 'A community-focused low-carbon energy brand created for Knight Dragon’s Greenwich Peninsula district heating network around the O2 in London.',
-      brief: 'Created for urban regenerator Knight Dragon while I was at the brand consultancy Believe in, Loka serves the major residential and commercial redevelopment surrounding the O2 on Greenwich Peninsula, operating from a central energy centre delivering heat across the entire community.',
+      brief: 'Created for urban regenerator Knight Dragon, Loka serves the major residential and commercial redevelopment surrounding The O2 London on Greenwich Peninsula, operating from a central energy centre delivering heat across the entire community.',
       story: 'District heating is often presented in dry, technical utility language. “Loka” brought together the two defining truths of the network in one short, approachable word: “local” and “low carbon”, communicating both dedicated neighbourhood service and meaningful carbon reduction.',
       processNote: 'We shaped a name that could live effortlessly alongside ambitious urban architecture while feeling transparent, modern and trustworthy to residents receiving their energy bills every month.',
-      outcome: 'Loka continues to serve customers across Greenwich Peninsula today, proving that low-carbon infrastructure can carry warmth, clarity and genuine local identity.'
+      outcome: 'Loka continues to serve customers across Greenwich Peninsula today, proving that low-carbon infrastructure can carry warmth and clarity.'
     },
     {
       id: 'fs-silas',
@@ -293,10 +293,10 @@ window.TB_DATA = {
       visualImage: '/assets/images/work/fs-silas.jpg',
       visualCaption: 'FS Silas Sans & Slab: FontSmith secret-dossier print specimens',
       testimonialId: 'fontsmith',
-      summary: 'Naming and shaping the espionage-themed launch story for a flagship slab-serif and sans-serif typeface family from FontSmith.',
-      brief: 'FontSmith was one of the world’s leading independent type foundries prior to its acquisition by Monotype. While at Believe in, I helped FontSmith name and launch FS Silas, spanning the naming, launch identity, type specimen, print support and promotional imagery for a versatile family combining both a slab serif and a sans serif.',
+      summary: 'Naming and shaping the espionage-themed launch story for a new slab-serif and sans-serif typeface pairing from FontSmith.',
+      brief: 'FontSmith was one of the world’s leading independent type foundries prior to its acquisition by Monotype. At Believe in we launched several typefaces for the firm, including FS Silas, which included the naming, launch identity, type specimen, print support and promotional imagery.',
       story: 'We built the name and launch campaign around a crisp theme of espionage and intrigue, framing the typeface launch like a classified secret dossier supported by teaser print materials and specimen artefacts. “Silas” carried the exact air of quiet intelligence, literary poise and sharpest graphic character needed for the letterforms themselves.',
-      processNote: 'Typeface names live permanently inside designers’ font menus worldwide, so the name had to sit naturally within FontSmith’s “FS” foundry architecture while looking compelling set in its own slab and sans cuts.',
+      processNote: 'Typeface names live permanently inside designers’ font menus worldwide, so the name had to sit naturally within FontSmith’s “FS” foundry architecture.',
       outcome: 'FS Silas launched with memorable creative intrigue and remains part of the celebrated FontSmith library under Monotype.'
     },
     {
@@ -308,7 +308,7 @@ window.TB_DATA = {
       launchDate: '2015',
       num: '10',
       name: 'Ockery',
-      sector: 'Seafood products & fishcakes (Ocean Crown)',
+      sector: 'Seafood products & fishcakes',
       category: 'Food',
       scope: 'Consumer brand naming',
       partner: 'Ocean Crown',
@@ -321,8 +321,8 @@ window.TB_DATA = {
       visualCaption: 'Ockery registered script wordmark',
       testimonialId: null,
       summary: 'A characterful, ownable consumer seafood brand name rooted in coastal heritage, simplicity and wholesome recipes.',
-      brief: 'Seafood producer Ocean Crown needed a new consumer brand for a range of seafood ready meals and fishcakes made from fresh, honest ingredients and simple recipes that tasted genuinely good.',
-      story: '“Ockery” emerged as a rich, tactile phonetic word with historical connections back to a traditional stone dwelling, instantly evoking roots, coastal simplicity and back-to-basics provenance without slipping into supermarket clichés.',
+      brief: 'Seafood producer Ocean Crown (owned by Scandia Foods) needed a new consumer brand for a range of fishcakes made from fresh, honest ingredients and simple recipes.',
+      story: '“Ockery” emerged as a rich, tactile phonetic word with historical connections back to a traditional stone dwelling, instantly evoking roots, coastal simplicity and back-to-basics provenance.',
       processNote: 'Crucially, its distinctiveness meant it cleared cleanly and allowed us to secure ockery.com, giving the product range an ownable, memorable home on shelf and online.',
       outcome: 'A uniquely British, grounded food brand name brimming with warmth, texture and natural culinary honesty.'
     },
@@ -348,7 +348,7 @@ window.TB_DATA = {
       visualCaption: 'Uprising gluten-free shortcrust pastry packaging',
       testimonialId: null,
       summary: 'A playful, rebellious challenger name for a gluten-free pastry brand built to spark a better-baking movement.',
-      brief: 'Created while I was at Believe in for a founder who was fed up with tough, tasteless gluten-free pastry and had perfected a bespoke blend of gluten-free flours for delicious quiches, pies and baked goods.',
+      brief: 'Created at Believe in for a founder who was fed up with tough, tasteless gluten-free pastry and had perfected a bespoke blend of gluten-free flours for delicious quiches, pies and baked goods.',
       story: 'Free-from food brands too often sound medicinal or apologetic. “Uprising” flipped that on its head with a joyful double meaning: the literal lift of great pastry rising in the oven, paired with the grassroots energy of a category rebellion, something coming up from the ground to disrupt a stale aisle.',
       processNote: 'Designed to feel playful, spirited and full of campaign potential rather than a dietary compromise, giving the brand an unmistakable voice from day one.',
       outcome: 'Uprising delivered a witty, energetic starting point for a challenger food brand built to rally gluten-free bakers.'
@@ -403,12 +403,12 @@ window.TB_DATA = {
       testimonialId: null,
       summary: 'A warm, reassuring brand name evolved from “meadow”, bringing calm and approachability to property maintenance.',
       brief: 'Created while I was at the brand consultancy Design Stable, the client was bringing together local property maintenance specialists united by a commitment to genuinely positive customer service, in a sector dominated by stiff, overly buttoned-down trade brands.',
-      story: 'We wanted customers to feel they could breathe easy and know their home was in safe hands. That led to the calm, restorative image of a “meadow”, re-spelled distinctively as M-E-D-D-O so it felt modern, ownable, warm and unmistakably different from traditional maintenance firms.',
+      story: 'We wanted customers to feel they could breathe easy and know their home was in safe hands. That led to the calm, restorative image of a “meadow”; the alternative spelling created a modern, ownable, warm and distinctive brand that sat apart from traditional maintenance firms.',
       processNote: 'The distinctive spelling unlocked clean brand ownership and planted a light, human seed that carried effortlessly across the wider visual identity and launch rollout.',
       outcome: 'Meddo established a lighter, friendlier and far more engaging presence in a traditionally functional market.'
     },
     {
-      id: 'south-west-food-and-drink',
+      id: 'swfd',
       domain: 'southwestfoodanddrink.org',
       trademarkUrl: null,
       agencyPartner: 'Red Rocket',
