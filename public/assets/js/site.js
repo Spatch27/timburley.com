@@ -123,7 +123,7 @@
 
   function initSpecimens() {
     const featuredEl = document.getElementById('featured-specimens');
-    if (featuredEl && DATA.projects) {
+    if (featuredEl && DATA.projects && !featuredEl.querySelector('.specimen-card')) {
       featuredEl.innerHTML = '';
       DATA.projects
         .filter((p) => p.featured)
@@ -166,7 +166,9 @@
         });
       }
 
-      renderGrid();
+      if (!workEl.querySelector('.specimen-card')) {
+        renderGrid();
+      }
     }
   }
 
@@ -201,7 +203,7 @@
     const featured = approved.find((t) => t.featured) || approved[0] || null;
     const rest = featured ? approved.filter((t) => t.id !== featured.id) : approved;
 
-    if (featuredSlot) {
+    if (featuredSlot && !featuredSlot.querySelector('.testimonial-card')) {
       featuredSlot.innerHTML = '';
       if (featured) {
         featuredSlot.appendChild(buildTestimonialCard(featured, true));
@@ -227,6 +229,9 @@
   function initCaseStudyPage() {
     const root = document.querySelector('[data-case-study]');
     if (!root || !DATA.projects) return;
+    if (root.getAttribute('data-prerendered') === 'true' && root.querySelector('.case-story-grid')) {
+      return;
+    }
 
     const slug = root.getAttribute('data-case-study');
     const idx = DATA.projects.findIndex((p) => p.id === slug);

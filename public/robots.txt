@@ -1,0 +1,9 @@
+# timburley.com · Tim Burley · Brand Naming Consultant, UK
+User-agent: *
+Allow: /
+
+Sitemap: https://www.timburley.com/sitemap.xml
+
+# Machine-readable guides for AI assistants and agents:
+# https://www.timburley.com/llms.txt
+# https://www.timburley.com/llms-full.txt
