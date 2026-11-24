@@ -173,9 +173,9 @@
   /* ------------------------------------------------------------------------
      5. Testimonials Renderer (Home + Relevant Case Studies)
      ------------------------------------------------------------------------ */
-  function buildTestimonialCard(t) {
+  function buildTestimonialCard(t, isFeatured = false) {
     const card = document.createElement('article');
-    card.className = 'testimonial-card';
+    card.className = isFeatured ? 'testimonial-card testimonial-card--featured' : 'testimonial-card';
     card.innerHTML = `
       <div>
         ${t.isPlaceholder ? '<span class="testimonial-card__badge">Placeholder quote · Ready for sign-off</span>' : ''}
@@ -193,10 +193,28 @@
   }
 
   function initTestimonials() {
+    const all = DATA.testimonials || [];
+    const featuredSlot = document.getElementById('featured-testimonial');
     const grid = document.getElementById('testimonials-grid');
-    if (!grid || !DATA.testimonials) return;
-    grid.innerHTML = '';
-    DATA.testimonials.forEach((t) => grid.appendChild(buildTestimonialCard(t)));
+    const section = document.getElementById('testimonials');
+
+    const featured = all.find((t) => t.featured) || all[0] || null;
+    const rest = featured ? all.filter((t) => t.id !== featured.id) : all;
+
+    if (featuredSlot && featured) {
+      featuredSlot.innerHTML = '';
+      featuredSlot.appendChild(buildTestimonialCard(featured, true));
+    }
+
+    if (grid) {
+      grid.innerHTML = '';
+      grid.classList.toggle('testimonials-grid--3', rest.length === 3);
+      if (rest.length === 0 && section) {
+        section.style.display = 'none';
+      } else {
+        rest.forEach((t) => grid.appendChild(buildTestimonialCard(t)));
+      }
+    }
   }
 
   /* ------------------------------------------------------------------------

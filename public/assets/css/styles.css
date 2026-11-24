@@ -2525,6 +2525,17 @@ button, input, textarea, select {
   }
 }
 
+@media (min-width: 980px) {
+  .testimonials-grid.testimonials-grid--3 {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1.5rem;
+  }
+}
+
+.featured-quote-slot {
+  margin-top: clamp(2rem, 3.5vw, 3rem);
+}
+
 .testimonial-card {
   background: var(--bg-surface);
   border: 1px solid var(--rule);
@@ -2533,6 +2544,17 @@ button, input, textarea, select {
   flex-direction: column;
   justify-content: space-between;
   gap: 1.5rem;
+}
+
+.testimonial-card--featured {
+  border-left: 3px solid var(--accent);
+  padding: clamp(1.85rem, 3.5vw, 2.75rem);
+}
+
+.testimonial-card--featured .testimonial-card__quote {
+  font-size: clamp(1.26rem, 2vw, 1.55rem);
+  line-height: 1.44;
+  max-width: 64ch;
 }
 
 .testimonial-card__badge {

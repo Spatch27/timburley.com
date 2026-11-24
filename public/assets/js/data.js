@@ -18,6 +18,7 @@ window.TB_DATA = {
   testimonials: [
     {
       id: 'rd',
+      featured: true,
       isPlaceholder: true,
       quote: '“Placeholder testimonial for R&D (Robin Jaffray & Tim Doust), highlighting how bringing Tim into brand projects like Cora Health and Yomira gave both the consulting team and leadership total confidence in the naming process and final selection.”',
       author: 'Robin Jaffray & Tim Doust (Placeholder)',
