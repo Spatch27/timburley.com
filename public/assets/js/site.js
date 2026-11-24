@@ -293,15 +293,8 @@
       <section class="section section--flush-top" style="padding-top:2rem;">
         <div class="container">
           <div class="case-story-grid">
-            <div>
-              <span class="eyebrow">Behind the Name</span>
-              <h2 class="h-section" style="margin-top:0.75rem;">How <em>${project.name}</em> came to be.</h2>
-              <p class="muted" style="margin-top:1rem;">
-                Every naming project combines two halves: finding a mark with real character and longevity, and guiding stakeholders cleanly through selection and clearance.
-              </p>
-              <div style="margin-top:1.75rem;">
-                <a href="/brief?ref=${encodeURIComponent(project.name)}" class="btn btn--primary">Naming something similar? Start a brief →</a>
-              </div>
+            <div class="case-story-aside">
+              <h2 class="h-section">How <em>${project.name}</em> came to be.</h2>
             </div>
 
             <div>
@@ -327,6 +320,10 @@
                 <span class="eyebrow">04 · The Outcome</span>
                 <h2>Why the name works</h2>
                 <p>${project.outcome}</p>
+              </div>
+
+              <div class="case-story-cta">
+                <a href="/brief?ref=${encodeURIComponent(project.name)}" class="btn btn--primary">Naming something similar? Start a brief →</a>
               </div>
             </div>
           </div>

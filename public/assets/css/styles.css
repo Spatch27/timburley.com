@@ -2672,7 +2672,17 @@ button, input, textarea, select {
   .case-story-grid {
     grid-template-columns: 0.75fr 1.25fr;
     gap: 4rem;
+    align-items: start;
   }
+
+  .case-story-aside {
+    position: sticky;
+    top: 6.5rem;
+  }
+}
+
+.case-story-cta {
+  padding-top: 0.25rem;
 }
 
 .case-story-block {
