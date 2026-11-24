@@ -193,17 +193,21 @@
   }
 
   function initTestimonials() {
-    const all = DATA.testimonials || [];
+    const approved = (DATA.testimonials || []).filter((t) => !t.isPlaceholder);
     const featuredSlot = document.getElementById('featured-testimonial');
     const grid = document.getElementById('testimonials-grid');
     const section = document.getElementById('testimonials');
 
-    const featured = all.find((t) => t.featured) || all[0] || null;
-    const rest = featured ? all.filter((t) => t.id !== featured.id) : all;
+    const featured = approved.find((t) => t.featured) || approved[0] || null;
+    const rest = featured ? approved.filter((t) => t.id !== featured.id) : approved;
 
-    if (featuredSlot && featured) {
+    if (featuredSlot) {
       featuredSlot.innerHTML = '';
-      featuredSlot.appendChild(buildTestimonialCard(featured, true));
+      if (featured) {
+        featuredSlot.appendChild(buildTestimonialCard(featured, true));
+      } else {
+        featuredSlot.style.display = 'none';
+      }
     }
 
     if (grid) {
@@ -267,7 +271,7 @@
       : '';
 
     const testimonial = project.testimonialId
-      ? (DATA.testimonials || []).find((t) => t.id === project.testimonialId)
+      ? (DATA.testimonials || []).find((t) => t.id === project.testimonialId && !t.isPlaceholder)
       : null;
 
     root.innerHTML = `

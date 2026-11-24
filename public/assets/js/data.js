@@ -14,15 +14,15 @@ window.TB_DATA = {
     location: '20 Years in Name Development'
   },
 
-  // Placeholder testimonials ready for approved client/agency quotes
+  // Approved testimonials render live; placeholders stay hidden until signed off
   testimonials: [
     {
       id: 'rd',
       featured: true,
-      isPlaceholder: true,
-      quote: '“Placeholder testimonial for R&D (Robin Jaffray & Tim Doust), highlighting how bringing Tim into brand projects like Cora Health and Yomira gave both the consulting team and leadership total confidence in the naming process and final selection.”',
-      author: 'Robin Jaffray & Tim Doust (Placeholder)',
-      role: 'R&D',
+      isPlaceholder: false,
+      quote: '“We know how hard name development is to get right. We work with Tim because the process is consistently smooth and clients are always delighted with the results.”',
+      author: 'Robin Jaffray & Tim Doust',
+      role: 'R&D Partners',
       projectLabel: 'Cora · Yomira',
       projectIds: ['cora', 'yomira']
     },
