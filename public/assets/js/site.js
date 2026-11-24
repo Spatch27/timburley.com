@@ -85,7 +85,7 @@
   /* ------------------------------------------------------------------------
      4. Specimen Cards (Link Directly to Individual /work/<slug> Pages)
      ------------------------------------------------------------------------ */
-  function renderSpecimenCard(project) {
+  function renderSpecimenCard(project, showIndex = true) {
     const styleClass =
       project.style === 'sans'
         ? 'specimen-card__wordmark--sans'
@@ -97,9 +97,12 @@
     link.href = `/work/${project.id}`;
     link.className = 'specimen-card';
     link.setAttribute('aria-label', `Read the naming story for ${project.name}`);
+    const topLeftHtml = showIndex
+      ? `<span class="specimen-card__num">${project.num} / ${DATA.projects.length}</span>`
+      : '';
     link.innerHTML = `
       <div class="specimen-card__top">
-        <span class="specimen-card__num">${project.num} / ${DATA.projects.length}</span>
+        ${topLeftHtml}
         <span class="specimen-card__cat">${project.category}</span>
       </div>
       <div>
@@ -120,7 +123,7 @@
       featuredEl.innerHTML = '';
       DATA.projects
         .filter((p) => p.featured)
-        .forEach((p) => featuredEl.appendChild(renderSpecimenCard(p)));
+        .forEach((p) => featuredEl.appendChild(renderSpecimenCard(p, false)));
     }
 
     const workEl = document.getElementById('work-specimens');
@@ -462,6 +465,30 @@
     updateDiagnostic();
   }
 
+  function initPitfallPreviews() {
+    const container = document.getElementById('home-pitfalls-preview');
+    if (!container || !DATA.pitfalls) return;
+
+    const featuredIds = ['thunderbolt-fallacy', 'straw-poll', 'front-runner'];
+    const selected = featuredIds
+      .map((id) => DATA.pitfalls.find((p) => p.id === id))
+      .filter(Boolean);
+
+    container.innerHTML = '';
+    selected.forEach((item) => {
+      const card = document.createElement('a');
+      card.href = `/process#pitfalls`;
+      card.className = 'pitfall-preview-card';
+      card.innerHTML = `
+        <span class="pitfall-preview-card__num">PITFALL ${item.num}</span>
+        <h3>${item.title}</h3>
+        <p class="pitfall-preview-card__quote">${item.heardInMeeting}</p>
+        <span class="pitfall-preview-card__link">See how to prevent it →</span>
+      `;
+      container.appendChild(card);
+    });
+  }
+
   /* ------------------------------------------------------------------------
      8. Single-Page Naming Brief (/brief) + /api/brief Resend Delivery
      ------------------------------------------------------------------------ */
@@ -523,6 +550,26 @@
         });
       });
     });
+
+    const routeParam = (params.get('route') || '').toLowerCase();
+    if (routeParam === 'agency' || routeParam === 'direct') {
+      const targetVal = routeParam === 'agency' ? 'Agency partner' : 'Direct client';
+      const routeGroup = form.querySelector('[data-choice-group="route"]');
+      const match = routeGroup?.querySelector(`.brief-pill[data-value="${targetVal}"]`);
+      if (match) {
+        match.classList.add('is-selected');
+        match.setAttribute('aria-pressed', 'true');
+        state.route = targetVal;
+      }
+      if (routeParam === 'agency') {
+        const banner = document.getElementById('brief-prefill-note');
+        if (banner) {
+          const prefix = notes.length ? `${notes.join(' · ')} · ` : '';
+          banner.innerHTML = `${prefix}Agency partner route selected. Prefer a quick chat before sharing a brief? Email <a href="mailto:${DATA.contactEmail}" class="text-link">${DATA.contactEmail}</a> directly.`;
+          banner.style.display = 'block';
+        }
+      }
+    }
 
     form.querySelectorAll('[data-field]').forEach((input) => {
       const key = input.getAttribute('data-field');
@@ -754,6 +801,7 @@
     initTestimonials();
     initCaseStudyPage();
     initPitfalls();
+    initPitfallPreviews();
     initBriefForm();
     initReveals();
   });
