@@ -450,20 +450,38 @@ button, input, textarea, select {
 }
 
 .mobile-menu {
-  display: none;
-  border-top: 1px solid var(--rule);
+  display: grid;
+  grid-template-rows: 0fr;
+  border-top: 1px solid transparent;
   background: var(--bg-paper);
-  padding: 1.5rem var(--gutter) 2rem;
+  opacity: 0;
+  visibility: hidden;
+  transition:
+    grid-template-rows 0.34s var(--ease),
+    opacity 0.24s var(--ease),
+    border-color 0.24s var(--ease),
+    visibility 0s linear 0.34s;
 }
 
 .mobile-menu.is-open {
-  display: block;
+  grid-template-rows: 1fr;
+  border-top-color: var(--rule);
+  opacity: 1;
+  visibility: visible;
+  transition:
+    grid-template-rows 0.34s var(--ease),
+    opacity 0.26s var(--ease) 0.04s,
+    border-color 0.24s var(--ease),
+    visibility 0s linear 0s;
 }
 
 .mobile-menu nav {
+  overflow: hidden;
+  min-height: 0;
   display: flex;
   flex-direction: column;
   gap: 1rem;
+  padding: 0 var(--gutter);
 }
 
 .mobile-menu a {
@@ -473,8 +491,19 @@ button, input, textarea, select {
   border-bottom: 1px solid var(--rule);
 }
 
+.mobile-menu a:first-child {
+  margin-top: 1.5rem;
+}
+
 .mobile-menu a:last-child {
   border-bottom: none;
+  margin-bottom: 2rem;
+}
+
+@media (min-width: 820px) {
+  .mobile-menu {
+    display: none;
+  }
 }
 
 /* Buttons & Links — Robust Unified Vermilion Fill-Sweep System */
@@ -1508,7 +1537,7 @@ button, input, textarea, select {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  transition: transform 0.25s var(--ease), background-color 0.2s var(--ease);
+  transition: transform 0.32s var(--ease), background-color 0.24s var(--ease), border-color 0.24s var(--ease), color 0.24s var(--ease);
 }
 
 .pitfall-item.is-open .pitfall-trigger__icon {
@@ -1519,12 +1548,36 @@ button, input, textarea, select {
 }
 
 .pitfall-panel {
-  display: none;
-  padding: 0 0.5rem 2rem 3.75rem;
+  display: grid;
+  grid-template-rows: 0fr;
+  opacity: 0;
+  visibility: hidden;
+  transition:
+    grid-template-rows 0.34s var(--ease),
+    opacity 0.24s var(--ease),
+    visibility 0s linear 0.34s;
 }
 
 .pitfall-item.is-open .pitfall-panel {
+  grid-template-rows: 1fr;
+  opacity: 1;
+  visibility: visible;
+  transition:
+    grid-template-rows 0.34s var(--ease),
+    opacity 0.26s var(--ease) 0.05s,
+    visibility 0s linear 0s;
+}
+
+.pitfall-panel__inner {
+  overflow: hidden;
+  min-height: 0;
+  padding: 0 0.5rem 0 3.75rem;
+}
+
+.pitfall-panel__inner::after {
+  content: '';
   display: block;
+  height: 2rem;
 }
 
 .pitfall-panel__grid {
@@ -2981,7 +3034,10 @@ button, input, textarea, select {
   .site-nav a:not(.nav-cta)::after,
   .text-link::after,
   .footer-links a::after,
-  .case-crumb::after {
+  .case-crumb::after,
+  .mobile-menu,
+  .pitfall-panel,
+  .pitfall-trigger__icon {
     transition: none;
   }
 }

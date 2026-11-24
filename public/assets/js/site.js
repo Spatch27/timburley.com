@@ -17,9 +17,12 @@
     const menu = document.querySelector('[data-mobile-menu]');
     if (!toggle || !menu) return;
 
+    menu.setAttribute('aria-hidden', 'true');
+
     toggle.addEventListener('click', () => {
       const open = menu.classList.toggle('is-open');
       toggle.setAttribute('aria-expanded', String(open));
+      menu.setAttribute('aria-hidden', String(!open));
       toggle.textContent = open ? 'Close' : 'Menu';
     });
 
@@ -27,6 +30,7 @@
       if (e.key === 'Escape' && menu.classList.contains('is-open')) {
         menu.classList.remove('is-open');
         toggle.setAttribute('aria-expanded', 'false');
+        menu.setAttribute('aria-hidden', 'true');
         toggle.textContent = 'Menu';
         toggle.focus();
       }
@@ -389,29 +393,33 @@
           </span>
           <span class="pitfall-trigger__icon" aria-hidden="true">+</span>
         </button>
-        <div class="pitfall-panel">
-          <p class="pitfall-quote">${item.heardInMeeting}</p>
-          <div class="pitfall-panel__grid">
-            <div>
-              <h4>Why teams fall into it</h4>
-              <p>${item.whyItHappens}</p>
+        <div class="pitfall-panel" aria-hidden="${index === 0 ? 'false' : 'true'}">
+          <div class="pitfall-panel__inner">
+            <p class="pitfall-quote">${item.heardInMeeting}</p>
+            <div class="pitfall-panel__grid">
+              <div>
+                <h4>Why teams fall into it</h4>
+                <p>${item.whyItHappens}</p>
+              </div>
+              <div>
+                <h4>How the process prevents it</h4>
+                <p>${item.antidote}</p>
+              </div>
             </div>
-            <div>
-              <h4>How the process prevents it</h4>
-              <p>${item.antidote}</p>
-            </div>
+            <button type="button" class="pitfall-flag-btn" data-pitfall-id="${item.id}" aria-pressed="false">
+              <span class="pitfall-flag-icon">○</span>
+              <span>We’ve seen this in our organisation</span>
+            </button>
           </div>
-          <button type="button" class="pitfall-flag-btn" data-pitfall-id="${item.id}" aria-pressed="false">
-            <span class="pitfall-flag-icon">○</span>
-            <span>We’ve seen this in our organisation</span>
-          </button>
         </div>
       `;
 
       const trigger = el.querySelector('.pitfall-trigger');
+      const panel = el.querySelector('.pitfall-panel');
       trigger.addEventListener('click', () => {
         const isOpen = el.classList.toggle('is-open');
         trigger.setAttribute('aria-expanded', String(isOpen));
+        if (panel) panel.setAttribute('aria-hidden', String(!isOpen));
       });
 
       const flagBtn = el.querySelector('.pitfall-flag-btn');
