@@ -18,7 +18,7 @@ const ROOT = process.cwd();
 const PUBLIC = path.join(ROOT, 'public');
 const SITE_URL = 'https://www.timburley.com';
 const DEFAULT_OG_IMAGE = `${SITE_URL}/assets/images/og-default.jpg`;
-const ASSET_VERSION = '20261125d';
+const ASSET_VERSION = '20261125e';
 const LASTMOD = new Date().toISOString().slice(0, 10);
 
 function loadData() {
@@ -104,7 +104,7 @@ function buildHead({
     `  <link rel="icon" href="/favicon.svg?v=${ASSET_VERSION}" type="image/svg+xml">`,
     '  <link rel="preconnect" href="https://fonts.googleapis.com">',
     '  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>',
-    '  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Instrument+Sans:wght@400;500;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">',
+    '  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Instrument+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">',
     `  <link rel="stylesheet" href="/assets/css/styles.css?v=${ASSET_VERSION}">`
   );
 
