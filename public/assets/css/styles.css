@@ -2512,6 +2512,37 @@ button, input, textarea, select {
   color: var(--ink-on-dark-muted);
 }
 
+.footer-carbon {
+  margin-top: 1.75rem;
+}
+
+.footer-carbon #wcb.carbonbadge {
+  text-align: left;
+  font-size: 0.76rem;
+}
+
+.footer-carbon #wcb #wcb_p {
+  justify-content: flex-start;
+}
+
+.footer-carbon #wcb #wcb_g {
+  background: var(--bg-paper);
+  color: var(--ink-primary);
+  border-color: var(--bg-paper);
+}
+
+.footer-carbon #wcb.wcb-d #wcb_a,
+.footer-carbon #wcb #wcb_a {
+  background: #232220;
+  color: var(--ink-on-dark);
+  border-color: var(--rule-dark-strong);
+}
+
+.footer-carbon #wcb #wcb_2 {
+  color: var(--ink-on-dark-muted);
+  text-align: left;
+}
+
 /* Testimonials Grid */
 .testimonials-grid {
   display: grid;

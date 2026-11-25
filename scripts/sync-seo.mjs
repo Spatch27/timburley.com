@@ -18,7 +18,7 @@ const ROOT = process.cwd();
 const PUBLIC = path.join(ROOT, 'public');
 const SITE_URL = 'https://www.timburley.com';
 const DEFAULT_OG_IMAGE = `${SITE_URL}/assets/images/og-default.jpg`;
-const ASSET_VERSION = '20261124g';
+const ASSET_VERSION = '20261125a';
 const LASTMOD = new Date().toISOString().slice(0, 10);
 
 function loadData() {
