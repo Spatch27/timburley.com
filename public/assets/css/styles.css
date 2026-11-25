@@ -2559,31 +2559,52 @@ button, input, textarea, select {
   margin-top: 1.75rem;
 }
 
-.footer-carbon #wcb.carbonbadge {
-  text-align: left;
-  font-size: 0.76rem;
+.carbon-badge {
+  display: inline-flex;
+  align-items: stretch;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  line-height: 1;
+  letter-spacing: 0.03em;
+  border: 1px solid var(--rule-dark-strong);
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+  white-space: nowrap;
+  transition: border-color 0.2s var(--ease);
 }
 
-.footer-carbon #wcb #wcb_p {
-  justify-content: flex-start;
-}
-
-.footer-carbon #wcb #wcb_g {
+.carbon-badge__score {
   background: var(--bg-paper);
   color: var(--ink-primary);
-  border-color: var(--bg-paper);
+  font-weight: 500;
+  padding: 0.45rem 0.65rem;
 }
 
-.footer-carbon #wcb.wcb-d #wcb_a,
-.footer-carbon #wcb #wcb_a {
+.carbon-badge__label {
   background: #232220;
   color: var(--ink-on-dark);
-  border-color: var(--rule-dark-strong);
+  padding: 0.45rem 0.65rem;
+  transition: background-color 0.2s var(--ease), color 0.2s var(--ease);
 }
 
-.footer-carbon #wcb #wcb_2 {
+.carbon-badge:hover,
+.carbon-badge:focus-visible {
+  border-color: var(--accent-on-dark);
+}
+
+.carbon-badge:hover .carbon-badge__label,
+.carbon-badge:focus-visible .carbon-badge__label {
+  background: var(--accent-on-dark);
+  color: var(--ink-on-dark);
+}
+
+.carbon-badge__meta {
+  display: block;
+  margin-top: 0.5rem;
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.03em;
   color: var(--ink-on-dark-muted);
-  text-align: left;
 }
 
 /* Testimonials Grid */
