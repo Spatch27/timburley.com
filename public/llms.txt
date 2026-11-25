@@ -9,6 +9,7 @@
 - [Approach, Process & Pitfalls](https://www.timburley.com/process): Four name types, four watchwords (Simple, Memorable, Meaningful, Protectable), five-stage naming funnel (~1,000 names to 1 registered mark), and six common naming pitfalls.
 - [About Tim Burley](https://www.timburley.com/about): Background across twenty-five years in agencies and twenty years leading name development.
 - [Start a Naming Brief](https://www.timburley.com/brief): Three-minute structured brief for direct clients or partner agencies, or email names@timburley.com directly.
+- [Privacy Notice](https://www.timburley.com/privacy): Zero cookies, cookieless Vercel Web Analytics, and UK GDPR enquiry handling.
 - [Full Markdown Dossier for Agents](https://www.timburley.com/llms-full.txt): Single-file complete reference containing positioning, process, pitfalls, client testimonial, and all 14 case studies with UK IPO trademark links.
 
 ## Featured Named Projects

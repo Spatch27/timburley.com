@@ -18,7 +18,7 @@ const ROOT = process.cwd();
 const PUBLIC = path.join(ROOT, 'public');
 const SITE_URL = 'https://www.timburley.com';
 const DEFAULT_OG_IMAGE = `${SITE_URL}/assets/images/og-default.jpg`;
-const ASSET_VERSION = '20261125a';
+const ASSET_VERSION = '20261125b';
 const LASTMOD = new Date().toISOString().slice(0, 10);
 
 function loadData() {
@@ -118,6 +118,13 @@ function buildHead({
     lines.push(serialized);
     lines.push('  </script>');
   }
+
+  lines.push(
+    '  <script>',
+    '    window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };',
+    '  </script>',
+    '  <script defer src="/_vercel/insights/script.js"></script>'
+  );
 
   return `<head>\n${lines.join('\n')}\n</head>`;
 }
@@ -382,6 +389,7 @@ function generateLlmsTxt(data, approvedTestimonials) {
     `- [Approach, Process & Pitfalls](${SITE_URL}/process): Four name types, four watchwords (Simple, Memorable, Meaningful, Protectable), five-stage naming funnel (~1,000 names to 1 registered mark), and six common naming pitfalls.`,
     `- [About Tim Burley](${SITE_URL}/about): Background across twenty-five years in agencies and twenty years leading name development.`,
     `- [Start a Naming Brief](${SITE_URL}/brief): Three-minute structured brief for direct clients or partner agencies, or email names@timburley.com directly.`,
+    `- [Privacy Notice](${SITE_URL}/privacy): Zero cookies, cookieless Vercel Web Analytics, and UK GDPR enquiry handling.`,
     `- [Full Markdown Dossier for Agents](${SITE_URL}/llms-full.txt): Single-file complete reference containing positioning, process, pitfalls, client testimonial, and all 14 case studies with UK IPO trademark links.`,
     '',
     '## Featured Named Projects',
@@ -743,6 +751,29 @@ function main() {
     fs.writeFileSync(file, html, 'utf8');
   }
 
+  // 5b. Privacy (public/privacy/index.html)
+  {
+    const file = path.join(PUBLIC, 'privacy/index.html');
+    let html = fs.readFileSync(file, 'utf8');
+    const head = buildHead({
+      title: 'Privacy Notice · Tim Burley · Creating great names',
+      description:
+        'Plain-English privacy notice for Tim Burley: zero cookies, cookieless Vercel Web Analytics, and how naming brief enquiries are handled under UK GDPR.',
+      canonicalPath: '/privacy',
+      jsonLd: {
+        '@context': 'https://schema.org',
+        '@type': 'WebPage',
+        name: 'Privacy Notice',
+        url: `${SITE_URL}/privacy`,
+        inLanguage: 'en-GB',
+        isPartOf: { '@id': `${SITE_URL}/#website` }
+      }
+    });
+    html = replaceHead(html, head);
+    html = bumpAssetVersions(html);
+    fs.writeFileSync(file, html, 'utf8');
+  }
+
   // 6. 404 (public/404.html)
   {
     const file = path.join(PUBLIC, '404.html');
@@ -837,6 +868,7 @@ function main() {
     { loc: `${SITE_URL}/process`, priority: '0.8' },
     { loc: `${SITE_URL}/about`, priority: '0.8' },
     { loc: `${SITE_URL}/brief`, priority: '0.8' },
+    { loc: `${SITE_URL}/privacy`, priority: '0.4' },
     ...projects.map((p) => ({
       loc: `${SITE_URL}/work/${p.id}`,
       priority: p.featured ? '0.8' : '0.7'
