@@ -2581,10 +2581,24 @@ button, input, textarea, select {
 }
 
 .carbon-badge__label {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
   background: #232220;
   color: var(--ink-on-dark);
   padding: 0.45rem 0.65rem;
-  transition: background-color 0.2s var(--ease), color 0.2s var(--ease);
+  transition: color 0.28s var(--ease);
+}
+
+.carbon-badge__label::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: var(--accent-on-dark);
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform 0.32s var(--ease);
 }
 
 .carbon-badge:hover,
@@ -2592,10 +2606,9 @@ button, input, textarea, select {
   border-color: var(--accent-on-dark);
 }
 
-.carbon-badge:hover .carbon-badge__label,
-.carbon-badge:focus-visible .carbon-badge__label {
-  background: var(--accent-on-dark);
-  color: var(--ink-on-dark);
+.carbon-badge:hover .carbon-badge__label::before,
+.carbon-badge:focus-visible .carbon-badge__label::before {
+  transform: scaleX(1);
 }
 
 .carbon-badge__meta {
@@ -3148,6 +3161,7 @@ button, input, textarea, select {
   .btn::before,
   .site-nav a.nav-cta::before,
   .pitfall-flag-btn::before,
+  .carbon-badge__label::before,
   .site-nav a:not(.nav-cta)::after,
   .text-link::after,
   .footer-links a::after,
