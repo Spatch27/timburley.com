@@ -18,7 +18,7 @@ const ROOT = process.cwd();
 const PUBLIC = path.join(ROOT, 'public');
 const SITE_URL = 'https://www.timburley.com';
 const DEFAULT_OG_IMAGE = `${SITE_URL}/assets/images/og-default.jpg`;
-const ASSET_VERSION = '20261125i';
+const ASSET_VERSION = '20261126a';
 const LASTMOD = new Date().toISOString().slice(0, 10);
 
 function loadData() {
@@ -103,7 +103,8 @@ function buildHead({
   lines.push(
     `  <link rel="icon" href="/favicon.svg?v=${ASSET_VERSION}" type="image/svg+xml">`,
     '  <link rel="preload" href="/assets/fonts/instrument-sans-variable.woff2" as="font" type="font/woff2" crossorigin>',
-    `  <link rel="stylesheet" href="/assets/css/styles.css?v=${ASSET_VERSION}">`
+    '  <link rel="preload" href="/assets/fonts/ibm-plex-mono-400-latin.woff2" as="font" type="font/woff2" crossorigin>',
+    `  <link rel="stylesheet" href="/assets/css/styles.min.css?v=${ASSET_VERSION}">`
   );
 
   if (jsonLd) {
@@ -132,7 +133,27 @@ function replaceHead(html, headBlock) {
 }
 
 function bumpAssetVersions(html) {
-  return html.replace(/\?v=2026\d+[a-z]?/g, `?v=${ASSET_VERSION}`);
+  return html
+    .replace(/\?v=2026\d+[a-z]?/g, `?v=${ASSET_VERSION}`)
+    .replace(/<script\s+src="(\/assets\/js\/(?:data|site)\.js[^"]*)">/g, '<script defer src="$1">');
+}
+
+function minifyCss(css) {
+  const strings = [];
+  const hold = (s) => {
+    const idx = strings.push(s) - 1;
+    return `__CSS_STR_${idx}__`;
+  };
+  let out = css
+    .replace(/"(?:\\.|[^"\\])*"|'(?:\\.|[^'\\])*'/g, hold)
+    .replace(/\/\*[\s\S]*?\*\//g, '')
+    .replace(/\s+/g, ' ')
+    .replace(/\s*([{};,>])\s*/g, '$1')
+    .replace(/:\s+/g, ':')
+    .replace(/;}/g, '}')
+    .replace(/__CSS_STR_(\d+)__/g, (_, i) => strings[Number(i)])
+    .trim();
+  return out;
 }
 
 function replaceContainerById(html, id, innerHtml) {
@@ -511,6 +532,9 @@ function generateLlmsFullTxt(data, approvedTestimonials) {
 }
 
 function main() {
+  const rawCss = fs.readFileSync(path.join(PUBLIC, 'assets/css/styles.css'), 'utf8');
+  fs.writeFileSync(path.join(PUBLIC, 'assets/css/styles.min.css'), minifyCss(rawCss), 'utf8');
+
   const data = loadData();
   const approvedTestimonials = (data.testimonials || []).filter((t) => !t.isPlaceholder);
   const leadTestimonial = approvedTestimonials.find((t) => t.featured) || approvedTestimonials[0] || null;

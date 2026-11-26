@@ -49,7 +49,7 @@
 
   --ink-primary: #111110;
   --ink-secondary: #4B4944;
-  --ink-muted: #76736C;
+  --ink-muted: #625F58;
   --ink-on-dark: #F6F5F0;
   --ink-on-dark-muted: #C2BFB7;
 
@@ -219,7 +219,8 @@ button, input, textarea, select {
   gap: 0.65rem;
 }
 
-.section-dark .eyebrow {
+.section-dark .eyebrow,
+.site-footer .eyebrow {
   color: var(--ink-on-dark-muted);
 }
 
@@ -338,7 +339,8 @@ button, input, textarea, select {
 
 .brand-mark__sig {
   height: 42px;
-  width: auto;
+  width: 113px;
+  aspect-ratio: 1100 / 410;
   display: block;
   transform: translateY(3px);
 }
@@ -361,7 +363,8 @@ button, input, textarea, select {
 
 .footer-brand__sig {
   height: 52px;
-  width: auto;
+  width: 140px;
+  aspect-ratio: 1100 / 410;
   display: block;
   margin-bottom: 0.75rem;
 }
@@ -374,7 +377,8 @@ button, input, textarea, select {
 
 .about-signoff img {
   height: 50px;
-  width: auto;
+  width: 134px;
+  aspect-ratio: 1100 / 410;
   display: block;
 }
 
@@ -739,6 +743,12 @@ button, input, textarea, select {
   aspect-ratio: 3 / 4;
   background: var(--bg-ink);
   overflow: hidden;
+}
+
+.hero-portrait__media picture {
+  display: block;
+  width: 100%;
+  height: 100%;
 }
 
 .hero-portrait__media img {
