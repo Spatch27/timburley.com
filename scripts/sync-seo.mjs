@@ -18,7 +18,7 @@ const ROOT = process.cwd();
 const PUBLIC = path.join(ROOT, 'public');
 const SITE_URL = 'https://www.timburley.com';
 const DEFAULT_OG_IMAGE = `${SITE_URL}/assets/images/og-default.jpg`;
-const ASSET_VERSION = '20261128b';
+const ASSET_VERSION = '20261128c';
 const LASTMOD = new Date().toISOString().slice(0, 10);
 
 function loadData() {
@@ -304,6 +304,11 @@ function renderFaqsHtml(faqs) {
     .join('\n');
 }
 
+function formatTrademarkClasses(classes) {
+  if (!Array.isArray(classes) || !classes.length) return '';
+  return `${classes.length === 1 ? 'Class' : 'Classes'} ${classes.join(', ')}`;
+}
+
 function renderCaseStudyMain(project, idx, projects, approvedTestimonials) {
   const prev = projects[(idx - 1 + projects.length) % projects.length];
   const next = projects[(idx + 1) % projects.length];
@@ -320,8 +325,9 @@ function renderCaseStudyMain(project, idx, projects, approvedTestimonials) {
       ? `<a href="${project.liveUrl}" target="_blank" rel="noopener noreferrer" class="text-link">${escapeHtml(project.domain)} ↗</a>`
       : escapeHtml(project.domain || 'N/A');
 
+  const tmClasses = formatTrademarkClasses(project.trademarkClasses);
   const trademarkHtml = project.trademarkUrl
-    ? `<a href="${project.trademarkUrl}" target="_blank" rel="noopener noreferrer" class="text-link">Registered ↗</a>`
+    ? `<a href="${project.trademarkUrl}" target="_blank" rel="noopener noreferrer" class="text-link">Registered ↗</a>${tmClasses ? `<span class="case-meta-ledger__sub">${escapeHtml(tmClasses)}</span>` : ''}`
     : 'Unregistered';
 
   const dimAttrs =
@@ -477,7 +483,10 @@ function generateLlmsTxt(data, approvedTestimonials) {
   ];
 
   for (const p of featured) {
-    const tm = p.trademarkUrl ? ` (Registered UK trademark: ${p.trademarkUrl})` : '';
+    const tmClasses = formatTrademarkClasses(p.trademarkClasses);
+    const tm = p.trademarkUrl
+      ? ` (Registered UK trademark${tmClasses ? `, ${tmClasses}` : ''}: ${p.trademarkUrl})`
+      : '';
     lines.push(`- [${p.name} (${p.launchDate}, ${p.category})](${SITE_URL}/work/${p.id}): ${p.sector}.${tm}`);
   }
 
@@ -602,7 +611,14 @@ function generateLlmsFullTxt(data, approvedTestimonials) {
     lines.push(`- Client: ${p.client}`);
     lines.push(`- Agency partner: ${p.agencyPartner}`);
     lines.push(`- Domain: ${p.domain}`);
-    lines.push(`- Trademark: ${p.trademarkUrl ? `Registered (${p.trademarkUrl})` : 'Unregistered'}`);
+    const tmClasses = formatTrademarkClasses(p.trademarkClasses);
+    lines.push(
+      `- Trademark: ${
+        p.trademarkUrl
+          ? `Registered (${tmClasses ? `${tmClasses}; ` : ''}${p.trademarkUrl})`
+          : 'Unregistered'
+      }`
+    );
     lines.push(`- Brief: ${stripTags(p.brief)}`);
     lines.push(`- Naming story: ${stripTags(p.story)}`);
     lines.push(`- Process & clearance: ${stripTags(p.processNote)}`);
@@ -972,6 +988,7 @@ function main() {
       ? `${project.name}: ${project.visualCaption}`
       : `${project.name} brand naming case study by Tim Burley`;
 
+    const tmClasses = formatTrademarkClasses(project.trademarkClasses);
     const creativeWorkNode = {
       '@type': 'CreativeWork',
       name: `${project.name} Brand Naming Case Study`,
@@ -984,17 +1001,21 @@ function main() {
       author: { '@id': `${SITE_URL}/#person` },
       about: project.category,
       isPartOf: { '@id': `${SITE_URL}/#website` },
-      keywords: `${project.name}, ${project.category} brand naming, ${project.scope}, UK brand naming consultant`
+      keywords: `${project.name}, ${project.category} brand naming, ${project.scope}, UK brand naming consultant${tmClasses ? `, UK IPO Nice ${tmClasses}` : ''}`
     };
 
     if (project.trademarkUrl) {
       const tmCode = project.trademarkUrl.split('/').filter(Boolean).pop();
-      creativeWorkNode.identifier = {
+      const identifierNode = {
         '@type': 'PropertyValue',
         propertyID: 'UK IPO Trademark Registration',
         value: tmCode,
         url: project.trademarkUrl
       };
+      if (tmClasses) {
+        identifierNode.description = `UK IPO Nice ${tmClasses}`;
+      }
+      creativeWorkNode.identifier = identifierNode;
       creativeWorkNode.citation = project.trademarkUrl;
     }
 

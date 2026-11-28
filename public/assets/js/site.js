@@ -260,8 +260,13 @@
         ? `<a href="${project.liveUrl}" target="_blank" rel="noopener noreferrer" class="text-link">${project.domain} ↗</a>`
         : project.domain || 'N/A';
 
+    const tmClasses =
+      project.trademarkClasses && project.trademarkClasses.length
+        ? `${project.trademarkClasses.length === 1 ? 'Class' : 'Classes'} ${project.trademarkClasses.join(', ')}`
+        : '';
+
     const trademarkHtml = project.trademarkUrl
-      ? `<a href="${project.trademarkUrl}" target="_blank" rel="noopener noreferrer" class="text-link">Registered ↗</a>`
+      ? `<a href="${project.trademarkUrl}" target="_blank" rel="noopener noreferrer" class="text-link">Registered ↗</a>${tmClasses ? `<span class="case-meta-ledger__sub">${tmClasses}</span>` : ''}`
       : 'Unregistered';
 
     const dimAttrs =

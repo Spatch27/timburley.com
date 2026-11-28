@@ -3126,6 +3126,16 @@ button, input, textarea, select {
   font-weight: 500;
 }
 
+.case-meta-ledger__sub {
+  display: block;
+  margin-top: 0.25rem;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.04em;
+  color: var(--ink-muted);
+  font-weight: 400;
+}
+
 .case-story-grid {
   display: grid;
   gap: 2.5rem;
