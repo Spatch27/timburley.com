@@ -467,7 +467,7 @@ function generateLlmsTxt(data, approvedTestimonials) {
     `- [Home](${SITE_URL}/): Practice overview, featured work, agency and direct client routes, 5-stage process funnel, and clear boundaries.`,
     `- [Brand Naming Portfolio (14 Projects)](${SITE_URL}/work): Complete reverse-chronological archive of 14 named projects across healthcare, energy, technology, luxury, property, food, public sector and typefaces.`,
     `- [Approach, Process & Pitfalls](${SITE_URL}/process): Four name types, four watchwords (Simple, Memorable, Meaningful, Protectable), five-stage naming funnel (~1,000 names to 1 registered mark), six naming pitfalls, and common buyer questions.`,
-    `- [About Tim Burley](${SITE_URL}/about): Background across twenty-five years in agencies and twenty years leading name development.`,
+    `- [About Tim Burley](${SITE_URL}/about): Over twenty years leading brand naming, strategy and copywriting across agencies.`,
     `- [Start a Naming Brief](${SITE_URL}/brief): Three-minute structured brief for direct clients or partner agencies, or email names@timburley.com directly.`,
     `- [Privacy Notice](${SITE_URL}/privacy): Zero cookies, cookieless Vercel Web Analytics, and UK GDPR enquiry handling.`,
     `- [Full Markdown Dossier for Agents](${SITE_URL}/llms-full.txt): Single-file complete reference containing positioning, process, pitfalls, client testimonial, and all 14 case studies with UK IPO trademark links.`,
@@ -522,7 +522,7 @@ function generateLlmsFullTxt(data, approvedTestimonials) {
     'X: https://x.com/timburley',
     'Location: United Kingdom (working with UK and international clients)',
     'Role: Independent Brand Naming Consultant',
-    'Experience: 20 years leading name development projects across 25 years in brand, design and digital agencies.',
+    'Experience: Over 20 years leading name development projects, brand strategy and copywriting across brand, design, digital and marketing agencies.',
     'Affiliations: Co-founder, Committed Citizens (https://committedcitizens.co.uk)',
     '',
     '## Positioning & Offer',
@@ -876,7 +876,7 @@ function main() {
     const head = buildHead({
       title: 'About Tim Burley · UK Brand Naming Consultant',
       description:
-        'Twenty years leading brand naming projects across twenty-five years in agencies, working directly with founders, organisations and partner agencies.',
+        'Over twenty years leading brand naming projects, working directly with founders, organisations and partner agencies from brief to trademark clearance.',
       canonicalPath: '/about',
       jsonLd: {
         '@context': 'https://schema.org',
