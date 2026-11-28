@@ -18,7 +18,7 @@ const ROOT = process.cwd();
 const PUBLIC = path.join(ROOT, 'public');
 const SITE_URL = 'https://www.timburley.com';
 const DEFAULT_OG_IMAGE = `${SITE_URL}/assets/images/og-default.jpg`;
-const ASSET_VERSION = '20261128a';
+const ASSET_VERSION = '20261128b';
 const LASTMOD = new Date().toISOString().slice(0, 10);
 
 function loadData() {
@@ -293,6 +293,17 @@ function renderPitfallsHtml(pitfalls) {
     .join('\n');
 }
 
+function renderFaqsHtml(faqs) {
+  return faqs
+    .map(
+      (item) => `          <article class="faq-item" id="faq-${escapeHtml(item.id)}">
+            <h3 class="faq-item__q">${escapeHtml(item.question)}</h3>
+            <p class="faq-item__a">${escapeHtml(item.answer)}</p>
+          </article>`
+    )
+    .join('\n');
+}
+
 function renderCaseStudyMain(project, idx, projects, approvedTestimonials) {
   const prev = projects[(idx - 1 + projects.length) % projects.length];
   const next = projects[(idx + 1) % projects.length];
@@ -455,7 +466,7 @@ function generateLlmsTxt(data, approvedTestimonials) {
     '',
     `- [Home](${SITE_URL}/): Practice overview, featured work, agency and direct client routes, 5-stage process funnel, and clear boundaries.`,
     `- [Brand Naming Portfolio (14 Projects)](${SITE_URL}/work): Complete reverse-chronological archive of 14 named projects across healthcare, energy, technology, luxury, property, food, public sector and typefaces.`,
-    `- [Approach, Process & Pitfalls](${SITE_URL}/process): Four name types, four watchwords (Simple, Memorable, Meaningful, Protectable), five-stage naming funnel (~1,000 names to 1 registered mark), and six common naming pitfalls.`,
+    `- [Approach, Process & Pitfalls](${SITE_URL}/process): Four name types, four watchwords (Simple, Memorable, Meaningful, Protectable), five-stage naming funnel (~1,000 names to 1 registered mark), six naming pitfalls, and common buyer questions.`,
     `- [About Tim Burley](${SITE_URL}/about): Background across twenty-five years in agencies and twenty years leading name development.`,
     `- [Start a Naming Brief](${SITE_URL}/brief): Three-minute structured brief for direct clients or partner agencies, or email names@timburley.com directly.`,
     `- [Privacy Notice](${SITE_URL}/privacy): Zero cookies, cookieless Vercel Web Analytics, and UK GDPR enquiry handling.`,
@@ -558,6 +569,15 @@ function generateLlmsFullTxt(data, approvedTestimonials) {
       lines.push(`- ${stripTags(t.quote)} (${t.author}, ${t.role}; projects: ${t.projectLabel})`);
     }
     lines.push('');
+  }
+
+  if (Array.isArray(data.faqs) && data.faqs.length) {
+    lines.push('## Common Questions (FAQ)', '');
+    for (const item of data.faqs) {
+      lines.push(`### ${stripTags(item.question)}`);
+      lines.push(stripTags(item.answer));
+      lines.push('');
+    }
   }
 
   lines.push('## Six Naming Pitfalls (Summary)', '');
@@ -818,14 +838,24 @@ function main() {
           },
           {
             '@type': 'FAQPage',
-            mainEntity: (data.pitfalls || []).map((pit) => ({
-              '@type': 'Question',
-              name: `What is ${pit.title} in brand naming?`,
-              acceptedAnswer: {
-                '@type': 'Answer',
-                text: `${stripTags(pit.whyItHappens)} ${stripTags(pit.antidote)}`
-              }
-            }))
+            mainEntity: [
+              ...(data.faqs || []).map((item) => ({
+                '@type': 'Question',
+                name: stripTags(item.question),
+                acceptedAnswer: {
+                  '@type': 'Answer',
+                  text: stripTags(item.answer)
+                }
+              })),
+              ...(data.pitfalls || []).map((pit) => ({
+                '@type': 'Question',
+                name: `What is ${pit.title} in brand naming?`,
+                acceptedAnswer: {
+                  '@type': 'Answer',
+                  text: `${stripTags(pit.whyItHappens)} ${stripTags(pit.antidote)}`
+                }
+              }))
+            ]
           }
         ]
       }
@@ -833,6 +863,7 @@ function main() {
     html = replaceHead(html, head);
     html = bumpAssetVersions(syncFooterLinks(html));
     html = replaceContainerById(html, 'pitfalls-container', renderPitfallsHtml(data.pitfalls || []));
+    html = replaceContainerById(html, 'faq-container', renderFaqsHtml(data.faqs || []));
     pageLastmods.set(`${SITE_URL}/process`, resolveLastmod(`${SITE_URL}/process`, prevHtml, html, prevSitemap));
     fs.writeFileSync(file, html, 'utf8');
   }

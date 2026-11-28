@@ -558,5 +558,38 @@ window.TB_DATA = {
       whyItHappens: 'Pronunciation, spelling, global translation and trademark clearance are essential hygiene factors, but they are only half the equation. Judging exclusively on rational metrics strips away the emotional resonance that turns a functional label into a brand people actually believe in.',
       antidote: 'We balance legal and practical rigour with human feeling and story, knowing when a name should be evocative, and when a clear name (like South West Food & Drink paired with “Sensational”) comes alive through the narrative around it.'
     }
+  ],
+
+  faqs: [
+    {
+      id: 'pricing',
+      question: 'How much does a brand naming project cost?',
+      answer: 'Every engagement is quoted as a clear fixed fee based on the variables in your brief: the number of names and any existing brand architecture, whether it is for a company, product, service, place or other application, the depth of trademark clearance and international linguistic screening needed, domain and handle constraints (such as requiring an exact-match .com), the nature of the business including regulatory compliance requirements, stakeholder complexity and turnaround. Working directly with an independent specialist also keeps fees free of large-agency overheads. Once we agree those essentials and your approval pipeline, I send back a straightforward fixed-fee proposal before any work begins.'
+    },
+    {
+      id: 'timeline',
+      question: 'How long does a brand naming project take?',
+      answer: 'Most projects take four to six weeks from the agreed strategy brief through to handing a cleared shortlist to your trademark attorney. That covers strategy and territories, long-listing, pre-screened shortlisting and alignment workshops. Tighter launch windows or multi-market clearances are scoped upfront.'
+    },
+    {
+      id: 'consultant-vs-agency',
+      question: 'Should I hire an independent naming consultant or a branding agency?',
+      answer: 'Working directly with an independent specialist gives you twenty years of hands-on naming craft without agency layers or junior hand-offs. It also means your visual identity or brand rollout can stay with your existing design studio or internal team, built on a distinctive name that boards can align behind and lawyers can register.'
+    },
+    {
+      id: 'agency-partnership',
+      question: 'How do brand, design and digital agencies work with you?',
+      answer: 'Agencies bring me in as a specialist naming partner so they can offer senior naming leadership without carrying permanent headcount. I work alongside your strategists, designers and account leads, either directly in the room with your client or behind the scenes, delivering pre-screened candidates that give design teams strong strategic ground to build from.'
+    },
+    {
+      id: 'trademark-attorney',
+      question: 'Can you register our trademark, or do we still need a trademark attorney?',
+      answer: 'Formal searches, legal opinions and trademark filing always belong with a qualified trademark attorney. My role is to understand UK, EU and international trademark registers well enough to pre-screen candidates before you ever see them, cut wasted legal spend and keep three or four genuinely registrable front runners alive for your IP partner.'
+    },
+    {
+      id: 'ai-naming',
+      question: 'Why shouldn’t I just use AI to name my business or product?',
+      answer: 'AI is brilliant at finding the average, and great names never come from there. Prompting an LLM produces familiar category clichés that routinely collide in trademark classes and dilute distinction. Choosing a lasting name still takes commercial judgement, cultural awareness, legal foresight and the human alignment to get a whole room behind one confident decision.'
+    }
   ]
 };
