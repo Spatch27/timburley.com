@@ -18,7 +18,7 @@ const ROOT = process.cwd();
 const PUBLIC = path.join(ROOT, 'public');
 const SITE_URL = 'https://www.timburley.com';
 const DEFAULT_OG_IMAGE = `${SITE_URL}/assets/images/og-default.jpg`;
-const ASSET_VERSION = '20261126a';
+const ASSET_VERSION = '20261128a';
 const LASTMOD = new Date().toISOString().slice(0, 10);
 
 function loadData() {
@@ -58,6 +58,8 @@ function buildHead({
   canonicalPath,
   ogType = 'website',
   ogImage = DEFAULT_OG_IMAGE,
+  ogImageWidth = null,
+  ogImageHeight = null,
   ogImageAlt = 'Tim Burley: Brand Naming Consultant, UK. Creating great names.',
   noindex = false,
   jsonLd = null
@@ -78,6 +80,7 @@ function buildHead({
   } else if (canonicalUrl) {
     lines.push(`  <link rel="canonical" href="${canonicalUrl}">`);
     lines.push('  <link rel="alternate" type="text/plain" href="/llms.txt" title="Tim Burley LLM Summary">');
+    lines.push('  <link rel="alternate" type="text/markdown" href="/llms-full.txt" title="Tim Burley Full Reference">');
     lines.push('  <meta property="og:site_name" content="Tim Burley · Creating great names">');
     lines.push('  <meta property="og:locale" content="en_GB">');
     lines.push(`  <meta property="og:type" content="${ogType}">`);
@@ -87,12 +90,15 @@ function buildHead({
       lines.push(`  <meta property="og:description" content="${escapeHtml(description)}">`);
     }
     lines.push(`  <meta property="og:image" content="${ogImage}">`);
-    if (ogImage === DEFAULT_OG_IMAGE) {
-      lines.push('  <meta property="og:image:width" content="1200">');
-      lines.push('  <meta property="og:image:height" content="630">');
+    const resolvedOgWidth = ogImage === DEFAULT_OG_IMAGE ? 1200 : ogImageWidth;
+    const resolvedOgHeight = ogImage === DEFAULT_OG_IMAGE ? 630 : ogImageHeight;
+    if (resolvedOgWidth && resolvedOgHeight) {
+      lines.push(`  <meta property="og:image:width" content="${resolvedOgWidth}">`);
+      lines.push(`  <meta property="og:image:height" content="${resolvedOgHeight}">`);
     }
     lines.push(`  <meta property="og:image:alt" content="${escapeHtml(ogImageAlt)}">`);
     lines.push('  <meta name="twitter:card" content="summary_large_image">');
+    lines.push('  <meta name="twitter:creator" content="@timburley">');
     lines.push(`  <meta name="twitter:title" content="${escapeHtml(title)}">`);
     if (description) {
       lines.push(`  <meta name="twitter:description" content="${escapeHtml(description)}">`);
@@ -138,6 +144,18 @@ function bumpAssetVersions(html) {
     .replace(/<script\s+src="(\/assets\/js\/(?:data|site)\.js[^"]*)">/g, '<script defer src="$1">');
 }
 
+function syncFooterLinks(html) {
+  return html.replace(
+    /(<h2 class="footer-heading">Direct Contact<\/h2>\s*<ul class="footer-links">)[\s\S]*?(<\/ul>)/,
+    `$1
+            <li><a href="mailto:names@timburley.com">names@timburley.com</a></li>
+            <li><a href="/brief">Guided Naming Brief →</a></li>
+            <li><a href="https://www.linkedin.com/in/timburley/" target="_blank" rel="me noopener noreferrer">LinkedIn ↗</a></li>
+            <li><a href="https://x.com/timburley" target="_blank" rel="me noopener noreferrer">X ↗</a></li>
+          $2`
+  );
+}
+
 function minifyCss(css) {
   const strings = [];
   const hold = (s) => {
@@ -154,6 +172,33 @@ function minifyCss(css) {
     .replace(/__CSS_STR_(\d+)__/g, (_, i) => strings[Number(i)])
     .trim();
   return out;
+}
+
+function loadPrevSitemap() {
+  const map = new Map();
+  const smPath = path.join(PUBLIC, 'sitemap.xml');
+  if (!fs.existsSync(smPath)) return map;
+  const xml = fs.readFileSync(smPath, 'utf8');
+  for (const m of xml.matchAll(/<url>\s*<loc>([^<]+)<\/loc>\s*<lastmod>([^<]+)<\/lastmod>/g)) {
+    map.set(m[1].trim(), m[2].trim());
+  }
+  return map;
+}
+
+function contentFingerprint(html) {
+  const title = (html.match(/<title>[\s\S]*?<\/title>/) || [''])[0];
+  const desc = (html.match(/<meta name="description"[^>]*>/) || [''])[0];
+  const jsonLd = (html.match(/<script type="application\/ld\+json">[\s\S]*?<\/script>/) || [''])[0];
+  const main = (html.match(/<main\b[\s\S]*?<\/main>/) || [''])[0];
+  return [title, desc, jsonLd, main]
+    .join('\n')
+    .replace(/\?v=2026\d+[a-z]?/g, '');
+}
+
+function resolveLastmod(loc, prevHtml, nextHtml, prevSitemap) {
+  const prevDate = prevSitemap.get(loc);
+  if (!prevDate) return LASTMOD;
+  return contentFingerprint(prevHtml) === contentFingerprint(nextHtml) ? prevDate : LASTMOD;
 }
 
 function replaceContainerById(html, id, innerHtml) {
@@ -268,9 +313,14 @@ function renderCaseStudyMain(project, idx, projects, approvedTestimonials) {
     ? `<a href="${project.trademarkUrl}" target="_blank" rel="noopener noreferrer" class="text-link">Registered ↗</a>`
     : 'Unregistered';
 
+  const dimAttrs =
+    project.visualWidth && project.visualHeight
+      ? ` width="${project.visualWidth}" height="${project.visualHeight}"`
+      : '';
+
   const visualStageHtml = project.visualImage
     ? `        <figure class="case-visual-stage case-visual-stage--media" style="margin:0 0 2.5rem;">
-          <img class="case-visual-stage__image" src="${project.visualImage}" alt="${escapeHtml(project.name)}: ${escapeHtml(project.visualCaption)}">
+          <img class="case-visual-stage__image" src="${project.visualImage}" alt="${escapeHtml(project.name)}: ${escapeHtml(project.visualCaption)}"${dimAttrs} fetchpriority="high" decoding="async">
           <figcaption class="case-visual-stage__foot">
             <span>${escapeHtml(project.visualCaption)}</span>
             ${footRightHtml}
@@ -439,6 +489,9 @@ function generateLlmsTxt(data, approvedTestimonials) {
     '## Direct Contact',
     '',
     `- Email: ${data.contactEmail}`,
+    '- LinkedIn (Personal): https://www.linkedin.com/in/timburley/',
+    '- LinkedIn (Practice): https://www.linkedin.com/company/timburley',
+    '- X: https://x.com/timburley',
     `- Direct client brief: ${SITE_URL}/brief?route=direct`,
     `- Agency partnership enquiry: ${SITE_URL}/brief?route=agency`,
     ''
@@ -453,9 +506,13 @@ function generateLlmsFullTxt(data, approvedTestimonials) {
     '',
     `Canonical URL: ${SITE_URL}/`,
     `Contact: ${data.contactEmail}`,
+    'LinkedIn (Personal): https://www.linkedin.com/in/timburley/',
+    'LinkedIn (Practice): https://www.linkedin.com/company/timburley',
+    'X: https://x.com/timburley',
     'Location: United Kingdom (working with UK and international clients)',
     'Role: Independent Brand Naming Consultant',
     'Experience: 20 years leading name development projects across 25 years in brand, design and digital agencies.',
+    'Affiliations: Co-founder, Committed Citizens (https://committedcitizens.co.uk)',
     '',
     '## Positioning & Offer',
     '',
@@ -512,7 +569,12 @@ function generateLlmsFullTxt(data, approvedTestimonials) {
     lines.push('');
   }
 
-  lines.push('## Named Projects (14 Case Studies, Reverse Chronological)', '');
+  lines.push(
+    '## Named Projects (14 Case Studies, Reverse Chronological)',
+    '',
+    '> Note: Case study narratives below are written in the first person by Tim Burley.',
+    ''
+  );
   for (const p of data.projects) {
     lines.push(`### ${p.num}. ${p.name} (${p.launchDate}) · ${p.category}`);
     lines.push(`- Case study URL: ${SITE_URL}/work/${p.id}`);
@@ -535,10 +597,24 @@ function main() {
   const rawCss = fs.readFileSync(path.join(PUBLIC, 'assets/css/styles.css'), 'utf8');
   fs.writeFileSync(path.join(PUBLIC, 'assets/css/styles.min.css'), minifyCss(rawCss), 'utf8');
 
+  const prevSitemap = loadPrevSitemap();
+  const pageLastmods = new Map();
   const data = loadData();
   const approvedTestimonials = (data.testimonials || []).filter((t) => !t.isPlaceholder);
   const leadTestimonial = approvedTestimonials.find((t) => t.featured) || approvedTestimonials[0] || null;
   const projects = data.projects || [];
+
+  const ukAddress = {
+    '@type': 'PostalAddress',
+    addressRegion: 'South West England',
+    addressCountry: 'GB'
+  };
+
+  const committedCitizensOrg = {
+    '@type': 'Organization',
+    name: 'Committed Citizens',
+    url: 'https://committedcitizens.co.uk'
+  };
 
   const personNode = {
     '@type': 'Person',
@@ -548,6 +624,13 @@ function main() {
     url: `${SITE_URL}/`,
     email: `mailto:${data.contactEmail}`,
     image: `${SITE_URL}/assets/images/tim/tim-seated.jpg`,
+    sameAs: [
+      'https://www.linkedin.com/in/timburley/',
+      'https://x.com/timburley',
+      'https://committedcitizens.co.uk'
+    ],
+    affiliation: committedCitizensOrg,
+    address: ukAddress,
     description:
       'Independent UK brand naming consultant with twenty years leading name development projects across brands, systems, places and typefaces.',
     knowsAbout: [
@@ -561,6 +644,14 @@ function main() {
     ]
   };
 
+  const serviceTypes = [
+    'Brand Naming',
+    'Post-Merger Naming',
+    'Product & Platform Naming',
+    'Property & Place Naming',
+    'Agency Naming Partnership'
+  ];
+
   const serviceNode = {
     '@type': 'ProfessionalService',
     '@id': `${SITE_URL}/#practice`,
@@ -568,17 +659,29 @@ function main() {
     url: `${SITE_URL}/`,
     email: data.contactEmail,
     image: DEFAULT_OG_IMAGE,
+    sameAs: [
+      'https://www.linkedin.com/company/timburley',
+      'https://www.linkedin.com/in/timburley/',
+      'https://x.com/timburley',
+      'https://committedcitizens.co.uk'
+    ],
+    address: ukAddress,
     description:
       'Independent UK brand naming consultancy creating distinctive, trademark-ready names for direct clients and partner agencies in 4 to 6 weeks.',
     founder: { '@id': `${SITE_URL}/#person` },
     areaServed: ['United Kingdom', 'International'],
-    serviceType: [
-      'Brand Naming',
-      'Post-Merger Naming',
-      'Product & Platform Naming',
-      'Property & Place Naming',
-      'Agency Naming Partnership'
-    ]
+    serviceType: serviceTypes,
+    hasOfferCatalog: {
+      '@type': 'OfferCatalog',
+      name: 'Brand Naming Services',
+      itemListElement: serviceTypes.map((serviceName) => ({
+        '@type': 'Offer',
+        itemOffered: {
+          '@type': 'Service',
+          name: serviceName
+        }
+      }))
+    }
   };
 
   if (leadTestimonial) {
@@ -595,7 +698,8 @@ function main() {
   // 1. Homepage (public/index.html)
   {
     const file = path.join(PUBLIC, 'index.html');
-    let html = fs.readFileSync(file, 'utf8');
+    const prevHtml = fs.readFileSync(file, 'utf8');
+    let html = prevHtml;
     const head = buildHead({
       title: 'Tim Burley · Brand Naming Consultant, UK · Creating great names',
       description:
@@ -618,7 +722,7 @@ function main() {
       }
     });
     html = replaceHead(html, head);
-    html = bumpAssetVersions(html);
+    html = bumpAssetVersions(syncFooterLinks(html));
 
     const featuredCardsHtml = projects
       .filter((p) => p.featured)
@@ -634,13 +738,15 @@ function main() {
       );
     }
 
+    pageLastmods.set(`${SITE_URL}/`, resolveLastmod(`${SITE_URL}/`, prevHtml, html, prevSitemap));
     fs.writeFileSync(file, html, 'utf8');
   }
 
   // 2. Work index (public/work/index.html)
   {
     const file = path.join(PUBLIC, 'work/index.html');
-    let html = fs.readFileSync(file, 'utf8');
+    const prevHtml = fs.readFileSync(file, 'utf8');
+    let html = prevHtml;
     const head = buildHead({
       title: 'Brand Naming Portfolio · 14 Named Projects · Tim Burley',
       description:
@@ -665,7 +771,7 @@ function main() {
       }
     });
     html = replaceHead(html, head);
-    html = bumpAssetVersions(html);
+    html = bumpAssetVersions(syncFooterLinks(html));
 
     const categories = ['All', ...Array.from(new Set(projects.map((p) => p.category)))];
     const filtersHtml = categories
@@ -681,13 +787,15 @@ function main() {
       .join('\n');
     html = replaceContainerById(html, 'work-specimens', allCardsHtml);
 
+    pageLastmods.set(`${SITE_URL}/work`, resolveLastmod(`${SITE_URL}/work`, prevHtml, html, prevSitemap));
     fs.writeFileSync(file, html, 'utf8');
   }
 
   // 3. Process & Pitfalls (public/process/index.html)
   {
     const file = path.join(PUBLIC, 'process/index.html');
-    let html = fs.readFileSync(file, 'utf8');
+    const prevHtml = fs.readFileSync(file, 'utf8');
+    let html = prevHtml;
     const head = buildHead({
       title: 'Brand Naming Process & Pitfalls · Tim Burley',
       description:
@@ -723,15 +831,17 @@ function main() {
       }
     });
     html = replaceHead(html, head);
-    html = bumpAssetVersions(html);
+    html = bumpAssetVersions(syncFooterLinks(html));
     html = replaceContainerById(html, 'pitfalls-container', renderPitfallsHtml(data.pitfalls || []));
+    pageLastmods.set(`${SITE_URL}/process`, resolveLastmod(`${SITE_URL}/process`, prevHtml, html, prevSitemap));
     fs.writeFileSync(file, html, 'utf8');
   }
 
   // 4. About (public/about/index.html)
   {
     const file = path.join(PUBLIC, 'about/index.html');
-    let html = fs.readFileSync(file, 'utf8');
+    const prevHtml = fs.readFileSync(file, 'utf8');
+    let html = prevHtml;
     const head = buildHead({
       title: 'About Tim Burley · UK Brand Naming Consultant',
       description:
@@ -746,14 +856,16 @@ function main() {
       }
     });
     html = replaceHead(html, head);
-    html = bumpAssetVersions(html);
+    html = bumpAssetVersions(syncFooterLinks(html));
+    pageLastmods.set(`${SITE_URL}/about`, resolveLastmod(`${SITE_URL}/about`, prevHtml, html, prevSitemap));
     fs.writeFileSync(file, html, 'utf8');
   }
 
   // 5. Brief (public/brief/index.html)
   {
     const file = path.join(PUBLIC, 'brief/index.html');
-    let html = fs.readFileSync(file, 'utf8');
+    const prevHtml = fs.readFileSync(file, 'utf8');
+    let html = prevHtml;
     const head = buildHead({
       title: 'Start a Brand Naming Brief · Tim Burley',
       description:
@@ -769,14 +881,16 @@ function main() {
       }
     });
     html = replaceHead(html, head);
-    html = bumpAssetVersions(html);
+    html = bumpAssetVersions(syncFooterLinks(html));
+    pageLastmods.set(`${SITE_URL}/brief`, resolveLastmod(`${SITE_URL}/brief`, prevHtml, html, prevSitemap));
     fs.writeFileSync(file, html, 'utf8');
   }
 
   // 5b. Privacy (public/privacy/index.html)
   {
     const file = path.join(PUBLIC, 'privacy/index.html');
-    let html = fs.readFileSync(file, 'utf8');
+    const prevHtml = fs.readFileSync(file, 'utf8');
+    let html = prevHtml;
     const head = buildHead({
       title: 'Privacy Notice · Tim Burley · Creating great names',
       description:
@@ -792,7 +906,8 @@ function main() {
       }
     });
     html = replaceHead(html, head);
-    html = bumpAssetVersions(html);
+    html = bumpAssetVersions(syncFooterLinks(html));
+    pageLastmods.set(`${SITE_URL}/privacy`, resolveLastmod(`${SITE_URL}/privacy`, prevHtml, html, prevSitemap));
     fs.writeFileSync(file, html, 'utf8');
   }
 
@@ -807,23 +922,54 @@ function main() {
       noindex: true
     });
     html = replaceHead(html, head);
-    html = bumpAssetVersions(html);
+    html = bumpAssetVersions(syncFooterLinks(html));
     fs.writeFileSync(file, html, 'utf8');
   }
 
   // 7. All 14 Individual Case Study Pages (public/work/<slug>/index.html)
   projects.forEach((project, idx) => {
     const file = path.join(PUBLIC, 'work', project.id, 'index.html');
-    let html = fs.readFileSync(file, 'utf8');
+    const prevHtml = fs.readFileSync(file, 'utf8');
+    let html = prevHtml;
 
-    const title = `${project.name} · ${project.category} Naming Case Study · Tim Burley`;
-    const description = truncateDesc(
-      `How ${project.name} was named: ${stripTags(project.summary)}`
-    );
+    const title = project.seoTitle || `${project.name} · ${project.category} Naming Case Study · Tim Burley`;
+    const description =
+      project.seoDescription ||
+      truncateDesc(`How ${project.name} was named: ${stripTags(project.summary)}`);
     const ogImage = project.visualImage ? `${SITE_URL}${project.visualImage}` : DEFAULT_OG_IMAGE;
     const ogImageAlt = project.visualCaption
       ? `${project.name}: ${project.visualCaption}`
       : `${project.name} brand naming case study by Tim Burley`;
+
+    const creativeWorkNode = {
+      '@type': 'CreativeWork',
+      name: `${project.name} Brand Naming Case Study`,
+      headline: `How ${project.name} came to be`,
+      description: stripTags(project.summary),
+      url: `${SITE_URL}/work/${project.id}`,
+      datePublished: `${project.launchDate}-01-01`,
+      inLanguage: 'en-GB',
+      image: ogImage,
+      author: { '@id': `${SITE_URL}/#person` },
+      about: project.category,
+      isPartOf: { '@id': `${SITE_URL}/#website` },
+      keywords: `${project.name}, ${project.category} brand naming, ${project.scope}, UK brand naming consultant`
+    };
+
+    if (project.trademarkUrl) {
+      const tmCode = project.trademarkUrl.split('/').filter(Boolean).pop();
+      creativeWorkNode.identifier = {
+        '@type': 'PropertyValue',
+        propertyID: 'UK IPO Trademark Registration',
+        value: tmCode,
+        url: project.trademarkUrl
+      };
+      creativeWorkNode.citation = project.trademarkUrl;
+    }
+
+    if (project.liveUrl) {
+      creativeWorkNode.sameAs = project.liveUrl;
+    }
 
     const head = buildHead({
       title,
@@ -831,22 +977,13 @@ function main() {
       canonicalPath: `/work/${project.id}`,
       ogType: 'article',
       ogImage,
+      ogImageWidth: project.visualWidth || null,
+      ogImageHeight: project.visualHeight || null,
       ogImageAlt,
       jsonLd: {
         '@context': 'https://schema.org',
         '@graph': [
-          {
-            '@type': 'CreativeWork',
-            name: `${project.name} Brand Naming Case Study`,
-            headline: `How ${project.name} came to be`,
-            description: stripTags(project.summary),
-            url: `${SITE_URL}/work/${project.id}`,
-            datePublished: `${project.launchDate}-01-01`,
-            inLanguage: 'en-GB',
-            image: ogImage,
-            author: { '@id': `${SITE_URL}/#person` },
-            about: project.category
-          },
+          creativeWorkNode,
           {
             '@type': 'BreadcrumbList',
             itemListElement: [
@@ -860,11 +997,13 @@ function main() {
     });
 
     html = replaceHead(html, head);
-    html = bumpAssetVersions(html);
+    html = bumpAssetVersions(syncFooterLinks(html));
     html = html.replace(
       /<main id="main"[\s\S]*?<\/main>/,
       renderCaseStudyMain(project, idx, projects, approvedTestimonials)
     );
+    const caseLoc = `${SITE_URL}/work/${project.id}`;
+    pageLastmods.set(caseLoc, resolveLastmod(caseLoc, prevHtml, html, prevSitemap));
     fs.writeFileSync(file, html, 'utf8');
   });
 
@@ -901,7 +1040,7 @@ function main() {
     '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">',
     ...sitemapEntries.map(
       (e) =>
-        `  <url>\n    <loc>${e.loc}</loc>\n    <lastmod>${LASTMOD}</lastmod>\n    <priority>${e.priority}</priority>\n  </url>`
+        `  <url>\n    <loc>${e.loc}</loc>\n    <lastmod>${pageLastmods.get(e.loc) || LASTMOD}</lastmod>\n    <priority>${e.priority}</priority>\n  </url>`
     ),
     '</urlset>',
     ''

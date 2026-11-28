@@ -264,10 +264,15 @@
       ? `<a href="${project.trademarkUrl}" target="_blank" rel="noopener noreferrer" class="text-link">Registered ↗</a>`
       : 'Unregistered';
 
+    const dimAttrs =
+      project.visualWidth && project.visualHeight
+        ? ` width="${project.visualWidth}" height="${project.visualHeight}"`
+        : '';
+
     const visualStageHtml = project.visualImage
       ? `
           <figure class="case-visual-stage case-visual-stage--media" style="margin:0 0 2.5rem;">
-            <img class="case-visual-stage__image" src="${project.visualImage}" alt="${project.name}: ${project.visualCaption}">
+            <img class="case-visual-stage__image" src="${project.visualImage}" alt="${project.name}: ${project.visualCaption}"${dimAttrs} fetchpriority="high" decoding="async">
             <figcaption class="case-visual-stage__foot">
               <span>${project.visualCaption}</span>
               ${footRightHtml}
